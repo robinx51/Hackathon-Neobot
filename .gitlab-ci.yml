@@ -1,5 +1,16 @@
 deploy:
   stage: deploy
+  image: docker:20.10.16
+  before_script:
+    - apk add --no-cache curl bash
+    - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
+    - tar -zxvf helm.tar.gz
+    - mv linux-amd64/helm /usr/local/bin/helm
+    - kubectl config set-cluster my-cluster --server=https://your-cluster-url --certificate-authority=/etc/kubernetes/ca.crt
+    - kubectl config set-credentials your-user --token=$K8S_TOKEN
+    - kubectl config set-context default --cluster=my-cluster --user=your-user --namespace=cnrprod1737640949-team-83206
+    - kubectl config use-context default
   script:
     - helm repo add myrepo https://charts.example.com
     - helm install myapp myrepo/myapp-chart
+
