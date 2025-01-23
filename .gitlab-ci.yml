@@ -1,20 +1,5 @@
-stages:
-  - deploy
-
-variables:
-  HELM_VERSION: "v3.17.0"   # Версия Helm, которую вы хотите использовать
-  KUBECONFIG: "/etc/kubernetes/config"   # Путь к конфигу Kubernetes, который будет использоваться в контейнере
-
-before_script:
-  - echo "Installing Helm..."
-  - curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-  - helm version
-
 deploy:
   stage: deploy
-  image: docker:20.10.16   # Используем Docker образ с поддержкой Helm
   script:
-    - echo "Deploying application with Helm..."
-    - helm repo add stable https://charts.helm.sh/stable
-    - helm repo update
-    - helm upgrade --install myapp stable/myapp-chart --namespace cnrprod1737640949-team-83206 --set key=value
+    - helm repo add myrepo https://charts.example.com
+    - helm install myapp myrepo/myapp-chart
