@@ -13,20 +13,13 @@ deploy:
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
 
-    # Создаём директорию .kube и устанавливаем разрешения
-    - mkdir -p ~/.kube
-    - chmod 700 ~/.kube  # Устанавливаем права для директории .kube
-    
-    # Проверяем содержимое переменной KUBECONFIG
-    - echo "$KUBECONFIG"
-
-    # Записываем содержимое переменной KUBECONFIG в файл ~/.kube/config
+    # Проверяем, если переменная KUBECONFIG существует
     - echo "$KUBECONFIG" > ~/.kube/config
 
-    # Проверяем содержимое ~/.kube/config
-    - cat ~/.kube/config
+    # Устанавливаем KUBECONFIG в переменную окружения
+    - export KUBECONFIG=~/.kube/config
 
-    # Проверяем подключение к кластеру
+    # Проверяем соединение с Kubernetes
     - kubectl get nodes
 
   script:
@@ -36,5 +29,4 @@ deploy:
     - helm install myapp myrepo/myapp-chart
 
   variables:
-    # Переменная KUBECONFIG будет автоматически передана через GitLab CI/CD
-    KUBECONFIG: "your-kubeconfig-content-here"  # Поставьте сюда нужное значение, если оно не задано в настройках CI/CD
+    KUBECONFIG: "your-kubeconfig-content-here"  # Переменная должна быть корректно установлена в настройках CI/CD
