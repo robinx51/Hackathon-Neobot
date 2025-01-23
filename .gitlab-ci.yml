@@ -1,11 +1,7 @@
 deploy:
   stage: deploy
-  image: docker:20.10.16
-  before_script:
-    - apk add --no-cache curl bash
-    - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
-    - tar -zxvf helm.tar.gz
-    - mv linux-amd64/helm /usr/local/bin/helm
   script:
     - helm repo add myrepo https://charts.example.com
     - helm install myapp myrepo/myapp-chart
+  kubernetes:
+    service_account: cnrprod1737640949-team-83206  # Укажите ваш сервис-аккаунт
