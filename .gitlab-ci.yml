@@ -1,14 +1,27 @@
 deploy:
   stage: deploy
   image: docker:20.10.16
+  services:
+    - name: docker:20.10.16-dind
   before_script:
+    # Устанавливаем kubectl и helm
     - apk add --no-cache curl bash
     - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
     - tar -zxvf helm.tar.gz
     - mv linux-amd64/helm /usr/local/bin/helm
-    - mkdir -p ~/.kube
-    - echo "$KUBECONFIG" > ~/.kube/config  # Загружаем kubeconfig из переменной
-    - helm repo add myrepo https://charts.example.com
-    - helm repo update
+    - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl
+
+    # Записываем содержимое переменной KUBECONFIG в файл ~/.kube/config
+    - echo "$KUBECONFIG" > ~/.kube/config
+    
+    # Проверяем подключение к кластеру
+    - kubectl get nodes
+
   script:
+    # Устанавливаем приложение с помощью Helm
+    - helm repo add myrepo https://charts.example.com
     - helm install myapp myrepo/myapp-chart
+  variables:
+    KUBECONFIG: "your-kubeconfig-content-here"  # Переменная будет заполнена автоматически
