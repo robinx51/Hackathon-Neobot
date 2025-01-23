@@ -1,22 +1,40 @@
-before_script:
-  # Устанавливаем kubectl и helm
-  - apk add --no-cache curl bash
-  - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
-  - tar -zxvf helm.tar.gz
-  - mv linux-amd64/helm /usr/local/bin/helm
-  - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
-  - chmod +x ./kubectl
-  - mv ./kubectl /usr/local/bin/kubectl
+deploy:
+  stage: deploy
+  image: docker:20.10.16
+  services:
+    - name: docker:20.10.16-dind
+  before_script:
+    # Устанавливаем kubectl и helm
+    - apk add --no-cache curl bash
+    - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
+    - tar -zxvf helm.tar.gz
+    - mv linux-amd64/helm /usr/local/bin/helm
+    - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl
 
-  # Создаём директорию .kube и устанавливаем разрешения
-  - mkdir -p ~/.kube
-  - chmod 700 ~/.kube  # Устанавливаем права для директории .kube
-  - echo "$KUBECONFIG" > ~/.kube/config  # Загружаем kubeconfig из переменной
-  - export KUBECONFIG=~/.kube/config  # Устанавливаем KUBECONFIG как путь к файлу
+    # Создаём директорию .kube и устанавливаем разрешения
+    - mkdir -p ~/.kube
+    - chmod 700 ~/.kube  # Устанавливаем права для директории .kube
+    
+    # Проверяем содержимое переменной KUBECONFIG
+    - echo "$KUBECONFIG"
 
-  # Проверяем подключение
-  - kubectl get nodes
+    # Записываем содержимое переменной KUBECONFIG в файл ~/.kube/config
+    - echo "$KUBECONFIG" > ~/.kube/config
 
-  # Добавляем и обновляем репозиторий Helm
-  - helm repo add myrepo https://charts.example.com
-  - helm repo update
+    # Проверяем содержимое ~/.kube/config
+    - cat ~/.kube/config
+
+    # Проверяем подключение к кластеру
+    - kubectl get nodes
+
+  script:
+    # Устанавливаем приложение с помощью Helm
+    - helm repo add myrepo https://charts.example.com
+    - helm repo update
+    - helm install myapp myrepo/myapp-chart
+
+  variables:
+    # Переменная KUBECONFIG будет автоматически передана через GitLab CI
+    KUBECONFIG: "your-kubeconfig-content-here"  # Поставьте сюда нужное значение, если оно не задано в настройках CI/CD
