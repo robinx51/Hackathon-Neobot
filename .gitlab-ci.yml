@@ -36,5 +36,5 @@ deploy:
     - helm install myapp myrepo/myapp-chart
 
   variables:
-    # Переменная KUBECONFIG будет автоматически передана через GitLab CI
+    # Переменная KUBECONFIG будет автоматически передана через GitLab CI/CD
     KUBECONFIG: "your-kubeconfig-content-here"  # Поставьте сюда нужное значение, если оно не задано в настройках CI/CD
