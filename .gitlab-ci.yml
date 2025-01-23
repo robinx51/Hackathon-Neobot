@@ -3,5 +3,3 @@ deploy:
   script:
     - helm repo add myrepo https://charts.example.com
     - helm install myapp myrepo/myapp-chart
-  kubernetes:
-    service_account: cnrprod1737640949-team-83206  # Укажите ваш сервис-аккаунт
