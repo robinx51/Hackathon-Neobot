@@ -1,24 +1,15 @@
 stages:
-  - detect
   - build
-
-detect_docker:
-  stage: detect
-  image: "alpine:latest"
-  script:
-    - echo "Checking Docker version..."
-    - DOCKER_VERSION=$(docker --version)
-    - echo "Detected Docker Version: $DOCKER_VERSION"
-    - echo "$DOCKER_VERSION" > docker_version.txt
 
 build:
   stage: build
-  image: "docker:latest"
+  image: "docker:20.10.7" # Здесь указываем Docker образ с нужной версией
   tags:
     - runner
     - build
     - k8s
   script:
     - echo "Starting build with Docker..."
+    - docker --version # Проверим, что Docker доступен
     - docker build -t myapp .
     - docker push myapp:latest
