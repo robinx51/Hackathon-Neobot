@@ -1,15 +1,37 @@
 stages:
+  - build
   - deploy
 
-deploy_runner:
-  stage: deploy
+# Переменные
+variables:
+  KUBE_CONTEXT: "cnrprod1737640949-team-83206"  # Ваш Kubernetes контекст
+  KUBECONFIG: "/root/.kube/config"  # Путь до kubeconfig, если используется
+
+# Кеширование Docker образов
+cache:
+  paths:
+    - .docker
+
+# Этап сборки (Build)
+build:
+  image: docker:20.10.16  # Используется Docker image
+  stage: build
+  services:
+    - docker:dind
   script:
-    - helm repo add gitlab https://charts.gitlab.io
-    - helm repo update
-    - echo "$KUBE_CONFIG" | base64 -d > /tmp/kubeconfig
-    - kubectl --kubeconfig /tmp/kubeconfig create namespace cnrprod1737640949-team-83206 || true
-    - helm install gitlab-runner gitlab/gitlab-runner -n cnrprod1737640949-team-83206 -f values.yaml
+    - echo "Building Docker image"
+    - docker build -t registry.gitlab.com/your-group/your-project:latest .
+    - docker push registry.gitlab.com/your-group/your-project:latest
   only:
-    - devops
-  environment:
-    KUBE_CONFIG: $KUBE_CONFIG
+    - devops  # Выполняется только для ветки devops
+
+# Этап деплоя (Deploy)
+deploy:
+  image: bitnami/kubectl:latest  # Используется образ с kubectl
+  stage: deploy
+  before_script:
+    # Настройка Kubernetes контекста
+    - kubectl config use-context $KUBE_CONTEXT
+  script:
+    # Применяем манифесты для деплоя
+    - echo "Deployin
