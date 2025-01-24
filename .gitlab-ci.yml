@@ -1,15 +1,30 @@
 stages:
+  - setup
   - deploy
 
-deploy_runner:
-  stage: deploy
+variables:
+  KUBERNETES_SERVER: "https://158.160.74.6"
+  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
+  KUBECONFIG_PATH: "/root/.kube/config"  # Путь к конфигу, который будет использован
+
+before_script:
+  # Убедитесь, что kubeconfig доступен
+  - export KUBECONFIG=$KUBECONFIG_PATH
+  - echo "Using Kubernetes config from $KUBECONFIG"
+
+setup_helm:
+  stage: setup
+  image: dtinth/helm-kubectl
   script:
-    - helm repo add gitlab https://charts.gitlab.io
+    - helm repo add argo https://argoproj.github.io/argo-helm
     - helm repo update
-    - echo "$KUBE_CONFIG" | base64 -d > /tmp/kubeconfig
-    - kubectl --kubeconfig /tmp/kubeconfig create namespace cnrprod1737640949-team-83206 || true
-    - helm install gitlab-runner gitlab/gitlab-runner -n cnrprod1737640949-team-83206 -f values.yaml
-  only:
-    - devops
-  environment:
-    KUBE_CONFIG: $KUBE_CONFIG
+    - helm install argo-cd argo/argo-cd --namespace $KUBERNETES_NAMESPACE --create-namespace
+    - kubectl wait --for=condition=available --timeout=600s deployment/argo-cd-argocd-server --namespace $KUBERNETES_NAMESPACE
+
+deploy_ergocd:
+  stage: deploy
+  image: dtinth/helm-kubectl
+  script:
+    - kubectl apply -f your-app-deployment.yaml
+    - kubectl apply -f your-app-service.yaml
+    - kubectl apply -f your-app-ingress.yaml
