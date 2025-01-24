@@ -6,20 +6,19 @@ detect_docker:
   stage: detect
   image: "alpine:latest"  # Легкий образ для выполнения команд
   script:
-    - echo "Checking Docker information..."
-    - DOCKER_IMAGE=$(docker info --format '{{.Driver}}')  # Получаем информацию о драйвере Docker
-    - echo "Detected Docker Driver: $DOCKER_IMAGE"
-    - echo "Using $DOCKER_IMAGE to proceed with the build"
-    - echo "$DOCKER_IMAGE" > docker_image.txt  # Сохраняем результат в файл для последующих шагов
+    - echo "Checking Docker version..."
+    - DOCKER_VERSION=$(docker --version)  # Получаем версию Docker
+    - echo "Detected Docker Version: $DOCKER_VERSION"
+    - echo "$DOCKER_VERSION" > docker_version.txt  # Сохраняем версию Docker в файл
 
 build:
   stage: build
-  image: "docker:latest"  # Можно указать любой нужный Docker-образ
+  image: "docker:latest"  # Docker-образ для сборки приложения
   tags:
     - runner
     - build
     - k8s
   script:
-    - echo "Building with the detected Docker image..."
-    - docker build -t myapp .
-    - docker push myapp:latest
+    - echo "Starting build with Docker..."
+    - docker build -t myapp .  # Строим Docker-образ
+    - docker push myapp:latest  # Отправляем образ на Docker Hub
