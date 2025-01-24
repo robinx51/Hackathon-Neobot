@@ -1,36 +1,27 @@
-install-argocd:
-  stage: deploy
-  tags:
-    - k8s  # Тег Kubernetes раннера
-  image: alpine:3.17  # Лёгкий образ для выполнения задач
-  before_script:
-    # Устанавливаем kubectl
-    - apk add --no-cache curl bash
-    - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
-    - chmod +x ./kubectl
-    - mv ./kubectl /usr/local/bin/kubectl
-    - mkdir -p ~/.kube
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: cnrprod1737640949-team-83206
+  name: argocd-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps", "secrets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete"]
 
-    # Настраиваем kubeconfig
-    - echo "$KUBECONFIG" > ~/.kube/config
-    - export KUBECONFIG=~/.kube/config
-
-    # Проверяем подключение к кластеру
-    - kubectl get nodes
-
-  script:
-    # Создаём namespace, если он ещё не существует (опционально)
-    - kubectl create namespace cnrprod1737640949-team-83206 || echo "Namespace already exists"
-
-    # Устанавливаем ArgoCD манифесты в указанный namespace
-    - kubectl apply -n cnrprod1737640949-team-83206 -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-    # Ждём, пока pod argocd-server станет готовым
-    - kubectl rollout status deployment/argocd-server -n cnrprod1737640949-team-83206 --timeout=120s
-
-    # Выводим информацию о pod'ах и service'ах в namespace
-    - kubectl get pods -n cnrprod1737640949-team-83206
-    - kubectl get svc -n cnrprod1737640949-team-83206
-
-  variables:
-    KUBECONFIG: "your-kubeconfig-content-here"  # Укажите содержимое вашего kubeconfig
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: cnrprod1737640949-team-83206
+  name: argocd-rolebinding
+subjects:
+- kind: ServiceAccount
+  name: cnrprod1737640949-team-83206
+  namespace: cnrprod1737640949-team-83206
+roleRef:
+  kind: Role
+  name: argocd-role
+  apiGroup: rbac.authorization.k8s.io
