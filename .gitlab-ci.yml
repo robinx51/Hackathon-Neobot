@@ -1,17 +1,55 @@
 stages:
+  - build
   - deploy
 
 variables:
+  DOCKER_TLS_CERTDIR: "/certs"
   KUBERNETES_SERVER: "https://158.160.74.6"  # Укажите ваш сервер Kubernetes
-  KUBERNETES_TOKEN: "$KUBERNETES_TOKEN"  # Убедитесь, что у вас есть токен Kubernetes
-  KUBECONFIG: "/etc/kubernetes/config"  # Укажите путь к вашему kubeconfig файлу
+  KUBERNETES_TOKEN: "$CI_KUBERNETES_TOKEN"  # Этот токен должен быть передан как CI переменная
+  KUBECONFIG_PATH: "/etc/kubernetes/config"
+
+before_script:
+  # Установка Docker, если это необходимо
+  - export DOCKER_HOST=tcp://docker:2375
+  - export DOCKER_CLI_EXPERIMENTAL=enabled
+  - docker info
+
+build:
+  stage: build
+  image: docker:19.03-dind
+  services:
+    - name: docker:19.03-dind
+      alias: docker
+  script:
+    - echo "Building Docker image"
+    - docker build -t my-app .
+    - docker push my-app
 
 deploy:
   stage: deploy
+  image: dtinth/helm-kubectl
   script:
-    - echo "Deploying application using Helm"
-    - echo "$KUBERNETES_TOKEN" | kubectl login --token=stdin --server=$KUBERNETES_SERVER
-    - kubectl config set-context --current --namespace=cnrprod1737640949-team-83206
+    - echo "Setting up kubeconfig..."
+    - mkdir -p $KUBECONFIG_PATH
+    - echo "apiVersion: v1
+      clusters:
+      - cluster:
+          server: $KUBERNETES_SERVER
+          certificate-authority-data: $KUBERNETES_CA
+      contexts:
+      - context:
+          cluster: cluster-name
+          user: user-name
+          namespace: cnrprod1737640949-team-83206
+      current-context: cnrprod1737640949-team-83206
+      kind: Config
+      preferences: {}
+      users:
+      - name: user-name
+        user:
+          token: $KUBERNETES_TOKEN" > $KUBECONFIG_PATH/config
+    - export KUBECONFIG=$KUBECONFIG_PATH/config
+    - kubectl get pods
     - helm upgrade --install my-release ./my-chart
   only:
     - devops
