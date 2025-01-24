@@ -1,15 +1,31 @@
 stages:
+  - detect_docker
+  - install_argo_cd
   - build
+  - deploy
+
+detect_docker:
+  script:
+    - echo "Checking Docker version..."
+    - docker --version
+
+install_argo_cd:
+  script:
+    - echo "Installing Argo CD..."
+    - helm repo add argo https://argoproj.github.io/argo-helm
+    - helm repo update
+    - kubectl create namespace argocd || true # Создаём namespace если его нет
+    - helm install argo-cd argo/argo-cd --namespace argocd
 
 build:
-  stage: build
-  image: "docker:20.10.7" # Здесь указываем Docker образ с нужной версией
-  tags:
-    - runner
-    - build
-    - k8s
   script:
     - echo "Starting build with Docker..."
-    - docker --version # Проверим, что Docker доступен
+    - docker --version
     - docker build -t myapp .
     - docker push myapp:latest
+
+deploy:
+  script:
+    - echo "Deploying to Kubernetes..."
+    # Убедитесь, что kubeconfig настроен
+    - kubectl apply -f k8s/deployment.yaml # Пример файла деплоя для вашего приложения
