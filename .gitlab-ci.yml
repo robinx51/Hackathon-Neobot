@@ -4,21 +4,21 @@ stages:
 
 detect_docker:
   stage: detect
-  image: "alpine:latest"  # Легкий образ для выполнения команд
+  image: "alpine:latest"
   script:
     - echo "Checking Docker version..."
-    - DOCKER_VERSION=$(docker --version)  # Получаем версию Docker
+    - DOCKER_VERSION=$(docker --version)
     - echo "Detected Docker Version: $DOCKER_VERSION"
-    - echo "$DOCKER_VERSION" > docker_version.txt  # Сохраняем версию Docker в файл
+    - echo "$DOCKER_VERSION" > docker_version.txt
 
 build:
   stage: build
-  image: "docker:latest"  # Docker-образ для сборки приложения
+  image: "docker:latest"
   tags:
     - runner
     - build
     - k8s
   script:
     - echo "Starting build with Docker..."
-    - docker build -t myapp .  # Строим Docker-образ
-    - docker push myapp:latest  # Отправляем образ на Docker Hub
+    - docker build -t myapp .
+    - docker push myapp:latest
