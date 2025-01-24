@@ -1,14 +1,15 @@
 stages:
   - deploy
 
-deploy_argo_cd:
+deploy_runner:
   stage: deploy
-  tags:
-    - k8s
   script:
-    - kubectl config use-context $KUBE_CONTEXT
-    - kubectl create namespace argocd || true
-    - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-    - kubectl -n argocd rollout status deployment/argocd-server
+    - helm repo add gitlab https://charts.gitlab.io
+    - helm repo update
+    - echo "$KUBE_CONFIG" | base64 -d > /tmp/kubeconfig
+    - kubectl --kubeconfig /tmp/kubeconfig create namespace cnrprod1737640949-team-83206 || true
+    - helm install gitlab-runner gitlab/gitlab-runner -n cnrprod1737640949-team-83206 -f values.yaml
   only:
     - devops
+  environment:
+    KUBE_CONFIG: $KUBE_CONFIG
