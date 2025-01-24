@@ -1,18 +1,15 @@
 stages:
-  - install-argocd
+  - deploy
 
-install-argocd:
-  stage: install-argocd
+deploy:
+  stage: deploy
   tags:
     - runner
     - build
     - k8s
-  image: dtinth/helm-kubectl # указываем нужный образ
   script:
-    - echo "$KUBECONFIG" > /tmp/kubeconfig
-    - export KUBECONFIG=/tmp/kubeconfig
-    - kubectl version --client
-    - kubectl create namespace argocd || true
-    - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-    - kubectl wait --for=condition=available --timeout=600s deployment/argocd-server -n argocd
-    - echo "Argo CD installed successfully!"
+    - echo "Deploying to Kubernetes with Argo CD"
+    - export KUBECONFIG=$KUBECONFIG  # Используем KUBECONFIG из переменных GitLab
+    - export KUBECONFIG_CONTEXT=$KUBECONFIG_CONTEXT  # Контекст для kubectl
+    - kubectl config use-context $KUBECONFIG_CONTEXT  # Переключаем контекст Kubernetes
+    - argocd app sync <app-name> --auth-token $ARGOCD_AUTH_TOKEN  # Деплой в Argo CD
