@@ -1,24 +1,15 @@
 stages:
   - deploy
 
-deploy-argocd:
+deploy_runner:
   stage: deploy
-  tags:
-    - k8s
-  image: alpine:3.17
-  before_script:
-    # Устанавливаем kubectl
-    - apk add --no-cache curl bash
-    - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
-    - chmod +x ./kubectl
-    - mv ./kubectl /usr/local/bin/kubectl
-    # Создаем .kube/config из переменной
-    - mkdir -p ~/.kube
-    - echo "$KUBECONFIG" > ~/.kube/config
-    - export KUBECONFIG=~/.kube/config
-
   script:
-    # Устанавливаем ArgoCD в указанном namespace
-    - kubectl apply -n cnrprod1737640949-team-83206 -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-    # Проверяем установленные поды
-    - kubectl get pods -n cnrprod1737640949-team-83206
+    - helm repo add gitlab https://charts.gitlab.io
+    - helm repo update
+    - echo "$KUBE_CONFIG" | base64 -d > /tmp/kubeconfig
+    - kubectl --kubeconfig /tmp/kubeconfig create namespace cnrprod1737640949-team-83206 || true
+    - helm install gitlab-runner gitlab/gitlab-runner -n cnrprod1737640949-team-83206 -f values.yaml
+  only:
+    - devops
+  environment:
+    KUBE_CONFIG: $KUBE_CONFIG
