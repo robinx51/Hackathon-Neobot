@@ -1,55 +1,58 @@
 stages:
-  - build
+  - setup
   - deploy
 
 variables:
-  DOCKER_TLS_CERTDIR: "/certs"
   KUBERNETES_SERVER: "https://158.160.74.6"  # Укажите ваш сервер Kubernetes
   KUBERNETES_TOKEN: "$CI_KUBERNETES_TOKEN"  # Этот токен должен быть передан как CI переменная
   KUBECONFIG_PATH: "/etc/kubernetes/config"
+  ARGOCDB_PORT: "8080"
+  ARGOCDB_NAMESPACE: "argocd"
+  ARGOCDB_SERVER: "argocd-server"
+  ARGOCDB_REPO_URL: "https://github.com/your-org/your-app-repo"  # Укажите ваш репозиторий с приложением
 
 before_script:
-  # Установка Docker, если это необходимо
-  - export DOCKER_HOST=tcp://docker:2375
-  - export DOCKER_CLI_EXPERIMENTAL=enabled
-  - docker info
+  - echo "Setting up Kubernetes config"
+  - mkdir -p $KUBECONFIG_PATH
+  - echo "apiVersion: v1
+    clusters:
+    - cluster:
+        server: $KUBERNETES_SERVER
+        certificate-authority-data: $KUBERNETES_CA
+    contexts:
+    - context:
+        cluster: cluster-name
+        user: user-name
+        namespace: cnrprod1737640949-team-83206
+    current-context: cnrprod1737640949-team-83206
+    kind: Config
+    preferences: {}
+    users:
+    - name: user-name
+      user:
+        token: $KUBERNETES_TOKEN" > $KUBECONFIG_PATH/config
+  - export KUBECONFIG=$KUBECONFIG_PATH/config
 
-build:
-  stage: build
-  image: docker:19.03-dind
-  services:
-    - name: docker:19.03-dind
-      alias: docker
+setup:
+  stage: setup
+  image: dtinth/helm-kubectl
   script:
-    - echo "Building Docker image"
-    - docker build -t my-app .
-    - docker push my-app
+    - echo "Installing Argo CD"
+    - kubectl create namespace argocd || true
+    - kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    - kubectl rollout status deployment/argocd-server -n argocd
+    - kubectl port-forward svc/argocd-server -n argocd $ARGOCDB_PORT:$ARGOCDB_PORT &
+    - sleep 5  # Ждем, пока порт-форвард будет установлен
+    - echo "Argo CD is running on http://localhost:$ARGOCDB_PORT"
 
 deploy:
   stage: deploy
   image: dtinth/helm-kubectl
   script:
-    - echo "Setting up kubeconfig..."
-    - mkdir -p $KUBECONFIG_PATH
-    - echo "apiVersion: v1
-      clusters:
-      - cluster:
-          server: $KUBERNETES_SERVER
-          certificate-authority-data: $KUBERNETES_CA
-      contexts:
-      - context:
-          cluster: cluster-name
-          user: user-name
-          namespace: cnrprod1737640949-team-83206
-      current-context: cnrprod1737640949-team-83206
-      kind: Config
-      preferences: {}
-      users:
-      - name: user-name
-        user:
-          token: $KUBERNETES_TOKEN" > $KUBECONFIG_PATH/config
-    - export KUBECONFIG=$KUBECONFIG_PATH/config
-    - kubectl get pods
-    - helm upgrade --install my-release ./my-chart
+    - echo "Configuring Argo CD"
+    - argocd login localhost:$ARGOCDB_PORT --username admin --password $ARGOCD_PASSWORD --insecure
+    - argocd app create my-app --repo $ARGOCDB_REPO_URL --path ./ --dest-server $KUBERNETES_SERVER --dest-namespace cnrprod1737640949-team-83206
+    - argocd app sync my-app
+    - argocd app wait my-app --health
   only:
     - devops
