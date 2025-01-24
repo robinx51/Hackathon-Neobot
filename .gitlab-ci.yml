@@ -1,27 +1,24 @@
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: cnrprod1737640949-team-83206
-  name: argocd-role
-rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "configmaps", "secrets"]
-  verbs: ["get", "list", "watch", "create", "update", "delete"]
-- apiGroups: ["apps"]
-  resources: ["deployments", "replicasets"]
-  verbs: ["get", "list", "watch", "create", "update", "delete"]
+stages:
+  - deploy
 
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  namespace: cnrprod1737640949-team-83206
-  name: argocd-rolebinding
-subjects:
-- kind: ServiceAccount
-  name: cnrprod1737640949-team-83206
-  namespace: cnrprod1737640949-team-83206
-roleRef:
-  kind: Role
-  name: argocd-role
-  apiGroup: rbac.authorization.k8s.io
+deploy-argocd:
+  stage: deploy
+  tags:
+    - k8s
+  image: alpine:3.17
+  before_script:
+    # Устанавливаем kubectl
+    - apk add --no-cache curl bash
+    - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl
+    # Создаем .kube/config из переменной
+    - mkdir -p ~/.kube
+    - echo "$KUBECONFIG" > ~/.kube/config
+    - export KUBECONFIG=~/.kube/config
+
+  script:
+    # Устанавливаем ArgoCD в указанном namespace
+    - kubectl apply -n cnrprod1737640949-team-83206 -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    # Проверяем установленные поды
+    - kubectl get pods -n cnrprod1737640949-team-83206
