@@ -10,6 +10,7 @@ detect_docker:
     - DOCKER_IMAGE=$(docker info --format '{{.Driver}}')  # Получаем информацию о драйвере Docker
     - echo "Detected Docker Driver: $DOCKER_IMAGE"
     - echo "Using $DOCKER_IMAGE to proceed with the build"
+    - echo $DOCKER_IMAGE > docker_image.txt  # Сохраняем результат в файл для последующих шагов
 
 build:
   stage: build
@@ -20,6 +21,5 @@ build:
     - k8s
   script:
     - echo "Building with the detected Docker image..."
-    - # Ваши команды сборки, например:
     - docker build -t myapp .
     - docker push myapp:latest
