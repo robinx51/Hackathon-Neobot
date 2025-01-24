@@ -1,20 +1,17 @@
-deploy:
+install-argocd:
   stage: deploy
   tags:
-    - k8s  # Тег раннера Kubernetes
-  image: alpine:3.17  # Лёгкий образ, на котором будем устанавливать kubectl и helm
+    - k8s  # Тег Kubernetes раннера
+  image: alpine:3.17  # Лёгкий образ для выполнения задач
   before_script:
-    # Устанавливаем kubectl и helm
-    - apk add --no-cache curl bash tar
+    # Устанавливаем kubectl
+    - apk add --no-cache curl bash
     - curl -LO "https://dl.k8s.io/release/v1.23.7/bin/linux/amd64/kubectl"
     - chmod +x ./kubectl
     - mv ./kubectl /usr/local/bin/kubectl
-    - curl https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz -o helm.tar.gz
-    - tar -zxvf helm.tar.gz
-    - mv linux-amd64/helm /usr/local/bin/helm
     - mkdir -p ~/.kube
 
-    # Загружаем содержимое KUBECONFIG из переменной окружения
+    # Настраиваем kubeconfig
     - echo "$KUBECONFIG" > ~/.kube/config
     - export KUBECONFIG=~/.kube/config
 
@@ -22,9 +19,18 @@ deploy:
     - kubectl get nodes
 
   script:
-    # Добавляем и обновляем Helm-репозиторий
-    - helm repo add myrepo https://charts.example.com
-    - helm repo update
+    # Создаём namespace, если он ещё не существует (опционально)
+    - kubectl create namespace cnrprod1737640949-team-83206 || echo "Namespace already exists"
 
-    # Устанавливаем приложение через Helm
-    - helm install myapp myrepo
+    # Устанавливаем ArgoCD манифесты в указанный namespace
+    - kubectl apply -n cnrprod1737640949-team-83206 -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+    # Ждём, пока pod argocd-server станет готовым
+    - kubectl rollout status deployment/argocd-server -n cnrprod1737640949-team-83206 --timeout=120s
+
+    # Выводим информацию о pod'ах и service'ах в namespace
+    - kubectl get pods -n cnrprod1737640949-team-83206
+    - kubectl get svc -n cnrprod1737640949-team-83206
+
+  variables:
+    KUBECONFIG: "your-kubeconfig-content-here"  # Укажите содержимое вашего kubeconfig
