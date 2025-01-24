@@ -5,19 +5,22 @@ stages:
   - deploy
 
 detect_docker:
+  stage: detect_docker
   script:
     - echo "Checking Docker version..."
     - docker --version
 
 install_argo_cd:
+  stage: install_argo_cd
   script:
     - echo "Installing Argo CD..."
     - helm repo add argo https://argoproj.github.io/argo-helm
     - helm repo update
-    - kubectl create namespace argocd || true # Создаём namespace если его нет
+    - kubectl create namespace argocd || true # Создаём namespace, если его нет
     - helm install argo-cd argo/argo-cd --namespace argocd
 
 build:
+  stage: build
   script:
     - echo "Starting build with Docker..."
     - docker --version
@@ -25,6 +28,7 @@ build:
     - docker push myapp:latest
 
 deploy:
+  stage: deploy
   script:
     - echo "Deploying to Kubernetes..."
     # Убедитесь, что kubeconfig настроен
