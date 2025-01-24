@@ -14,7 +14,7 @@ detect_docker:
 
 build:
   stage: build
-  image: $DOCKER_IMAGE  # Используем динамически определённый образ для сборки
+  image: $DOCKER_IMAGE  # Используем динамически определённый образ для сборк
   tags:
     - runner
     - build
