@@ -4,17 +4,17 @@ stages:
 
 detect_docker:
   stage: detect
-  image: "alpine:latest"  # Легкий образ для запуска команды
+  image: "alpine:latest"  # Легкий образ для выполнения команд
   script:
     - echo "Checking Docker information..."
     - DOCKER_IMAGE=$(docker info --format '{{.Driver}}')  # Получаем информацию о драйвере Docker
     - echo "Detected Docker Driver: $DOCKER_IMAGE"
     - echo "Using $DOCKER_IMAGE to proceed with the build"
-    - echo $DOCKER_IMAGE > docker_image.txt  # Сохраняем результат в файл для последующих шагов
+    - echo "$DOCKER_IMAGE" > docker_image.txt  # Сохраняем результат в файл для последующих шагов
 
 build:
   stage: build
-  image: $DOCKER_IMAGE  # Используем динамически определённый образ для сборк
+  image: "docker:latest"  # Можно указать любой нужный Docker-образ
   tags:
     - runner
     - build
