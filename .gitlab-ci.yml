@@ -7,6 +7,7 @@ install-argocd:
     - runner
     - build
     - k8s
+  image: dtinth/helm-kubectl # указываем нужный образ
   script:
     - echo "$KUBECONFIG" > /tmp/kubeconfig
     - export KUBECONFIG=/tmp/kubeconfig
