@@ -1,15 +1,25 @@
 stages:
-  - deploy
+  - detect
+  - build
 
-deploy:
-  stage: deploy
+detect_docker:
+  stage: detect
+  image: "alpine:latest"  # Легкий образ для запуска команды
+  script:
+    - echo "Checking Docker information..."
+    - DOCKER_IMAGE=$(docker info --format '{{.Driver}}')  # Получаем информацию о драйвере Docker
+    - echo "Detected Docker Driver: $DOCKER_IMAGE"
+    - echo "Using $DOCKER_IMAGE to proceed with the build"
+
+build:
+  stage: build
+  image: $DOCKER_IMAGE  # Используем динамически определённый образ для сборки
   tags:
     - runner
     - build
     - k8s
   script:
-    - echo "Deploying to Kubernetes with Argo CD"
-    - export KUBECONFIG=$KUBECONFIG  # Используем KUBECONFIG из переменных GitLab
-    - export KUBECONFIG_CONTEXT=$KUBECONFIG_CONTEXT  # Контекст для kubectl
-    - kubectl config use-context $KUBECONFIG_CONTEXT  # Переключаем контекст Kubernetes
-    - argocd app sync <app-name> --auth-token $ARGOCD_AUTH_TOKEN  # Деплой в Argo CD
+    - echo "Building with the detected Docker image..."
+    - # Ваши команды сборки, например:
+    - docker build -t myapp .
+    - docker push myapp:latest
