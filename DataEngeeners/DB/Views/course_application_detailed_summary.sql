@@ -1,4 +1,4 @@
-CREATE VIEW course_application_detailed_summary AS
+CREATE OR REPLACE VIEW course_application_detailed_summary AS
 SELECT 
     c.course_name, 
     s.statement_status, 
