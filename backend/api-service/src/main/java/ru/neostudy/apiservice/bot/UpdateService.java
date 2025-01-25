@@ -33,7 +33,7 @@ public class UpdateService {
     private final AppUserValidator appUserValidator;
     private final UserDtoMapper userDtoMapper;
     private final DataStorageClient dataStorageClient;
-    private Map<String, Object> courses = new HashMap<>();
+    private final Map<String, Object> courses = new HashMap<>(); //ConcurrentMap?
 
     private final ConcurrentMap<Long, BotUser> users = new ConcurrentHashMap<>();
     //todo добавить логику по очистке юзера при длительном молчании
