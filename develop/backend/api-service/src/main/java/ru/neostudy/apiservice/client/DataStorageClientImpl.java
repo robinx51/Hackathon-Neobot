@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
+import ru.neostudy.apiservice.bot.Course;
 import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
+import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class DataStorageClientImpl implements DataStorageClient {
     private final DataStorageMSProperties dataStorageMSProperties;
 
     @Override
-    public Optional<UserDto> getUserByEmail(String email) throws Exception {
+    public Optional<User> getUserByEmail(String email) throws Exception {
         log.debug("Вызов метода getUserByEmail с email {}", email);
         return webClient.get()
                 .uri(dataStorageMSProperties.getServerUrl(), uriBuilder ->
@@ -32,14 +34,14 @@ public class DataStorageClientImpl implements DataStorageClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
-                .bodyToMono(new ParameterizedTypeReference<Optional<UserDto>>() {
+                .bodyToMono(new ParameterizedTypeReference<Optional<User>>() {
                 })
                 .block();
     }
 
 
     @Override
-    public Optional<UserDto> getUserByTelegramId(Long telegramId) throws Exception {
+    public Optional<User> getUserByTelegramId(Long telegramId) throws Exception {
         log.debug("Вызов метода getUserByTelegramId с telegramId {}", telegramId);
         return webClient.get()
                 .uri(dataStorageMSProperties.getServerUrl(), uriBuilder ->
@@ -50,7 +52,7 @@ public class DataStorageClientImpl implements DataStorageClient {
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
-                .bodyToMono(new ParameterizedTypeReference<Optional<UserDto>>() {
+                .bodyToMono(new ParameterizedTypeReference<Optional<User>>() {
                 })
                 .block();
     }
@@ -69,14 +71,14 @@ public class DataStorageClientImpl implements DataStorageClient {
     }
 
     @Override
-    public List<String> getCourses() throws Exception {
+    public List<Course> getCourses() throws Exception {
         log.debug("Вызов метода getCourses");
         return webClient.get()
                 .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetCoursesUri()))
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
-                .bodyToMono(new ParameterizedTypeReference<List<String>>() {
+                .bodyToMono(new ParameterizedTypeReference<List<Course>>() {
                 })
                 .block();
     }

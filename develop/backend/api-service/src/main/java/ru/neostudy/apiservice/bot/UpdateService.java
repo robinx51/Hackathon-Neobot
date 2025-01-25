@@ -12,6 +12,7 @@ import ru.neostudy.apiservice.bot.enums.UserState;
 import ru.neostudy.apiservice.bot.utils.MessageUtils;
 import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
 import ru.neostudy.apiservice.model.BotUser;
+import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
 import ru.neostudy.apiservice.model.enums.UserRole;
 import ru.neostudy.apiservice.model.mapper.UserDtoMapper;
@@ -33,7 +34,7 @@ public class UpdateService {
     private final AppUserValidator appUserValidator;
     private final UserDtoMapper userDtoMapper;
     private final DataStorageClient dataStorageClient;
-    private final Map<String, Object> courses = new HashMap<>(); //ConcurrentMap?
+    private final Map<String, Course> courses = new HashMap<>(); //ConcurrentMap?
 
     private final ConcurrentMap<Long, BotUser> users = new ConcurrentHashMap<>();
     //todo добавить логику по очистке юзера при длительном молчании
@@ -164,7 +165,7 @@ public class UpdateService {
                     log.error("Указано несуществующее направление: {}", text);
                     return "Пожалуйста, укажите направление обучения из списка";
                 }
-                botUser.setCourse(text);
+                botUser.setCourse(courses.get(text));
                 botUser.setRole(UserRole.CANDIDATE);
                 botUser.setState(UserState.COMPLETE);
                 users.put(botUser.getTelegramUserId(), botUser);
@@ -203,8 +204,8 @@ public class UpdateService {
 
     private String processWhenSubmitRequest(BotUser botUser) {
         String output;
-        Optional<UserDto> registeredUserByEmail;
-        Optional<UserDto> registeredUserByTgId;
+        Optional<User> registeredUserByEmail;
+        Optional<User> registeredUserByTgId;
 
         try {
             registeredUserByEmail = dataStorageClient.getUserByEmail(botUser.getEmail());
@@ -218,12 +219,12 @@ public class UpdateService {
         return output;
     }
 
-    private String completeSubmitRequestProcess(BotUser botUser, Optional<UserDto> registeredUserByEmail, Optional<UserDto> registeredUserByTgId) {
+    private String completeSubmitRequestProcess(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
         String output;
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             UserDto userDto;
             try {
-                userDto = dataStorageClient.saveUser(userDtoMapper.toUserDto(botUser));
+                userDto = dataStorageClient.saveUser(userDtoMapper.fromBotUsertoUserDto(botUser));
             } catch (Exception e) {
                 log.error(e.getMessage());
                 return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
@@ -240,7 +241,7 @@ public class UpdateService {
             output = returnLinkToLogin();
         } else if (registeredUserByEmail.isPresent()) {
             log.debug("Пользователь с email {} уже существует", botUser.getEmail());
-            UserDto userDto = registeredUserByEmail.get();
+            UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByEmail.get(), botUser.getCourse());
             updateFieldsIfApplicable(botUser, userDto);
             try {
                 //todo update
@@ -254,7 +255,7 @@ public class UpdateService {
                     "указанную в заявке: %s. \nВаша ссылка: %s", userDto.getEmail(), returnLinkToLogin());
         } else {
             log.debug("Пользователь с telegramId {} уже существует", botUser.getTelegramUserId());
-            UserDto userDto = registeredUserByTgId.get();
+            UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByTgId.get(), botUser.getCourse());
             updateFieldsIfApplicable(botUser, userDto);
             try {
                 //todo update
@@ -271,13 +272,13 @@ public class UpdateService {
     }
 
     private String returnLinkToLogin() {
-        return "Спасибо за регистрацию! Ваша ссылка ..."; //todo
+        return "Спасибо за регистрацию! Ваша ссылка /url"; //todo
     }
 
     private String processWhenSubmitPrerequest(BotUser botUser) {
         String output;
-        Optional<UserDto> registeredUserByEmail;
-        Optional<UserDto> registeredUserByTgId;
+        Optional<User> registeredUserByEmail;
+        Optional<User> registeredUserByTgId;
 
         try {
             registeredUserByEmail = dataStorageClient.getUserByEmail(botUser.getEmail());
@@ -291,11 +292,11 @@ public class UpdateService {
         return output;
     }
 
-    private String findOrSaveUser(BotUser botUser, Optional<UserDto> registeredUserByEmail, Optional<UserDto> registeredUserByTgId) {
+    private String findOrSaveUser(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
         String output;
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             try {
-                dataStorageClient.saveUser(userDtoMapper.toUserDto(botUser));
+                dataStorageClient.saveUser(userDtoMapper.fromBotUsertoUserDto(botUser));
             } catch (Exception e) {
                 log.error(e.getMessage());
                 return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
@@ -303,11 +304,11 @@ public class UpdateService {
             log.debug("Пользователь с email {} и telegramId {} сохранен", botUser.getEmail(), botUser.getTelegramUserId());
             output = "Спасибо за регистрацию! Мы уведомим вас, как только начнется прием заявок по направлениям";
         } else if (registeredUserByEmail.isPresent()) {
-            UserDto userDto = registeredUserByEmail.get();
+            UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByEmail.get(), botUser.getCourse());
             updateFieldsIfApplicable(botUser, userDto);
             output = "Вы уже регистрировались в системе, мы уведомим вас, как только начнется прием заявок по направлениям";
         } else {
-            UserDto userDto = registeredUserByTgId.get();
+            UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByTgId.get(), botUser.getCourse());
             updateFieldsIfApplicable(botUser, userDto);
             output = "Вы уже регистрировались в системе, мы уведомим вас, как только начнется прием заявок по направлениям";
         }
@@ -368,9 +369,9 @@ public class UpdateService {
     }
 
     private void setCourses() throws Exception {
-        List<String> currentCourses = dataStorageClient.getCourses();
-        for (String course : currentCourses) {
-            courses.put(course, new Object());
+        List<Course> currentCourses = dataStorageClient.getCourses();
+        for (Course course : currentCourses) {
+            courses.put(course.getCourseName(), course);
         }
     } //todo вызов, когда запускается обучение только
 }

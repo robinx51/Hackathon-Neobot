@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.neostudy.apiservice.bot.Course;
 import ru.neostudy.apiservice.model.enums.UserRole;
 
 @Data
@@ -19,5 +20,5 @@ public class UserDto {
     private String email;
     private String phone;
     private UserRole role;
-    private String course; //todo направление либо есть для заявок, либо null для предзаявки
+    private Course course;
 }
