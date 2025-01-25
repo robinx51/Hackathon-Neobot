@@ -1,4 +1,4 @@
-image: dtzar/helm-kubectl:latest  # Указание образа
+image: my-helm-kubectl-docker:latest  # Указание образа
 
 stages:
   - build
