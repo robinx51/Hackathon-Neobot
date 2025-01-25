@@ -6,6 +6,7 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG YQ_VERSION
 
+# Обновление пакетов и установка зависимостей
 RUN apk -U upgrade \
     && apk add --no-cache ca-certificates bash git openssh curl gettext jq docker \
     && wget -q https://dl.k8s.io/release/v${KUBE_VERSION}/bin/${TARGETOS}/${TARGETARCH}/kubectl -O /usr/local/bin/kubectl \
@@ -17,8 +18,10 @@ RUN apk -U upgrade \
     && kubectl version --client \
     && helm version \
     && uname -a \
-    && docker --version  # Проверяем, что Docker установлен
+    && docker --version  # Проверка установки Docker
 
+# Установка рабочей директории
 WORKDIR /config
 
-CMD bash
+# Команда по умолчанию
+CMD [ "bash" ]
