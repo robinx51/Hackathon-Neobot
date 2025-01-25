@@ -204,7 +204,7 @@ public class UpdateService {
         botUser.setState(UserState.WAIT_FOR_COURSE);
         StringBuilder builder = new StringBuilder();
         for (String s : courses.keySet()) {
-            builder.append("/").append(s).append("\n");
+            builder.append(s).append("\n");
         }
         return "Пожалуйста, выберите интересующее вас направление\n" +
                 "Java Development" +
