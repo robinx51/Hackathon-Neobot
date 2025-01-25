@@ -3,9 +3,7 @@ image: docker:19.03.12
 services:
   - name: docker:19.03.12-dind
     alias: docker
-    command: ["--host=tcp://0.0.0.0:2375"]  # Используем HTTP для подключения DinD
-    variables:
-      DOCKER_TLS_CERTDIR: ""  # Отключаем TLS
+    command: ["--host=tcp://0.0.0.0:2376"]  # HTTPS порт
 
 stages:
   - build
@@ -21,11 +19,9 @@ variables:
   YQ_VERSION: "4.15.1"
   TARGETOS: "linux"
   TARGETARCH: "amd64"
-  DOCKER_HOST: "tcp://docker:2375"  # Подключаемся через HTTP
-  DOCKER_DRIVER: "overlay2"
+  DOCKER_HOST: "tcp://docker:2376"  # Используем HTTPS
 
 before_script:
-  # Устанавливаем необходимые инструменты
   - apk add --no-cache curl
   - curl -sSL https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -xz -C /tmp
   - mv /tmp/linux-amd64/helm /usr/local/bin/helm
@@ -39,10 +35,11 @@ build:
     - k8s
     - runner
   script:
-    # Проверка информации о Docker
-    - docker info
-    # Сборка и отправка образа в реестр
-    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
+    # Проверяем содержимое директории helm-kubectl-main
+    - ls -l helm-kubectl-main
+    # Собираем Docker-образ, используя Dockerfile из папки helm-kubectl-main
+    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f helm-kubectl-main/Dockerfile helm-kubectl-main
+    # Пушим собранный образ в Docker registry
     - docker push $DOCKER_IMAGE:$DOCKER_TAG
 
 deploy:
@@ -51,6 +48,7 @@ deploy:
     - k8s
     - runner
   script:
-    # Настройка контекста Kubernetes и деплой через Helm
+    # Проверяем подключение к Kubernetes
     - kubectl --kubeconfig=$KUBECONFIG config use-context $KUBECONFIG_CONTEXT
+    # Деплой с помощью Helm
     - helm upgrade --install your-release-name ./helm-chart --kubeconfig=$KUBECONFIG
