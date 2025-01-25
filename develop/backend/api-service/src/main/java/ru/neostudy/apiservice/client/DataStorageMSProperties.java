@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 @Setter
 public class DataStorageMSProperties {
     private String serverUrl;
-    private String getUserByEmailUri; //todo
     private String saveUserUri;  //todo
+    private String getUserByEmailUri; //todo
+    private String getUserByTelegramUri; //todo
     //private String updateUserUri;  //todo
     private String getCoursesUri;
 }

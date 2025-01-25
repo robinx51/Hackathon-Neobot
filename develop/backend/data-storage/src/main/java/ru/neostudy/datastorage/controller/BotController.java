@@ -3,18 +3,19 @@ package ru.neostudy.datastorage.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.neostudy.datastorage.db.entity.Course;
 import ru.neostudy.datastorage.db.entity.User;
-import ru.neostudy.datastorage.dto.UserDto;
-import ru.neostudy.datastorage.dto.StatementsForUserDto;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
+import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.service.NeoCodeBotService;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +26,8 @@ public class BotController {
     @PostMapping("/data-storage/saveUser")
     @Tag(name = "Сохранение пользователя")
     public UserDto saveUser(@RequestBody UserDto request) {
+        log.debug("Вызов метода saveUser для пользователя с id - {}, email - {}, " +
+                "telegramId - {}", request.getId(), request.getEmail(), request.getTelegramUserId());
         return neoCodeBotService.saveUser(request);
     }
 
@@ -53,7 +56,7 @@ public class BotController {
 //    }
 
     @PutMapping("/data-storage/updateStatementStatus")
-    @Tag(   name = "Обновление статуса заявки",
+    @Tag(name = "Обновление статуса заявки",
             description = "Обновление статуса заявки по statement_id" +
                     " и добавление его в историю через админ панель")
     public void updateStatementStatus(@RequestBody UpdateStatementDto request) {
@@ -61,7 +64,7 @@ public class BotController {
     }
 
     @GetMapping("/data-storage/getCourses")
-    @Tag(   name = "Обновление статуса заявки",
+    @Tag(name = "Обновление статуса заявки",
             description = "Обновление статуса заявки по statement_id" +
                     " и добавление его в историю через админ панель")
     public List<Course> getCourses() {
@@ -69,7 +72,7 @@ public class BotController {
     }
 
     @PostMapping("/data-storage/insertCourse/{courseName}")
-    @Tag(   name = "Добавление нового направления обучения")
+    @Tag(name = "Добавление нового направления обучения")
     public void insertCourse(@PathVariable String courseName) {
         neoCodeBotService.insertCourse(courseName);
     }

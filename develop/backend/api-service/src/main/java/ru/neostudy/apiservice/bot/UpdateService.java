@@ -14,7 +14,7 @@ import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
 import ru.neostudy.apiservice.model.BotUser;
 import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
-import ru.neostudy.apiservice.model.enums.UserRole;
+import ru.neostudy.apiservice.model.enums.Role;
 import ru.neostudy.apiservice.model.mapper.UserDtoMapper;
 import ru.neostudy.apiservice.model.validation.AppUserValidator;
 
@@ -41,6 +41,13 @@ public class UpdateService {
 
     public void registerBot(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
+        courses.put("Analytics", new Course(1, "Analytics"));
+        courses.put("Data Engineering", new Course(2, "Data Engineering"));
+        courses.put("DevOps Engineer", new Course(5, "DevOps Engineer"));
+        courses.put("Frontend Development", new Course(5, "Frontend Development"));
+        courses.put("Java Development", new Course(5, "Java Development"));
+        courses.put("System engineering", new Course(6, "System engineering"));
+        courses.put("Testing", new Course(7, "Testing"));
     }
 
     public void processUpdate(Update update) {
@@ -161,12 +168,14 @@ public class UpdateService {
                 }
                 break;
             case WAIT_FOR_COURSE:
-                if (courses.containsKey(text)) {
+                if (courses.get(text) == null) {
                     log.error("Указано несуществующее направление: {}", text);
                     return "Пожалуйста, укажите направление обучения из списка";
                 }
                 botUser.setCourse(courses.get(text));
-                botUser.setRole(UserRole.CANDIDATE);
+                log.debug("course = {}", botUser.getCourse());
+                log.debug("course size = {}", courses.size());
+                botUser.setRole(Role.CANDIDATE);
                 botUser.setState(UserState.COMPLETE);
                 users.put(botUser.getTelegramUserId(), botUser);
                 output = processWhenSubmitRequest(botUser);
@@ -180,7 +189,7 @@ public class UpdateService {
     private String processWaitForPhoneStatus(String phone, BotUser botUser) {
         botUser.setPhone(phone);
         botUser.setState(UserState.COMPLETE);
-        botUser.setRole(UserRole.CANDIDATE); //меняется роль после ввода всех данных
+        botUser.setRole(Role.CANDIDATE); //меняется роль после ввода всех данных
         users.put(botUser.getTelegramUserId(), botUser);
         String output = "";
         if (botUser.getAction() == UserAction.SUBMIT_PREREQUEST) {
@@ -220,7 +229,7 @@ public class UpdateService {
     }
 
     private String completeSubmitRequestProcess(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
-        String output;
+        String output = "";
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             UserDto userDto;
             try {
@@ -230,9 +239,9 @@ public class UpdateService {
                 return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
             }
             log.debug("Пользователь с email {} и telegramId {} сохранен", botUser.getEmail(), botUser.getTelegramUserId());
-            userDto.setRole(UserRole.EXTERNAL_USER);
+            userDto.setRole(Role.EXTERNAL_USER);
             try {
-                //todo update
+                log.debug("сохранение с id = {}", userDto.getId());
                 dataStorageClient.saveUser(userDto);
             } catch (Exception e) {
                 log.error(e.getMessage());
@@ -242,27 +251,31 @@ public class UpdateService {
         } else if (registeredUserByEmail.isPresent()) {
             log.debug("Пользователь с email {} уже существует", botUser.getEmail());
             UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByEmail.get(), botUser.getCourse());
-            updateFieldsIfApplicable(botUser, userDto);
-            try {
-                //todo update
-                dataStorageClient.saveUser(userDto);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-                return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+            boolean changesPresent = updateFieldsIfApplicable(botUser, userDto);
+            if (changesPresent) {
+                try {
+                    log.debug("вызов метода сохранения пользователя после обновления полей,id = {}", userDto.getId());
+                    dataStorageClient.saveUser(userDto);
+                } catch (Exception e) {
+                    log.error(e.getMessage());
+                    return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+                }
             }
             output = String.format("Вы уже регистрировались в системе с данным адресом электронной почты. " +
                     "Для прохождения отборочных испытаний перейдите по ссылке. Используйте почту, " +
                     "указанную в заявке: %s. \nВаша ссылка: %s", userDto.getEmail(), returnLinkToLogin());
-        } else {
+        } else if (registeredUserByTgId.isPresent()) {
             log.debug("Пользователь с telegramId {} уже существует", botUser.getTelegramUserId());
             UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByTgId.get(), botUser.getCourse());
-            updateFieldsIfApplicable(botUser, userDto);
-            try {
-                //todo update
-                dataStorageClient.saveUser(userDto);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-                return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+            boolean changesPresent = updateFieldsIfApplicable(botUser, userDto);
+            if (changesPresent) {
+                try {
+                    log.debug("вызов метода сохранения пользователя после обновления полей,id = {}", userDto.getId());
+                    dataStorageClient.saveUser(userDto);
+                } catch (Exception e) {
+                    log.error(e.getMessage());
+                    return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+                }
             }
             output = String.format("Вы уже регистрировались в системе c данного аккаунта телеграм. " +
                     "Для прохождения отборочных испытаний перейдите по ссылке. Используйте почту, " +
@@ -293,7 +306,7 @@ public class UpdateService {
     }
 
     private String findOrSaveUser(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
-        String output;
+        String output = "";
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             try {
                 dataStorageClient.saveUser(userDtoMapper.fromBotUsertoUserDto(botUser));
@@ -304,22 +317,59 @@ public class UpdateService {
             log.debug("Пользователь с email {} и telegramId {} сохранен", botUser.getEmail(), botUser.getTelegramUserId());
             output = "Спасибо за регистрацию! Мы уведомим вас, как только начнется прием заявок по направлениям";
         } else if (registeredUserByEmail.isPresent()) {
+            log.debug("Пользователь с таким адресом электронной почты уже найден");
             UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByEmail.get(), botUser.getCourse());
-            updateFieldsIfApplicable(botUser, userDto);
+            boolean changesPresent = updateFieldsIfApplicable(botUser, userDto);
+            if (changesPresent) {
+                try {
+                    dataStorageClient.saveUser(userDto);
+                } catch (Exception e) {
+                    log.error(e.getMessage());
+                    return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+                }
+            }
             output = "Вы уже регистрировались в системе, мы уведомим вас, как только начнется прием заявок по направлениям";
-        } else {
+        } else if (registeredUserByTgId.isPresent()) {
+            log.debug("Пользователь с таким телеграм id уже найден");
             UserDto userDto = userDtoMapper.fromUsertoUserDto(registeredUserByTgId.get(), botUser.getCourse());
-            updateFieldsIfApplicable(botUser, userDto);
+            boolean changesPresent = updateFieldsIfApplicable(botUser, userDto);
+            if (changesPresent) {
+                try {
+                    dataStorageClient.saveUser(userDto);
+                } catch (Exception e) {
+                    log.error(e.getMessage());
+                    return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+                }
+            }
             output = "Вы уже регистрировались в системе, мы уведомим вас, как только начнется прием заявок по направлениям";
         }
         return output;
     }
 
-    private void updateFieldsIfApplicable(BotUser botUser, UserDto userDto) {
-        userDto.setFirstName(botUser.getFirstName());
-        userDto.setLastName(botUser.getLastName());
-        userDto.setCity(botUser.getCity());
-        userDto.setPhone(botUser.getPhone());
+
+    private boolean updateFieldsIfApplicable(BotUser botUser, UserDto userDto) {
+        boolean changesPresent = false;
+        if (!botUser.getFirstName().equals(userDto.getFirstName())) {
+            log.debug("name changed");
+            userDto.setFirstName(botUser.getFirstName());
+            changesPresent = true;
+        }
+        if (!botUser.getLastName().equals(userDto.getLastName())) {
+            log.debug("last name changed");
+            userDto.setLastName(botUser.getLastName());
+            changesPresent = true;
+        }
+        if (!botUser.getCity().equals(userDto.getCity())) {
+            log.debug("city changed");
+            userDto.setCity(botUser.getCity());
+            changesPresent = true;
+        }
+        if (!botUser.getPhone().equals(userDto.getPhoneNumber())) {
+            log.debug("phone changed");
+            userDto.setPhoneNumber(botUser.getPhone());
+            changesPresent = true;
+        }
+        return changesPresent;
     }
 
     private String processStartCommand(Update update) {
@@ -327,7 +377,7 @@ public class UpdateService {
         Long telegramId = update.getMessage().getFrom().getId();
         BotUser user = BotUser.builder()
                 .telegramUserId(telegramId)
-                .role(UserRole.VISITOR)
+                .role(Role.VISITOR)
                 .state(UserState.START)
                 .build();
         users.put(telegramId, user);

@@ -10,12 +10,12 @@ import ru.neostudy.apiservice.model.UserDto;
 public class UserDtoMapper {
     public UserDto fromBotUsertoUserDto(BotUser botUser) {
         return UserDto.builder()
-                .telegramId(botUser.getTelegramUserId())
+                .telegramUserId(botUser.getTelegramUserId())
                 .firstName(botUser.getFirstName())
                 .lastName(botUser.getLastName())
                 .city(botUser.getCity())
                 .email(botUser.getEmail())
-                .phone(botUser.getPhone())
+                .phoneNumber(botUser.getPhone())
                 .role(botUser.getRole())
                 .course(botUser.getCourse())
                 .build();
@@ -23,12 +23,13 @@ public class UserDtoMapper {
 
     public UserDto fromUsertoUserDto(User user, Course course) {
         return UserDto.builder()
-                .telegramId(user.getTelegramId())
+                .id(user.getUserId())
+                .telegramUserId(user.getTelegramId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .city(user.getCity())
                 .email(user.getEmail())
-                .phone(user.getPhone())
+                .phoneNumber(user.getPhoneNumber())
                 .role(user.getRole())
                 .course(course)
                 .build();

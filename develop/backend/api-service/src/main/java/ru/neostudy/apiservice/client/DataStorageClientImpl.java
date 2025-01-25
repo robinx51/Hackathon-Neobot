@@ -26,11 +26,7 @@ public class DataStorageClientImpl implements DataStorageClient {
     public Optional<User> getUserByEmail(String email) throws Exception {
         log.debug("Вызов метода getUserByEmail с email {}", email);
         return webClient.get()
-                .uri(dataStorageMSProperties.getServerUrl(), uriBuilder ->
-                        uriBuilder
-                                .path(dataStorageMSProperties.getGetUserByEmailUri())
-                                .queryParam("email", email)
-                                .build())
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetUserByEmailUri()), email)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
@@ -44,11 +40,7 @@ public class DataStorageClientImpl implements DataStorageClient {
     public Optional<User> getUserByTelegramId(Long telegramId) throws Exception {
         log.debug("Вызов метода getUserByTelegramId с telegramId {}", telegramId);
         return webClient.get()
-                .uri(dataStorageMSProperties.getServerUrl(), uriBuilder ->
-                        uriBuilder
-                                .path(dataStorageMSProperties.getGetUserByEmailUri())
-                                .queryParam("telegramId", telegramId)
-                                .build())
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetUserByTelegramUri()), telegramId)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
@@ -59,7 +51,7 @@ public class DataStorageClientImpl implements DataStorageClient {
 
     @Override
     public UserDto saveUser(UserDto userDto) throws Exception {
-        log.debug("Вызов метода saveUser с email {} и telegramId {}", userDto.getEmail(), userDto.getTelegramId());
+        log.debug("Вызов метода saveUser с email {} и telegramId {}", userDto.getEmail(), userDto.getTelegramUserId());
         return webClient.post()
                 .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getSaveUserUri()))
                 .bodyValue(userDto)

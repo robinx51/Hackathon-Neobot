@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import ru.neostudy.apiservice.bot.Course;
 import ru.neostudy.apiservice.bot.enums.UserAction;
 import ru.neostudy.apiservice.bot.enums.UserState;
-import ru.neostudy.apiservice.model.enums.UserRole;
+import ru.neostudy.apiservice.model.enums.Role;
 
 @Builder
 @AllArgsConstructor
@@ -20,7 +20,7 @@ public class BotUser {
     private String city;
     private String email;
     private String phone;
-    private UserRole role;
+    private Role role;
     private UserState state;
     private UserAction action;
     private Course course;

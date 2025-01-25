@@ -1,6 +1,7 @@
 package ru.neostudy.datastorage.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.neostudy.datastorage.db.entity.Course;
 import ru.neostudy.datastorage.db.entity.Statement;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class NeoCodeBotService {
@@ -37,16 +39,16 @@ public class NeoCodeBotService {
 
         if (request.getId() != null) {
             user.setUserId(request.getId());
-        } else {
-            userService.saveUser(user);
-            request.setId(user.getUserId());
         }
+        User savedUser = userService.saveUser(user);
+        request.setId(savedUser.getUserId());
 
         Statement statement = statementService.getStatementByUser(user);
+        log.debug("statement = {}", statement);
         if (statement == null) {
             statement = Statement.builder()
-                .user(user)
-                .build();
+                    .user(user)
+                    .build();
         }
         StatementStatus statementStatus;
         if (request.getCourse() != null)
@@ -55,8 +57,8 @@ public class NeoCodeBotService {
             statementStatus = StatementStatus.PRE_APPLICATION;
 
         statement.setCourse(request.getCourse());
+        log.debug("statement = {}", statement);
         statementService.saveStatement(addStatementStatus(statement, statementStatus));
-
         return request;
     }
 
@@ -67,9 +69,11 @@ public class NeoCodeBotService {
     public Optional<User> getUser(int userId) {
         return userService.getUser(userId);
     }
+
     public Optional<User> getUser(Long telegramId) {
         return userService.getUser(telegramId);
     }
+
     public Optional<User> getUser(String email) {
         return userService.getUser(email);
     }
