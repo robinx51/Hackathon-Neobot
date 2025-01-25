@@ -1,4 +1,4 @@
-image: my-helm-kubectl-docker:latest  # Указание образа
+image: my-helm-kubectl-docker:v3.17.0 
 
 stages:
   - build
