@@ -8,16 +8,22 @@ variables:
 before_script:
   - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
   - kubectl config use-context $KUBECONFIG_CONTEXT  # Устанавливаем контекст
-  - kubectl get pods  # Проверка связи с кластером
-script:
-  - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  # Добавляем репозиторий Helm
-  - helm repo update  # Обновляем репозитории
-  - helm upgrade --install prometheus prometheus-community/prometheus \
-      --namespace $KUBERNETES_NAMESPACE \
-      --set prometheus.server.persistentVolume.enabled=false \
-      --set rbac.create=false \
-      --set kube-state-metrics.enabled=false  # Установка Prometheus
-tags:
-  - runner
-  - build
-  - k8s
+
+stages:
+  - deploy
+
+deploy_prometheus:
+  stage: deploy
+  script:
+    - kubectl get pods  # Проверка связи с кластером
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  # Добавляем репозиторий Helm
+    - helm repo update  # Обновляем репозитории
+    - helm upgrade --install prometheus prometheus-community/prometheus \
+        --namespace $KUBERNETES_NAMESPACE \
+        --set prometheus.server.persistentVolume.enabled=false \
+        --set rbac.create=false \
+        --set kube-state-metrics.enabled=false  # Установка Prometheus
+  tags:
+    - runner
+    - build
+    - k8s
