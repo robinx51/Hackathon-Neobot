@@ -1,0 +1,4 @@
+spring.datasource:
+  url: jdbc:postgresql://rc1b-gk21kywyncnoym7q.mdb.yandexcloud.net:6432/cnrprod1737640949-team-83206
+  username: cnrprod1737640949-team-83206
+  password: bi0shuasaeph9Xaeshichaime4kealei

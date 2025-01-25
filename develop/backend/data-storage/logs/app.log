@@ -1925,3 +1925,137 @@ org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 
 2025-01-25T19:50:13.915+03:00  INFO 20916 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-25T19:50:13.918+03:00  INFO 20916 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-01-25T19:50:13.920+03:00  INFO 20916 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-25T21:24:05.333+03:00  INFO 22004 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.2 with PID 22004 (D:\Проекты\NeoFlex\Hackathon\project\develop\backend\data-storage\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\project)
+2025-01-25T21:24:05.335+03:00  INFO 22004 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "dev"
+2025-01-25T21:24:05.382+03:00  INFO 22004 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-25T21:24:05.382+03:00  INFO 22004 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-25T21:24:05.933+03:00  INFO 22004 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T21:24:05.981+03:00  INFO 22004 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 3 JPA repository interfaces.
+2025-01-25T21:24:06.844+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-25T21:24:06.858+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-25T21:24:06.858+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-25T21:24:06.919+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-25T21:24:06.919+03:00  INFO 22004 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1536 ms
+2025-01-25T21:24:06.947+03:00  INFO 22004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T21:24:07.226+03:00  INFO 22004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@63dd2d69
+2025-01-25T21:24:07.228+03:00  INFO 22004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T21:24:07.238+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/hackathon'
+2025-01-25T21:24:07.592+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-25T21:24:07.989+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-25T21:24:08.026+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-25T21:24:08.027+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-25T21:24:08.035+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-25T21:24:08.036+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-25T21:24:08.058+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-25T21:24:08.060+03:00  INFO 22004 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-25T21:24:08.129+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T21:24:08.192+03:00  INFO 22004 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-25T21:24:08.234+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-25T21:24:08.348+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-25T21:24:08.548+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-25T21:24:08.602+03:00  WARN 22004 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-25T21:24:09.481+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-25T21:24:09.521+03:00 ERROR 22004 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [courses]
+2025-01-25T21:24:09.521+03:00  WARN 22004 --- [Hackathon] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [courses]
+2025-01-25T21:24:09.523+03:00  INFO 22004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-25T21:24:09.525+03:00  INFO 22004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-25T21:24:09.526+03:00  INFO 22004 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-01-25T21:24:09.537+03:00  INFO 22004 --- [Hackathon] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-25T21:24:09.559+03:00 ERROR 22004 --- [Hackathon] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [courses]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at ru.neostudy.datastorage.DataStorageApplication.main(DataStorageApplication.java:13) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.5.jar:3.3.5]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [courses]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 18 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [courses]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:135) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.14.jar:6.1.14]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.14.jar:6.1.14]
+	... 22 common frames omitted
+
+2025-01-25T21:28:53.509+03:00  INFO 6044 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.2 with PID 6044 (D:\Проекты\NeoFlex\Hackathon\project\develop\backend\data-storage\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\project)
+2025-01-25T21:28:53.512+03:00  INFO 6044 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "dev"
+2025-01-25T21:28:53.557+03:00  INFO 6044 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-25T21:28:53.557+03:00  INFO 6044 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-25T21:28:54.023+03:00  INFO 6044 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-25T21:28:54.067+03:00  INFO 6044 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37 ms. Found 3 JPA repository interfaces.
+2025-01-25T21:28:54.743+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-25T21:28:54.755+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-25T21:28:54.755+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-25T21:28:54.810+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-25T21:28:54.810+03:00  INFO 6044 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1252 ms
+2025-01-25T21:28:54.833+03:00  INFO 6044 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-25T21:28:55.105+03:00  INFO 6044 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@772b6776
+2025-01-25T21:28:55.107+03:00  INFO 6044 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-25T21:28:55.116+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/hackathon'
+2025-01-25T21:28:55.525+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-25T21:28:55.964+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-25T21:28:56.008+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-25T21:28:56.010+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-25T21:28:56.017+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-25T21:28:56.018+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-25T21:28:56.043+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-25T21:28:56.044+03:00  INFO 6044 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-25T21:28:56.120+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-25T21:28:56.190+03:00  INFO 6044 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-25T21:28:56.233+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-25T21:28:56.330+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-25T21:28:56.560+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-25T21:28:56.617+03:00  WARN 6044 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-25T21:28:57.470+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-25T21:28:57.507+03:00  INFO 6044 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T21:28:57.880+03:00  WARN 6044 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-25T21:28:58.226+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-25T21:28:58.263+03:00  INFO 6044 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-25T21:28:58.268+03:00  INFO 6044 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 5.238 seconds (process running for 5.857)
+2025-01-25T21:29:31.612+03:00  INFO 6044 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-25T21:29:31.615+03:00  INFO 6044 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-25T21:29:31.617+03:00  INFO 6044 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
