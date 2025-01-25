@@ -1,35 +1,25 @@
 stages:
-  - detect_docker
-  - install_argo_cd
-  - build
+  - setup
   - deploy
 
-detect_docker:
-  stage: detect_docker
-  script:
-    - echo "Checking Docker version..."
-    - docker --version
+variables:
+  HELM_VERSION: "v3.8.0"  # Укажите версию Helm, которую хотите установить
 
-install_argo_cd:
-  stage: install_argo_cd
-  script:
-    - echo "Installing Argo CD..."
-    - helm repo add argo https://argoproj.github.io/argo-helm
-    - helm repo update
-    - kubectl create namespace argocd || true # Создаём namespace, если его нет
-    - helm install argo-cd argo/argo-cd --namespace argocd
+before_script:
+  - echo "Setting up kubectl and Helm"
+  - kubectl config use-context ${KUBE_CONTEXT}  # Убедитесь, что контекст настроен в переменных окружения
 
-build:
-  stage: build
+setup_helm:
+  stage: setup
   script:
-    - echo "Starting build with Docker..."
-    - docker --version
-    - docker build -t myapp .
-    - docker push myapp:latest
+    - curl -sSL https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xz
+    - mv linux-amd64/helm /usr/local/bin/helm
+    - helm version  # Проверка версии Helm
 
-deploy:
+deploy_app:
   stage: deploy
   script:
-    - echo "Deploying to Kubernetes..."
-    # Убедитесь, что kubeconfig настроен
-    - kubectl apply -f k8s/deployment.yaml # Пример файла деплоя для вашего приложения
+    - helm repo add myrepo https://charts.example.com
+    - helm repo update
+    - helm upgrade --install my-release myrepo/mychart --namespace ${KUBE_NAMESPACE}
+
