@@ -1,25 +1,27 @@
-stages:
-  - deploy
-
+image: docker:27.0.3-dind
+services:
+  - docker:27.0.3-dind
 variables:
-  KUBE_CONTEXT: "cnrprod1737640949-team-83206"
-  HELM_KUBE_CONTEXT: "cnrprod1737640949-team-83206"
-  HELM_HOME: "$CI_PROJECT_DIR/.helm"  # Путь к директории для хранения конфигурации Helm
-
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_DRIVER: overlay2
+  DOCKER_BUILDKIT: 1
+  KUBERNETES_NAMESPACE: cnrprod1737640949-team-83206
+  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"  # Путь к kubeconfig
+only:
+  - main
 before_script:
-  - echo "$KUBECONFIG" > ~/.kube/config  # Сохранение kubeconfig в файл
-  - kubectl config use-context $KUBE_CONTEXT  # Использование нужного контекста
-  - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  # Добавление репозитория для Prometheus
-  - helm repo update  # Обновление репозитория
-
-deploy_helm:
-  stage: deploy
-  tags:
-    - build
-    - k8s
-    - runner
-  script:
-    - echo "Deploying Prometheus using Helm in Kubernetes namespace $KUBE_CONTEXT"
-    - helm upgrade --install prometheus prometheus-community/prometheus --namespace cnrprod1737640815-team-83210 --set prometheus.server.persistentVolume.enabled=false --set rbac.create=false --set kube-state-metrics.enabled=false
-  only:
-    - devops  # Указывайте нужную ветку
+  - apk add --no-cache curl bash  # Устанавливаем необходимые пакеты для Helm
+  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
+  - kubectl config use-context $KUBERNETES_NAMESPACE  # Устанавливаем правильный контекст для kubectl
+  - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE  # Устанавливаем namespace
+  - kubectl get pods  # Проверка связи с кластером
+script:
+  - helm version  # Проверка версии Helm
+  - helm repo add mychartrepo https://charts.example.com  # Добавление репозитория Helm
+  - helm repo update  # Обновление репозиториев
+  - helm upgrade --install my-release mychartrepo/mychart --namespace $KUBERNETES_NAMESPACE  # Установка/обновление чартов
+tags:
+  - runner
+  - build
+  - k8s
