@@ -1,25 +1,24 @@
 stages:
-  - setup
   - deploy
 
 variables:
-  HELM_VERSION: "v3.8.0"  # Укажите версию Helm, которую хотите установить
+  KUBE_CONTEXT: "cnrprod1737640949-team-83206"
+  HELM_KUBE_CONTEXT: "cnrprod1737640949-team-83206"
+  HELM_HOME: "$CI_PROJECT_DIR/.helm"  # Путь к директории для хранения конфигурации Helm
 
 before_script:
-  - echo "Setting up kubectl and Helm"
-  - kubectl config use-context ${KUBE_CONTEXT}  # Убедитесь, что контекст настроен в переменных окружения
+  - echo "$KUBECONFIG" > ~/.kube/config  # Сохранение kubeconfig в файл
+  - kubectl config use-context $KUBE_CONTEXT  # Использование нужного контекста
+  - helm repo add stable https://charts.helm.sh/stable  # Добавление Helm репозитория
+  - helm repo update  # Обновление репозитория
 
-setup_helm:
-  stage: setup
-  script:
-    - curl -sSL https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar xz
-    - mv linux-amd64/helm /usr/local/bin/helm
-    - helm version  # Проверка версии Helm
-
-deploy_app:
+deploy_helm:
   stage: deploy
+  tags:
+    - build
+    - k8s
   script:
-    - helm repo add myrepo https://charts.example.com
-    - helm repo update
-    - helm upgrade --install my-release myrepo/mychart --namespace ${KUBE_NAMESPACE}
-
+    - echo "Deploying Helm in Kubernetes namespace $KUBE_CONTEXT"
+    - helm install my-release stable/my-chart --namespace cnrprod1737640949-team-83206 --create-namespace
+  only:
+    - devops  # Указывайте нужную ветку
