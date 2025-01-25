@@ -1,37 +1,14 @@
-image: docker:27.0.3-dind  # Образ для Docker-in-Docker
-services:
-  - docker:27.0.3-dind  # Сервис для работы с Docker
-
-variables:
-  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-
-before_script:
-  # Устанавливаем необходимые зависимости
-  - apk update && apk add --no-cache curl bash git
-  # Установка Helm
-  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-  # Установка kubectl
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
-  - chmod +x ./kubectl
-  - mv ./kubectl /usr/local/bin/kubectl
-  # Устанавливаем контекст Kubernetes
-  - kubectl config use-context $KUBECONFIG_CONTEXT
-  - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE
-
 stages:
-  - install_helm
+  - deploy
 
-install_helm:
-  stage: install_helm
+deploy_grafana:
+  stage: deploy
   script:
-    # Проверка версии Helm
-    - helm version
-    # Добавление репозитория Helm (если необходимо)
-    - helm repo add stable https://charts.helm.sh/stable
-    - helm repo update
+    - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
+    - helm repo add grafana https://grafana.github.io/helm-charts  # Добавляем репозиторий Grafana
+    - helm repo update  # Обновляем репозитории
+    - helm upgrade --install grafana grafana/grafana --namespace $KUBERNETES_NAMESPACE --set adminPassword=admin # Устанавливаем Grafana
   tags:
-    - runner
     - build
+    - runner
     - k8s
