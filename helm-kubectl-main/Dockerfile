@@ -2,8 +2,8 @@ FROM alpine:3.20
 
 ARG KUBE_VERSION
 ARG HELM_VERSION
-ARG TARGETOS
-ARG TARGETARCH
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
 ARG YQ_VERSION
 
 # Обновление пакетов и установка зависимостей
