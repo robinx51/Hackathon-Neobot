@@ -25,11 +25,7 @@ deploy_prometheus:
     - kubectl get pods  # Проверка связи с кластером
     - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  # Добавляем репозиторий Helm
     - helm repo update  # Обновляем репозитории
-    - helm upgrade --install prometheus prometheus-community/prometheus \
-        --namespace $KUBERNETES_NAMESPACE \
-        --set prometheus.server.persistentVolume.enabled=false \
-        --set rbac.create=false \
-        --set kube-state-metrics.enabled=false  # Установка Prometheus
+    - helm upgrade --install prometheus prometheus-community/prometheus --namespace $KUBERNETES_NAMESPACE --set prometheus.server.persistentVolume.enabled=false --set rbac.create=false --set kube-state-metrics.enabled=false
   tags:
     - runner
     - build
