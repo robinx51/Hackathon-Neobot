@@ -17,6 +17,7 @@ deploy_helm:
   tags:
     - build
     - k8s
+    - runner
   script:
     - echo "Deploying Helm in Kubernetes namespace $KUBE_CONTEXT"
     - helm install my-release stable/my-chart --namespace cnrprod1737640949-team-83206 --create-namespace
