@@ -26,7 +26,7 @@ deploy_grafana:
   script:
     - helm repo add bitnami https://charts.bitnami.com/bitnami  # Добавляем репозиторий Grafana
     - helm repo update  # Обновляем репозитории
-    - helm upgrade --install grafana bitnami/grafana grafana/grafana --namespace $KUBERNETES_NAMESPACE --set adminPassword=admin --set serviceAccount.name cnrprod1737640949-team-83206  # Устанавливаем Grafana с использованием сервис-аккаунта
+    - helm upgrade --install grafana bitnami/grafana --namespace $KUBERNETES_NAMESPACE --set adminPassword=admin --set serviceAccount.name=cnrprod1737640949-team-83206  # Устанавливаем Grafana с использованием сервис-аккаунта
   tags:
     - build
     - runner
