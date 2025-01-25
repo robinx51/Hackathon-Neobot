@@ -67,9 +67,6 @@ def generate_statement(user_ids):
     }
 
 def main():
-    print("Начинаем загрузку данных в БД...")
-    time.sleep(2)
-
     users = [generate_user() for _ in range(100)]
     user_ids = list(range(1, 101))
     
@@ -83,8 +80,18 @@ def main():
         statements.append(stmt)
 
     try:
+        print("Начинаем загрузку данных в БД...")
+        time.sleep(2)
+
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
+
+        cursor.execute(
+            """INSERT INTO logs.data_logs ("event", time_of_event, message) 
+            VALUES (%s, %s, %s)""",
+            ('INFO', datetime.now(), 'Начинаем загрузку данных в БД...')
+        )
+        conn.commit()
 
         user_records = [
             (
@@ -102,8 +109,8 @@ def main():
         
         execute_batch(cursor,
             """INSERT INTO dev.users 
-               (user_id, telegram_id, role, first_name, last_name, email, city, phone_number)
-               VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+            (user_id, telegram_id, role, first_name, last_name, email, city, phone_number)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
             user_records
         )
 
@@ -121,17 +128,39 @@ def main():
         
         execute_batch(cursor,
             """INSERT INTO dev.statements 
-               (statement_id, user_id, course_id, statement_status, creation_date, changed_date)
-               VALUES (%s, %s, %s, %s, %s, %s)""",
+            (statement_id, user_id, course_id, statement_status, creation_date, changed_date)
+            VALUES (%s, %s, %s, %s, %s, %s)""",
             statement_records
         )
 
         conn.commit()
+
+        cursor.execute(
+            """INSERT INTO logs.data_logs ("event", time_of_event, message) 
+            VALUES (%s, %s, %s)""",
+            ('SUCCESS', datetime.now(), 'Данные успешно загружены в базу данных')
+        )
         print("Данные успешно загружены в базу данных")
 
     except Exception as e:
+        if conn:
+            cursor.close()
+            conn.close()
+
+        log_conn = psycopg2.connect(**DB_CONFIG)
+        log_cursor = log_conn.cursor()
+
+        log_cursor.execute(
+            """INSERT INTO logs.data_logs (event, time_of_event, message) 
+            VALUES (%s, %s, %s)""",
+            ('FAILED', datetime.now(), f'Ошибка: {str(e)}')
+        )
+        log_conn.commit()
+
+        log_cursor.close()
+        log_conn.close()
+
         print(f"Ошибка: {str(e)}")
-        conn.rollback()
     finally:
         if conn:
             cursor.close()
