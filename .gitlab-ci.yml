@@ -7,7 +7,7 @@ deploy_grafana:
     - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
     - helm repo add grafana https://grafana.github.io/helm-charts  # Добавляем репозиторий Grafana
     - helm repo update  # Обновляем репозитории
-    - helm upgrade --install grafana grafana/grafana --namespace $KUBERNETES_NAMESPACE --set adminPassword=admin # Устанавливаем Grafana
+    - helm upgrade --install grafana grafana/grafana --namespace cnrprod1737640949-team-83206 --set adminPassword=admin # Устанавливаем Grafana в нужный namespace
   tags:
     - build
     - runner
