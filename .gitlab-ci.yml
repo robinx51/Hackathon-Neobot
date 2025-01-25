@@ -5,7 +5,9 @@ variables:
   KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
   KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
   KUBERNETES_NAMESPACE: cnrprod1737640815-team-83210
+
 before_script:
+  - apk update && apk add curl bash  # Устанавливаем curl и bash для Alpine
   - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
   - kubectl config use-context $KUBECONFIG_CONTEXT  # Устанавливаем контекст
 
