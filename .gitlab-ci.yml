@@ -3,8 +3,8 @@ services:
   - docker:27.0.3-dind
 variables:
   KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBERNETES_NAMESPACE: cnrprod1737640815-team-83210
+  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"  # Убедитесь, что контекст правильный
+  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"  # Используйте тот же namespace
 
 before_script:
   - apk update && apk add curl bash
@@ -13,6 +13,7 @@ before_script:
   - chmod +x ./kubectl  # Даем права на выполнение
   - mv ./kubectl /usr/local/bin/kubectl  # Перемещаем kubectl в /usr/local/bin
   - kubectl config use-context $KUBECONFIG_CONTEXT  # Устанавливаем контекст
+  - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE  # Убедитесь, что namespace правильный
 
 stages:
   - deploy
