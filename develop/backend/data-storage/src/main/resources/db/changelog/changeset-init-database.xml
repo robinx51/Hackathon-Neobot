@@ -13,13 +13,15 @@
             <column name="user_id" type="serial">
                 <constraints primaryKey="true" primaryKeyName="pk_user" nullable="false"/>
             </column>
-            <column name="telegram_id" type="varchar(32)"/>
-            <column name="role" type="varchar(16)"/>
-            <column name="first_name" type="varchar(32)"/>
-            <column name="last_name" type="varchar(32)"/>
+            <column name="telegram_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="varchar(16)" defaultValue="visitor"/>
+            <column name="first_name" type="varchar(30)"/>
+            <column name="last_name" type="varchar(30)"/>
             <column name="email" type="varchar(64)"/>
-            <column name="city" type="varchar(25)"/>
-            <column name="phone_number" type="varchar(10)"/>
+            <column name="city" type="varchar(35)"/>
+            <column name="phone_number" type="varchar(12)"/>
         </createTable>
     </changeSet>
     <changeSet id="create_table_courses" author="robinx51">
@@ -33,7 +35,7 @@
                 <constraints primaryKey="true" primaryKeyName="pk_course" nullable="false"/>
             </column>
 
-            <column name="course_name" type="varchar(32)"/>
+            <column name="course_name" type="varchar(50)"/>
         </createTable>
     </changeSet>
     <changeSet id="create_table_statements" author="robinx51">
@@ -55,13 +57,11 @@
                 <constraints foreignKeyName="fk_course_id" references="courses(course_id)"/>
             </column>
 
-            <column name="statement_status" type="character varying(32)"/>
+            <column name="statement_status" type="character varying(30)"/>
 
-            <column name="creation_date" type="timestamp without time zone">
-                <constraints nullable="false"/>
-            </column>
+            <column name="creation_date" type="timestamp without time zone" defaultValue="NOW()" />
 
-            <column name="status_history" type="jsonb"/>
+            <column name="changed_date" type="TIMESTAMP " defaultValue="NOW()"/>
         </createTable>
     </changeSet>
 </databaseChangeLog>

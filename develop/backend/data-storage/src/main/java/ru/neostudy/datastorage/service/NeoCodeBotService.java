@@ -8,54 +8,89 @@ import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.service.CourseService;
 import ru.neostudy.datastorage.db.service.StatementService;
 import ru.neostudy.datastorage.db.service.UserService;
-import ru.neostudy.datastorage.dto.RegistrationDataDto;
-import ru.neostudy.datastorage.dto.StatementStatusHistoryDto;
-import ru.neostudy.datastorage.dto.StatementsForUserDto;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
+import ru.neostudy.datastorage.dto.UserDto;
+import ru.neostudy.datastorage.enums.StatementStatus;
 
-import javax.management.openmbean.KeyAlreadyExistsException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class NeoCodeBotService {
-    private final StatementService statementService;
     private final UserService userService;
+    private final StatementService statementService;
     private final CourseService courseService;
 
-    public void newUser(String telegramId) {
+    public UserDto saveUser(UserDto request) {
         User user = User.builder()
-                .telegramId(telegramId)
-                .role(User.eRole.visitor)
+                .telegramId(request.getTelegramUserId())
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .city(request.getCity())
+                .email(request.getEmail())
+                .phoneNumber(request.getPhoneNumber())
+                .role(request.getRole())
                 .build();
-        userService.createUser(user);
-    }
 
-    public void registryUser(RegistrationDataDto request) {
-        User user = userService.getUserByTelegramId(request.getTelegramId());
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setEmail(request.getEmail());
-        user.setCity(request.getCity());
-        user.setCity(request.getCity());
-        user.setPhoneNumber(request.getPhoneNumber());
+        if (request.getId() != null) {
+            user.setUserId(request.getId());
+        } else {
+            userService.saveUser(user);
+            request.setId(user.getUserId());
+        }
 
-        userService.updateUser(user);
+        Statement statement = statementService.getStatementByUser(user);
+        if (statement == null) {
+            statement = Statement.builder()
+                .user(user)
+                .build();
+        }
+        StatementStatus statementStatus;
+        if (request.getCourse() != null)
+            statementStatus = StatementStatus.PENDING;
+        else
+            statementStatus = StatementStatus.PRE_APPLICATION;
+
+        statement.setCourse(request.getCourse());
+        statementService.saveStatement(addStatementStatus(statement, statementStatus));
+
+        return request;
     }
 
     public List<User> getUsers() {
         return userService.getAllUsers();
     }
 
+    public Optional<User> getUser(int userId) {
+        return userService.getUser(userId);
+    }
+    public Optional<User> getUser(Long telegramId) {
+        return userService.getUser(telegramId);
+    }
+    public Optional<User> getUser(String email) {
+        return userService.getUser(email);
+    }
+
     public void updateStatement(UpdateStatementDto request) {
         Statement statement = statementService.getStatementById(request.getStatementId());
-        statementService.updateStatement(addStatementStatus(statement, request.getStatementStatus(), StatementStatusHistoryDto.eChangeType.MANUAL));
+        statementService.updateStatement(addStatementStatus(statement, request.getStatementStatus()));
     }
+
+//    public StatementsForUserDto getStatementsForUser(int userId) {
+//        Optional<User> user = userService.getUser(userId);
+//        if (user.isPresent()) {
+//            User userEntity = user.get();
+//            List<Statement> statementList = statementService.getStatementsForUser(userEntity);
+//            return StatementsForUserDto.builder()
+//                    .user(userEntity)
+//                    .statementList(statementList)
+//                    .build();
+//        } else
+//            throw new UnknownEntityException("User with id " + userId + " not found");
+//    }
 
     public void insertCourse(String courseName) {
         Course course = Course.builder()
@@ -64,39 +99,16 @@ public class NeoCodeBotService {
         courseService.createCourse(course);
     }
 
-    private Statement addStatementStatus(Statement statement, Statement.eStatementStatus status, StatementStatusHistoryDto.eChangeType changeType) {
-        List<StatementStatusHistoryDto> list;
-        if (statement.getStatusHistory() == null) {
-            list = new ArrayList<>();
+    public List<Course> getCourses() {
+        return courseService.getCourses();
+    }
+
+    private Statement addStatementStatus(Statement statement, StatementStatus status) {
+        if (statement.getCreationDate() == null) {
             statement.setCreationDate(Timestamp.valueOf(LocalDateTime.now()));
-            statement.setStatementStatus(status);
         }
-        else
-            list = statement.getStatusHistory();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        StatementStatusHistoryDto statusDto = StatementStatusHistoryDto.builder()
-                .statementStatus(status)
-                .time(LocalDateTime.now().format(formatter))
-                .changeType(StatementStatusHistoryDto.eChangeType.AUTOMATIC)
-                .build();
-        list.add(statusDto);
         statement.setStatementStatus(status);
-        statement.setStatusHistory(list);
+        statement.setChangedDate(Timestamp.valueOf(LocalDateTime.now()));
         return statement;
-    }
-
-    public StatementsForUserDto getStatementsForUser(int userId) {
-        User user = userService.getUserById(userId);
-        List<Statement> statementList = statementService.getStatementsForUser(user);
-        return StatementsForUserDto.builder()
-                .user(user)
-                .statementList(statementList)
-                .build();
-    }
-
-    public Optional<User> getUserByEmail(String email) {
-        return userService.getUserByEmail(email);
     }
 }

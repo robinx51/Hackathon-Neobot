@@ -9,16 +9,13 @@ import ru.neostudy.datastorage.db.entity.Statement;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.repository.StatementRepository;
 
-import java.util.List;
-import java.util.UUID;
-
 @Service
 public class StatementService {
     @Autowired
     public StatementRepository statementRepository;
     private static final Logger logger = LoggerFactory.getLogger(StatementService.class);
 
-    public Statement createStatement(Statement statement) {
+    public Statement saveStatement(Statement statement) {
         logger.info("Добавление statement в БД");
         return statementRepository.save(statement);
     }
@@ -38,7 +35,7 @@ public class StatementService {
                 .orElseThrow(() -> new EntityNotFoundException("Statement с id: " + statementId + " не найден"));
     }
 
-    public List<Statement> getStatementsForUser(User user) {
-        return statementRepository.getAllByUserId(user);
+    public Statement getStatementByUser(User user) {
+        return statementRepository.getStatementByUser(user);
     }
 }

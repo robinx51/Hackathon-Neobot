@@ -6,13 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-import ru.neostudy.datastorage.dto.StatementStatusHistoryDto;
+import ru.neostudy.datastorage.enums.StatementStatus;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
 @Data
@@ -21,10 +18,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "statements")
 public class Statement implements Serializable {
-    public enum eStatementStatus {
-        pre_application, accepted, rejected, pending
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "statement_id", columnDefinition = "int", updatable = false, nullable = false)
@@ -32,20 +25,19 @@ public class Statement implements Serializable {
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
-    private User userId;
+    private User user;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "course_id", updatable = false, nullable = false)
-    private Course courseId;
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
     @Column(name = "statement_status")
     @Enumerated(EnumType.STRING)
-    private eStatementStatus statementStatus;
+    private StatementStatus statementStatus;
 
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
-    @Column(name = "status_history")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private List<StatementStatusHistoryDto> statusHistory;
+    @Column(name = "changed_date")
+    private Timestamp changedDate;
 }

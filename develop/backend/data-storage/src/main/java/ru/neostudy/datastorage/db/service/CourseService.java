@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ru.neostudy.datastorage.db.entity.Course;
 import ru.neostudy.datastorage.db.repository.CoursesRepository;
 
+import java.util.List;
+
 @Service
 public class CourseService {
     @Autowired
@@ -32,5 +34,9 @@ public class CourseService {
     public Course getCourseById(int courseId) {
         return coursesRepository.findById(courseId)
                 .orElseThrow(() -> new EntityNotFoundException("Course с id: " + courseId + " не найден"));
+    }
+
+    public List<Course> getCourses() {
+        return coursesRepository.findAll();
     }
 }

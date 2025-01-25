@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
-import ru.neostudy.datastorage.db.entity.Statement;
+import ru.neostudy.datastorage.enums.StatementStatus;
 
 @Data
 @Builder
@@ -15,5 +15,5 @@ public class UpdateStatementDto {
 
     @NotNull
     @Schema(name = "statementStatus", example = "accepted")
-    private Statement.eStatementStatus statementStatus;
+    private StatementStatus statementStatus;
 }

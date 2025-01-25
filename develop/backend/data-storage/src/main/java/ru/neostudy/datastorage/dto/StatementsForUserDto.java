@@ -17,5 +17,4 @@ public class StatementsForUserDto {
     private User user;
 
     private List<Statement> statementList;
-
 }
