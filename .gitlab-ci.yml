@@ -1,7 +1,7 @@
 image: docker:19.03.12
 
 services:
-  - docker:19.03.12-dind # Используем Docker-in-Docker для работы с Docker внутри контейнера
+  - docker:19.03.12-dind  # Используем Docker-in-Docker для работы с Docker внутри контейнера
 
 stages:
   - build
