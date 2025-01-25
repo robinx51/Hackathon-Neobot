@@ -9,7 +9,7 @@ variables:
 before_script:
   - echo "$KUBECONFIG" > ~/.kube/config  # Сохранение kubeconfig в файл
   - kubectl config use-context $KUBE_CONTEXT  # Использование нужного контекста
-  - helm repo add stable https://charts.helm.sh/stable  # Добавление Helm репозитория
+  - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  # Добавление репозитория для Prometheus
   - helm repo update  # Обновление репозитория
 
 deploy_helm:
@@ -19,7 +19,7 @@ deploy_helm:
     - k8s
     - runner
   script:
-    - echo "Deploying Helm in Kubernetes namespace $KUBE_CONTEXT"
-    - helm install my-release stable/my-chart --namespace cnrprod1737640949-team-83206 --create-namespace
+    - echo "Deploying Prometheus using Helm in Kubernetes namespace $KUBE_CONTEXT"
+    - helm upgrade --install prometheus prometheus-community/prometheus --namespace cnrprod1737640815-team-83210 --set prometheus.server.persistentVolume.enabled=false --set rbac.create=false --set kube-state-metrics.enabled=false
   only:
     - devops  # Указывайте нужную ветку
