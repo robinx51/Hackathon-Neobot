@@ -8,11 +8,15 @@ variables:
   DOCKER_TAG: "latest"  # Укажите тег для вашего образа (например, latest или version)
   KUBE_VERSION: "v1.26.4"
   HELM_VERSION: "v3.11.3"
+  DOCKER_TLS_CERTDIR: "/certs"  # Для работы с Docker-in-Docker в защищённом режиме
 
 before_script:
   - apk add --no-cache curl
 
-image: docker:latest  # Указываем образ для выполнения шагов
+image: docker:latest  # Используем образ Docker для выполнения шагов
+
+services:
+  - docker:19.03.12-dind  # Используем Docker-in-Docker для работы с Docker внутри контейнера
 
 build_image:
   stage: build
