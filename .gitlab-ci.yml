@@ -7,8 +7,11 @@ variables:
   KUBERNETES_NAMESPACE: cnrprod1737640815-team-83210
 
 before_script:
-  - apk update && apk add curl bash  # Устанавливаем curl и bash для Alpine
-  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
+  - apk update && apk add curl bash
+  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl  # Установка kubectl
+  - chmod +x ./kubectl  # Даем права на выполнение
+  - mv ./kubectl /usr/local/bin/kubectl  # Перемещаем kubectl в /usr/local/bin
   - kubectl config use-context $KUBECONFIG_CONTEXT  # Устанавливаем контекст
 
 stages:
