@@ -1,3 +1,8 @@
+image: docker:27.0.3-dind  # Укажите образ для выполнения шагов
+
+services:
+  - docker:27.0.3-dind  # Укажите сервис для Docker-in-Docker (если нужен)
+
 stages:
   - deploy
 
