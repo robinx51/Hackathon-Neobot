@@ -3,6 +3,10 @@ image: docker:19.03.12
 services:
   - name: docker:19.03.12-dind
     alias: docker
+    command:
+      - "--tls=false"
+      - "--host=tcp://0.0.0.0:2375"
+    privileged: true
 
 stages:
   - build
@@ -29,17 +33,4 @@ before_script:
 build:
   stage: build
   tags:
-    - build
-  script:
-    - ls -l helm-kubectl-main
-    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f helm-kubectl-main/Dockerfile helm-kubectl-main
-    - docker push $DOCKER_IMAGE:$DOCKER_TAG
-  privileged: true
-
-deploy:
-  stage: deploy
-  tags:
-    - k8s
-  script:
-    - kubectl --kubeconfig=$KUBECONFIG config use-context your-context-name
-    - helm upgrade --install your-release-name ./helm-chart --kubeconfig=$KUBECONFIG
+    -
