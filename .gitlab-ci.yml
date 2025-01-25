@@ -22,6 +22,10 @@ build_image:
     - chmod +x /usr/local/bin/helm /usr/local/bin/kubectl
     # Сборка Docker-образа
     - docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f helm-kubectl-main/Dockerfile helm-kubectl-main
+  tags:
+    - build
+    - k8s
+    - runner  # Убедитесь, что ваши Runner-ы имеют эти теги
 
 push_image:
   stage: push
@@ -32,3 +36,7 @@ push_image:
     - docker push $DOCKER_IMAGE:$DOCKER_TAG
   only:
     - devops  # Укажите ветку, для которой будет выполняться пуш
+  tags:
+    - build
+    - k8s
+    - runner  # Использование тех же тегов для этого задания
