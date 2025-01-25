@@ -1,4 +1,7 @@
-image: dtzar/helm-kubectl:v3.17.0
+image: docker:19.03.12
+
+services:
+  - docker:19.03.12-dind # Используем Docker-in-Docker для работы с Docker внутри контейнера
 
 stages:
   - build
@@ -12,31 +15,4 @@ variables:
   KUBE_VERSION: "v1.23.3"                 # Версия Kubernetes
   HELM_VERSION: "v3.8.2"                  # Версия Helm
   YQ_VERSION: "4.15.1"                    # Версия yq
-  TARGETOS: "linux"                       # Операционная система
-  TARGETARCH: "amd64"                     # Архитектура
-
-before_script:
-  - docker pull dtzar/helm-kubectl:v3.17.0  # Загрузка образа перед выполнением скриптов
-  - curl -sSL https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz | tar -xz -C /tmp
-  - mv /tmp/linux-amd64/helm /usr/local/bin/helm
-  - curl -sSL https://dl.k8s.io/release/v1.23.3/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
-  - chmod +x /usr/local/bin/helm /usr/local/bin/kubectl
-
-build:
-  stage: build
-  tags:
-    - build
-    - k8s
-    - runner
-  script:
-    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
-    - docker push $DOCKER_IMAGE:$DOCKER_TAG
-
-deploy:
-  stage: deploy
-  tags:
-    - k8s
-    - runner
-  script:
-    - kubectl --kubeconfig=$KUBECONFIG config use-context $KUBECONFIG_CONTEXT
-    - helm upgrade --install your-release-name ./helm-chart --kubeconfig=$KUBECONFIG
+  TARGETOS: "linux"                       # Оп
