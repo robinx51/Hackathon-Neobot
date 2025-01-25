@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.repository.UserRepository;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,9 +18,12 @@ public class UserService {
     public UserRepository userRepository;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    public User saveUser(User user) {
+    public void saveUser(User user) throws IOException {
         logger.debug("Сохранение user с id: {}", user.getUserId());
-        return userRepository.save(user);
+        if (getUser(user.getTelegramId()).isPresent() || getUser(user.getEmail()).isPresent())
+            throw new IOException("Обнаружен дубликат");
+        else
+            userRepository.save(user);
     }
 
     public void updateUser(User user) {
@@ -50,13 +54,4 @@ public class UserService {
     public Optional<User> getUser(Long telegramId) {
         logger.debug("Поиск user с telegramId: {}", telegramId);
         return userRepository.findByTelegramId(telegramId);
-    }
-
-    public boolean isEmailExist(String email) {
-        return userRepository.existsByEmail(email);
-    }
-
-    public boolean isTelegramIdExist(Long telegramId) {
-        return userRepository.existsByTelegramId(telegramId);
-    }
-}
+    }}

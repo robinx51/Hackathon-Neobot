@@ -12,6 +12,7 @@ import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.service.NeoCodeBotService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class BotController {
 
     @PostMapping("/data-storage/saveUser")
     @Tag(name = "Сохранение пользователя")
-    public UserDto saveUser(@RequestBody UserDto request) {
+    public UserDto saveUser(@RequestBody UserDto request) throws IOException {
         return neoCodeBotService.saveUser(request);
     }
 
