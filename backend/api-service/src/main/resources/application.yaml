@@ -1,0 +1,14 @@
+bot:
+  name: ${TG_BOT_NAME:hakatonTG_bot}
+  token: ${TG_BOT_TOKEN:7083829801:AAGiKATQRCVmbz5g8XYdV7P5kk174qwVna8}
+
+logging:
+  level:
+    ru.neostudy.apiservice: DEBUG
+
+storage:
+  serverUrl: server-url
+  get-user-by-email-uri: ur1
+  save-user-uri: ur2
+  getCoursesUri: ur3
+
