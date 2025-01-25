@@ -2,27 +2,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>ru.neostudy</groupId>
-    <artifactId>NeoCodeBot</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>develop</artifactId>
     <packaging>pom</packaging>
-
     <modules>
-        <module>develop</module>
+        <module>backend</module>
+        <module>frontend</module>
     </modules>
-
-
+    <parent>
+        <groupId>ru.neostudy</groupId>
+        <artifactId>NeoCodeBot</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <dependencyManagement>
         <dependencies>
             <!-- зависимости, которые будут общими для всех модулей -->
         </dependencies>
     </dependencyManagement>
-
     <build>
         <pluginManagement>
             <plugins>
-                <!-- глобальные настройки плагинов для всех модулей -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
