@@ -1,11 +1,11 @@
-image: my-helm-kubectl-docker:v3.17.0
+image: dtzar/helm-kubectl
 
 stages:
   - build
   - deploy
 
 variables:
-  DOCKER_IMAGE: "your-docker-image-name"
+  DOCKER_IMAGE: "dtzar/helm-kubectl"
   DOCKER_TAG: "latest"
   KUBECONFIG: "/etc/kubernetes/config"    # Путь к kubeconfig файлу
   KUBECONFIG_CONTEXT: "your-context-name" # Контекст из kubeconfig файла
