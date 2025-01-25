@@ -9,25 +9,31 @@ import ru.neostudy.datastorage.db.entity.Statement;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.repository.StatementRepository;
 
+import java.util.List;
+
 @Service
 public class StatementService {
     @Autowired
     public StatementRepository statementRepository;
     private static final Logger logger = LoggerFactory.getLogger(StatementService.class);
 
-    public Statement saveStatement(Statement statement) {
-        logger.info("Добавление statement в БД");
-        return statementRepository.save(statement);
+    public void saveStatement(Statement statement) {
+        logger.debug("Добавление statement в БД");
+        statementRepository.save(statement);
     }
 
     public void updateStatement(Statement statement) {
-        logger.info("Обновление statement с id: {}", statement.getStatementId());
+        logger.debug("Обновление statement с id: {}", statement.getStatementId());
         if (statementRepository.existsById(statement.getStatementId())) {
             statementRepository.save(statement);
-            logger.info("Statement обновлён успешно");
+            logger.debug("Statement обновлён успешно");
         } else {
             logger.error("Statement с id: {} не найден", statement.getStatementId());
         }
+    }
+
+    public List<Statement> getStatements() {
+        return statementRepository.findAll();
     }
 
     public Statement getStatementById(int statementId) {

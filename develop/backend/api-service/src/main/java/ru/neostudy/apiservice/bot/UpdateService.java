@@ -207,7 +207,7 @@ public class UpdateService {
             builder.append(s).append("\n");
         }
         return "Пожалуйста, выберите интересующее вас направление\n" +
-                "Java Development" +
+                "Java Development \n" +
                 builder; //todo дополнить направления
     }
 
