@@ -1,48 +1,37 @@
-stages:
-  - build
-  - push
+image: docker:27.0.3-dind  # Образ для Docker-in-Docker
+services:
+  - docker:27.0.3-dind  # Сервис для работы с Docker
 
 variables:
-  DOCKER_REGISTRY: "docker.io"
-  DOCKER_IMAGE: "your-username/your-image-name"  # Укажите свой репозиторий на Docker Hub
-  DOCKER_TAG: "latest"  # Укажите тег для вашего образа (например, latest или version)
-  KUBE_VERSION: "v1.26.4"
-  HELM_VERSION: "v3.11.3"
-  DOCKER_TLS_CERTDIR: "/certs"  # Для работы с Docker-in-Docker в защищённом режиме
+  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
+  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
+  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
 
 before_script:
-  - apk add --no-cache curl
+  # Устанавливаем необходимые зависимости
+  - apk update && apk add --no-cache curl bash git
+  # Установка Helm
+  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  # Установка kubectl
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
+  - mv ./kubectl /usr/local/bin/kubectl
+  # Устанавливаем контекст Kubernetes
+  - kubectl config use-context $KUBECONFIG_CONTEXT
+  - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE
 
-image: docker:latest  # Используем образ Docker для выполнения шагов
+stages:
+  - install_helm
 
-services:
-  - docker:19.03.12-dind  # Используем Docker-in-Docker для работы с Docker внутри контейнера
-
-build_image:
-  stage: build
+install_helm:
+  stage: install_helm
   script:
-    # Скачивание и установка helm и kubectl
-    - curl -sSL https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz | tar -xz -C /tmp
-    - mv /tmp/linux-amd64/helm /usr/local/bin/helm
-    - curl -sSL https://dl.k8s.io/release/${KUBE_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
-    - chmod +x /usr/local/bin/helm /usr/local/bin/kubectl
-    # Сборка Docker-образа
-    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG -f helm-kubectl-main/Dockerfile helm-kubectl-main
+    # Проверка версии Helm
+    - helm version
+    # Добавление репозитория Helm (если необходимо)
+    - helm repo add stable https://charts.helm.sh/stable
+    - helm repo update
   tags:
+    - runner
     - build
     - k8s
-    - runner  # Убедитесь, что ваши Runner-ы имеют эти теги
-
-push_image:
-  stage: push
-  script:
-    # Логин в Docker Hub
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    # Пуш Docker-образа
-    - docker push $DOCKER_IMAGE:$DOCKER_TAG
-  only:
-    - devops  # Укажите ветку, для которой будет выполняться пуш
-  tags:
-    - build
-    - k8s
-    - runner  # Использование тех же тегов для этого задания
