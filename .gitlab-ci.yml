@@ -35,6 +35,7 @@ deploy-telegram-bot-service:
   only:
     - devops
   script:
+    - cat kubeconfig
     - echo "$KUBECONFIG_CONTENT" > kubeconfig
     - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
     - cat kubeconfig  # Выводим содержимое kubeconfig для отладки
