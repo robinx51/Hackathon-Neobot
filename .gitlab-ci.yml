@@ -8,7 +8,7 @@ variables:
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
   IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
   NETWORK_NAME: "hackathon"
-  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_CERTDIR: "/certs"  # Для использования Docker-in-Docker
 
 kaniko-build-telegram-bot-service:
   stage: kaniko-build
@@ -20,13 +20,10 @@ kaniko-build-telegram-bot-service:
     - build
     - k8s
   script:
-    - echo "Listing files in the project directory:"
-    - ls -alh ${CI_PROJECT_DIR}  # Проверяем, какие файлы доступны
-    - echo "Running Kaniko build"
     - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar  # Убедитесь, что путь правильный
+      - develop/backend/data-storage/target/*.jar
     expire_in: 1 week
 
 deploy-telegram-bot-service:
@@ -49,7 +46,7 @@ build-and-run-docker-containers:
   stage: run
   image: docker:20.10.7
   services:
-    - docker:20.10.7-dind  # Используем сервис Docker-in-Docker
+    - docker:20.10.7-dind  # Используем Docker-in-Docker сервис
   tags:
     - runner
     - build
