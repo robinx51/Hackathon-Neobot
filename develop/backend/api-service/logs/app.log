@@ -1343,3 +1343,31 @@ java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.ap
 2025-01-26T05:49:58.769+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 1492839348
 2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение пользователя с id 1
 2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kir@gmail.com и telegramId 1492839348
+2025-01-26T09:52:25.354+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 18348 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T09:52:25.356+03:00 DEBUG 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:52:25.357+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:52:25.405+03:00  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:52:25.405+03:00  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:52:26.540+03:00  INFO 18348 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T09:52:26.553+03:00  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:52:26.553+03:00  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:52:26.613+03:00  INFO 18348 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:52:26.613+03:00  INFO 18348 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1208 ms
+2025-01-26T09:52:27.015+03:00 DEBUG 18348 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:52:27.015+03:00 DEBUG 18348 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:52:27.733+03:00 DEBUG 18348 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T09:52:28.469+03:00  WARN 18348 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:52:28.493+03:00  INFO 18348 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T09:52:28.505+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.602 seconds (process running for 4.302)
+2025-01-26T09:52:47.825+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T09:52:47.826+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T09:52:47.827+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T09:52:47.829+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T09:53:08.509+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
+2025-01-26T09:53:09.518+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : users = null
+2025-01-26T09:53:09.518+03:00 DEBUG 18348 --- [scheduling-1] r.n.a.client.DataStorageClientImpl       : Вызов метода getUsersWithoutCourse
+2025-01-26T09:53:09.594+03:00  INFO 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : Период сбора заявок открыт
+2025-01-26T09:53:48.516+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
+2025-01-26T09:53:48.517+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
+2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
+2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
