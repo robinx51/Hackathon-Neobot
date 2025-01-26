@@ -24,7 +24,7 @@ build-telegram-bot-service1:
     - ls -la target
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar
+      - develop/backend/data-storage/target/data-storage-1.0-SNAPSHOT-exec.jar
     expire_in: 1 week
 
 build-telegram-bot-service:
@@ -42,7 +42,7 @@ build-telegram-bot-service:
     - build-telegram-bot-service1
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar
+      - develop/backend/data-storage/target/data-storage-1.0-SNAPSHOT-exec.jar
     expire_in: 1 week
 
 deploy-telegram-bot-service:
