@@ -221,16 +221,6 @@ public class UpdateService {
                 }
                 break;
             case WAIT_FOR_EMAIL:
-/*                String formattedPhone = appUserValidator.formatPhone(text);
-                boolean phoneValid = appUserValidator.isPhoneValid(formattedPhone);
-                if (!phoneValid) {
-                    log.error("Некорректно указан номер телефона пользователя: {}", formattedPhone);
-                    return "Пожалуйста, укажите номер телефона в формате +7xxxxxxxxxx";
-                } else {
-                    output = processWaitForPhoneStatus(formattedPhone, botUser); //todo
-                }
-                break;*/
-
                 boolean emailValid = appUserValidator.isEmailValid(text);
                 if (!emailValid) {
                     log.error("Некорректно указана электронная почта пользователя: {}", text);
