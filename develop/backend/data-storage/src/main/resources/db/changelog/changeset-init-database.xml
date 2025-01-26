@@ -59,7 +59,7 @@
 
             <column name="statement_status" type="character varying(30)"/>
 
-            <column name="creation_date" type="timestamp without time zone" defaultValue="NOW()" />
+            <column name="creation_date" type="timestamp without time zone" defaultValue="NOW()"/>
 
             <column name="changed_date" type="TIMESTAMP " defaultValue="NOW()"/>
         </createTable>

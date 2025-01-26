@@ -23,4 +23,6 @@ public interface DataStorageClient {
     void updateStatementStatus(UpdateStatementDto statementDto) throws Exception;
 
     StatementFullDto getCompleteStatementById(Integer id) throws Exception;
+
+    List<StatementFullDto> getCompleteStatements();
 }

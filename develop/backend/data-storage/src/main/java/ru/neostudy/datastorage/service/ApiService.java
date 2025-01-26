@@ -17,6 +17,7 @@ import ru.neostudy.datastorage.enums.StatementStatus;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,27 +112,30 @@ public class ApiService {
 
     public StatementFullDto getStatementById(int id) {
         Statement statementById = statementService.getStatementById(id);
-        Optional<User> user = userService.getUserById(statementById.getUser().getUserId());
-        Course courseById = courseService.getCourseById(statementById.getCourse().getCourseId());
+        return constractStatementFullDto(statementById);
 
-        if (user.isEmpty()) {
-            return null;
+    }
+
+    public List<StatementFullDto> getCompleteStatements() {
+        List<Statement> statements = getStatements();
+        List<StatementFullDto> statementFullDtos = new ArrayList<>();
+        for (int i = 0; i < statements.size(); i++) {
+            constractStatementFullDto(statements.get(i));
         }
+        return statementFullDtos;
+    }
+
+    private StatementFullDto constractStatementFullDto(Statement statement) {
         return StatementFullDto.builder()
-                .statementId(statementById.getStatementId())
-                .course(courseById)
-                .statementStatus(statementById.getStatementStatus())
-                .changedDate(statementById.getChangedDate())
-                .creationDate(statementById.getCreationDate())
-                .userId(statementById.getUser().getUserId())
-                .telegramId(user.get().getTelegramId())
-                .user(user.get())
-                .firstName(user.get().getFirstName())
-                .lastName(user.get().getLastName())
-                .city(user.get().getCity())
-                .email(user.get().getEmail())
-                .phoneNumber(user.get().getPhoneNumber())
-                .role(user.get().getRole())
+                .statementId(statement.getStatementId())
+                .course(statement.getCourse().getCourseName())
+                .statementStatus(statement.getStatementStatus())
+                .creationDate(statement.getCreationDate())
+                .firstName(statement.getUser().getFirstName())
+                .lastName(statement.getUser().getLastName())
+                .city(statement.getUser().getCity())
+                .email(statement.getUser().getEmail())
+                .phoneNumber(statement.getUser().getPhoneNumber())
                 .build();
     }
 }

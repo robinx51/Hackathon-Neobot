@@ -114,5 +114,18 @@ public class DataStorageClientImpl implements DataStorageClient {
                 .bodyToMono(StatementFullDto.class)
                 .block();
     }
+
+    @Override
+    public List<StatementFullDto> getCompleteStatements() {
+        log.debug("Вызов метода getCompleteStatements");
+        return webClient.get()
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetCompleteStatements()))
+                .retrieve()
+                .onStatus(HttpStatusCode::isError,
+                        ClientResponse::createException)
+                .bodyToMono(new ParameterizedTypeReference<List<StatementFullDto>>() {
+                })
+                .block();
+    }
 }
 

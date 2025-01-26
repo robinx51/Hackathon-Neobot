@@ -1343,63 +1343,381 @@ java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.ap
 2025-01-26T05:49:58.769+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 1492839348
 2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение пользователя с id 1
 2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kir@gmail.com и telegramId 1492839348
-2025-01-26T09:52:25.354+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 18348 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
-2025-01-26T09:52:25.356+03:00 DEBUG 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-26T09:52:25.357+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-01-26T09:52:25.405+03:00  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-01-26T09:52:25.405+03:00  INFO 18348 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-01-26T09:52:26.540+03:00  INFO 18348 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
-2025-01-26T09:52:26.553+03:00  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-01-26T09:52:26.553+03:00  INFO 18348 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-26T09:52:26.613+03:00  INFO 18348 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-01-26T09:52:26.613+03:00  INFO 18348 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1208 ms
-2025-01-26T09:52:27.015+03:00 DEBUG 18348 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
-2025-01-26T09:52:27.015+03:00 DEBUG 18348 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
-2025-01-26T09:52:27.733+03:00 DEBUG 18348 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
-2025-01-26T09:52:28.469+03:00  WARN 18348 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2025-01-26T09:52:28.493+03:00  INFO 18348 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
-2025-01-26T09:52:28.505+03:00  INFO 18348 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.602 seconds (process running for 4.302)
-2025-01-26T09:52:47.825+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
-2025-01-26T09:52:47.826+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
-2025-01-26T09:52:47.827+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
-2025-01-26T09:52:47.829+03:00 DEBUG 18348 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
-2025-01-26T09:53:08.509+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
-2025-01-26T09:53:09.518+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : users = null
-2025-01-26T09:53:09.518+03:00 DEBUG 18348 --- [scheduling-1] r.n.a.client.DataStorageClientImpl       : Вызов метода getUsersWithoutCourse
-2025-01-26T09:53:09.594+03:00  INFO 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : Период сбора заявок открыт
-2025-01-26T09:53:48.516+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
-2025-01-26T09:53:48.517+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
-2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
-2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
-2025-01-26T11:34:44.884+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 22692 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
-2025-01-26T11:34:44.886+03:00 DEBUG 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-26T11:34:44.886+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-01-26T11:34:44.929+03:00  INFO 22692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-01-26T11:34:44.929+03:00  INFO 22692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-01-26T11:34:45.987+03:00  INFO 22692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
-2025-01-26T11:34:46.001+03:00  INFO 22692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-01-26T11:34:46.001+03:00  INFO 22692 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-26T11:34:46.057+03:00  INFO 22692 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-01-26T11:34:46.058+03:00  INFO 22692 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1128 ms
-2025-01-26T11:34:46.475+03:00 DEBUG 22692 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
-2025-01-26T11:34:46.475+03:00 DEBUG 22692 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
-2025-01-26T11:34:46.823+03:00 ERROR 22692 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
-2025-01-26T11:34:47.585+03:00  WARN 22692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2025-01-26T11:34:47.606+03:00  INFO 22692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
-2025-01-26T11:34:47.614+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.143 seconds (process running for 3.801)
-2025-01-26T11:35:02.052+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 7616 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
-2025-01-26T11:35:02.053+03:00 DEBUG 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-26T11:35:02.054+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
-2025-01-26T11:35:02.101+03:00  INFO 7616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2025-01-26T11:35:02.102+03:00  INFO 7616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2025-01-26T11:35:03.343+03:00  INFO 7616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
-2025-01-26T11:35:03.360+03:00  INFO 7616 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-01-26T11:35:03.360+03:00  INFO 7616 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-26T11:35:03.433+03:00  INFO 7616 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-01-26T11:35:03.433+03:00  INFO 7616 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1331 ms
-2025-01-26T11:35:03.916+03:00 DEBUG 7616 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
-2025-01-26T11:35:03.917+03:00 DEBUG 7616 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
-2025-01-26T11:35:04.634+03:00 DEBUG 7616 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
-2025-01-26T11:35:05.316+03:00  WARN 7616 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-2025-01-26T11:35:05.336+03:00  INFO 7616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
-2025-01-26T11:35:05.344+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.737 seconds (process running for 4.509)
+2025-01-26T09:33:43.303+01:00  INFO 15856 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 15856 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:33:43.304+01:00 DEBUG 15856 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:33:43.305+01:00  INFO 15856 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:33:43.358+01:00  INFO 15856 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:33:43.358+01:00  INFO 15856 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:33:44.507+01:00  INFO 15856 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:33:44.622+01:00  INFO 15856 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1263 ms
+2025-01-26T09:33:44.818+01:00  WARN 15856 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminController' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\AdminController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'adminServiceImpl' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Unsatisfied dependency expressed through constructor parameter 4: Error creating bean with name 'adminServiceImpl': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2025-01-26T09:34:34.336+01:00  INFO 13628 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 13628 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:34:34.337+01:00 DEBUG 13628 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:34:34.338+01:00  INFO 13628 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:34:34.380+01:00  INFO 13628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:34:34.380+01:00  INFO 13628 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:34:35.302+01:00  INFO 13628 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:34:35.330+01:00  INFO 13628 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:34:35.331+01:00  INFO 13628 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:34:35.392+01:00  INFO 13628 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:34:35.392+01:00  INFO 13628 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1012 ms
+2025-01-26T09:34:35.570+01:00  WARN 13628 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminController' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\AdminController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'adminServiceImpl' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Unsatisfied dependency expressed through constructor parameter 4: Error creating bean with name 'adminServiceImpl': Requested bean is currently in creation: Is there an unresolvable circular reference?
+2025-01-26T09:34:35.571+01:00  INFO 13628 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-01-26T09:34:35.580+01:00  INFO 13628 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-26T09:34:35.594+01:00 ERROR 13628 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The dependencies of some of the beans in the application context form a cycle:
+
+   adminController defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\AdminController.class]
+┌─────┐
+|  adminServiceImpl defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]
+↑     ↓
+|  updateService defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]
+└─────┘
+
+
+Action:
+
+Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
+
+2025-01-26T09:40:56.164+01:00  INFO 18600 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 18600 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:40:56.165+01:00 DEBUG 18600 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:40:56.165+01:00  INFO 18600 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:40:56.197+01:00  INFO 18600 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:40:56.197+01:00  INFO 18600 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:40:56.963+01:00  INFO 18600 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:40:56.975+01:00  INFO 18600 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:40:56.975+01:00  INFO 18600 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:40:57.010+01:00  INFO 18600 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:40:57.010+01:00  INFO 18600 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 813 ms
+2025-01-26T09:40:57.205+01:00  WARN 18600 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminController' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\AdminController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'adminServiceImpl' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Could not create recurring task for @Scheduled method 'checkPeriod': Only no-arg methods may be annotated with @Scheduled
+2025-01-26T09:40:57.207+01:00  INFO 18600 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-01-26T09:40:57.216+01:00  INFO 18600 --- [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-26T09:40:57.229+01:00 ERROR 18600 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminController' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\AdminController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'adminServiceImpl' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Could not create recurring task for @Scheduled method 'checkPeriod': Only no-arg methods may be annotated with @Scheduled
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at ru.neostudy.apiservice.ApiServiceApplication.main(ApiServiceApplication.java:11) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.5.jar:3.3.5]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'adminServiceImpl' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\admin_api\service\AdminServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Could not create recurring task for @Scheduled method 'checkPeriod': Only no-arg methods may be annotated with @Scheduled
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 22 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'updateService' defined in file [C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes\ru\neostudy\apiservice\bot\UpdateService.class]: Could not create recurring task for @Scheduled method 'checkPeriod': Only no-arg methods may be annotated with @Scheduled
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 36 common frames omitted
+Caused by: java.lang.IllegalStateException: Could not create recurring task for @Scheduled method 'checkPeriod': Only no-arg methods may be annotated with @Scheduled
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduledSync(ScheduledAnnotationBeanPostProcessor.java:360) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.processScheduled(ScheduledAnnotationBeanPostProcessor.java:341) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(ScheduledAnnotationBeanPostProcessor.java:306) ~[spring-context-6.1.14.jar:6.1.14]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(ScheduledAnnotationBeanPostProcessor.java:306) ~[spring-context-6.1.14.jar:6.1.14]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:986) ~[na:na]
+	at org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor.postProcessAfterInitialization(ScheduledAnnotationBeanPostProcessor.java:305) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 46 common frames omitted
+
+2025-01-26T09:44:27.525+01:00  INFO 24936 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 24936 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:44:27.526+01:00 DEBUG 24936 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:44:27.528+01:00  INFO 24936 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:44:27.566+01:00  INFO 24936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:44:27.567+01:00  INFO 24936 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:44:28.400+01:00  INFO 24936 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:44:28.417+01:00  INFO 24936 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:44:28.418+01:00  INFO 24936 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:44:28.463+01:00  INFO 24936 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:44:28.464+01:00  INFO 24936 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 897 ms
+2025-01-26T09:44:28.872+01:00 DEBUG 24936 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:44:28.873+01:00 DEBUG 24936 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:44:29.185+01:00 ERROR 24936 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T09:44:29.883+01:00  WARN 24936 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:44:29.901+01:00  INFO 24936 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T09:44:29.908+01:00  INFO 24936 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.738 seconds (process running for 3.236)
+2025-01-26T09:44:29.911+01:00 ERROR 24936 --- [scheduling-1] o.s.s.s.TaskUtils$LoggingErrorHandler    : Unexpected error occurred in scheduled task
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.ActivePeriod.getStartDate()" because "this.activePeriod" is null
+	at ru.neostudy.apiservice.bot.UpdateService.checkPeriod(UpdateService.java:58) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.runInternal(ScheduledMethodRunnable.java:130) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.lambda$run$2(ScheduledMethodRunnable.java:124) ~[spring-context-6.1.14.jar:6.1.14]
+	at io.micrometer.observation.Observation.observe(Observation.java:499) ~[micrometer-observation-1.13.6.jar:1.13.6]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:124) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) ~[spring-context-6.1.14.jar:6.1.14]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[na:na]
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2025-01-26T09:44:33.457+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:37.641+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:41.948+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:46.239+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:50.445+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:54.637+01:00 ERROR 24936 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:44:59.183+01:00  INFO 3968 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 3968 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:44:59.185+01:00 DEBUG 3968 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:44:59.185+01:00  INFO 3968 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:44:59.224+01:00  INFO 3968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:44:59.224+01:00  INFO 3968 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:45:00.051+01:00  INFO 3968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:45:00.061+01:00  INFO 3968 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:45:00.061+01:00  INFO 3968 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:45:00.096+01:00  INFO 3968 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:45:00.096+01:00  INFO 3968 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 871 ms
+2025-01-26T09:45:00.444+01:00 DEBUG 3968 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:45:00.445+01:00 DEBUG 3968 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:45:00.764+01:00 ERROR 3968 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T09:45:01.485+01:00  WARN 3968 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:45:01.508+01:00  INFO 3968 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T09:45:01.516+01:00  INFO 3968 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.702 seconds (process running for 3.274)
+2025-01-26T09:45:05.190+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:45:09.384+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:45:13.676+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:45:17.984+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:45:19.007+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 422401357
+2025-01-26T09:45:22.236+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:45:26.381+01:00 ERROR 3968 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:46:11.200+01:00  INFO 10804 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 10804 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:46:11.201+01:00 DEBUG 10804 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:46:11.202+01:00  INFO 10804 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:46:11.245+01:00  INFO 10804 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:46:11.245+01:00  INFO 10804 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:46:12.311+01:00  INFO 10804 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:46:12.320+01:00  INFO 10804 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:46:12.320+01:00  INFO 10804 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:46:12.358+01:00  INFO 10804 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:46:12.359+01:00  INFO 10804 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1112 ms
+2025-01-26T09:46:12.757+01:00 DEBUG 10804 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:46:12.758+01:00 DEBUG 10804 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:46:13.034+01:00 ERROR 10804 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T09:46:13.741+01:00  WARN 10804 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:46:13.760+01:00  INFO 10804 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T09:46:13.768+01:00  INFO 10804 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.907 seconds (process running for 3.434)
+2025-01-26T09:46:17.558+01:00 ERROR 10804 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:46:18.583+01:00 DEBUG 10804 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T09:46:18.588+01:00 DEBUG 10804 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 1492839348
+2025-01-26T09:46:18.589+01:00 DEBUG 10804 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 1492839348
+2025-01-26T09:46:18.590+01:00 DEBUG 10804 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 1492839348 сохранен
+2025-01-26T09:46:21.787+01:00 ERROR 10804 --- [hakatonTG_bot Telegram Connection] o.t.t.u.DefaultBotSession                : Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException: Error executing org.telegram.telegrambots.meta.api.methods.updates.GetUpdates query: [409] Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseInternal(PartialBotApiMethod.java:54) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod.deserializeResponseArray(PartialBotApiMethod.java:39) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.meta.api.methods.updates.GetUpdates.deserializeResponse(GetUpdates.java:86) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.getUpdatesFromServer(DefaultBotSession.java:258) ~[telegrambots-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$ReaderThread.run(DefaultBotSession.java:188) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T09:46:51.856+01:00  INFO 17736 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 17736 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:46:51.857+01:00 DEBUG 17736 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:46:51.858+01:00  INFO 17736 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:46:51.890+01:00  INFO 17736 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:46:51.891+01:00  INFO 17736 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:46:52.915+01:00  INFO 17736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:46:52.925+01:00  INFO 17736 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:46:52.926+01:00  INFO 17736 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:46:52.968+01:00  INFO 17736 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:46:52.968+01:00  INFO 17736 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1077 ms
+2025-01-26T09:46:53.369+01:00 DEBUG 17736 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:46:53.369+01:00 DEBUG 17736 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:46:53.695+01:00 ERROR 17736 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T09:46:54.384+01:00  WARN 17736 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:46:54.422+01:00  INFO 17736 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T09:46:54.438+01:00  INFO 17736 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.89 seconds (process running for 3.392)
+2025-01-26T09:46:57.263+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T09:46:57.264+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 1492839348
+2025-01-26T09:46:57.265+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 1492839348
+2025-01-26T09:46:57.265+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 1492839348 сохранен
+2025-01-26T09:46:58.611+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/submit_now]
+2025-01-26T09:46:58.612+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /submit_now, telegramId = 1492839348
+2025-01-26T09:47:12.705+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79315896410
+2025-01-26T09:47:18.184+01:00 DEBUG 17736 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email kirill551@yandex.ru
+2025-01-26T09:47:18.188+01:00 ERROR 17736 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T09:48:09.057+01:00  INFO 4032 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 4032 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T09:48:09.058+01:00 DEBUG 4032 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T09:48:09.058+01:00  INFO 4032 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T09:48:09.093+01:00  INFO 4032 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T09:48:09.093+01:00  INFO 4032 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T09:48:09.939+01:00  INFO 4032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T09:48:09.948+01:00  INFO 4032 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T09:48:09.948+01:00  INFO 4032 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T09:48:09.984+01:00  INFO 4032 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T09:48:09.985+01:00  INFO 4032 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 890 ms
+2025-01-26T09:48:10.389+01:00 DEBUG 4032 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T09:48:10.390+01:00 DEBUG 4032 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T09:48:10.997+01:00 DEBUG 4032 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T09:48:11.718+01:00  WARN 4032 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T09:48:11.740+01:00  INFO 4032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T09:48:11.748+01:00  INFO 4032 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.019 seconds (process running for 3.512)
+2025-01-26T09:48:15.335+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T09:48:15.335+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 1492839348
+2025-01-26T09:48:15.336+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 1492839348
+2025-01-26T09:48:15.337+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 1492839348 сохранен
+2025-01-26T09:48:16.296+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/submit_now]
+2025-01-26T09:48:16.297+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /submit_now, telegramId = 1492839348
+2025-01-26T09:48:26.917+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79315896410
+2025-01-26T09:48:31.217+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email kirill551@yandex.ru
+2025-01-26T09:48:31.370+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 1492839348
+2025-01-26T09:48:31.397+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kirill551@yandex.ru и telegramId 1492839348
+2025-01-26T09:48:31.672+01:00 DEBUG 4032 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email kirill551@yandex.ru и telegramId 1492839348 сохранен
