@@ -1,33 +1,59 @@
-image: docker:27.0.3-dind  # Указываем базовый образ
-
-services:
-  - docker:27.0.3-dind  # Указываем сервис Docker-in-Docker
-
-variables:
-  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-  HELM_VERSION: "v3.17.0"  # Указываем версию Helm
-
-before_script:
-  - apk update && apk add --no-cache curl bash  # Устанавливаем curl и bash
-  - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl  # Загрузка kubectl
-  - chmod +x ./kubectl  # Даем права на выполнение
-  - mv ./kubectl /usr/local/bin/kubectl  # Перемещаем kubectl в /usr/local/bin
-  - kubectl config use-context $KUBECONFIG_CONTEXT  # Устанавливаем контекст
-  - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE  # Устанавливаем namespace
-
 stages:
+  - build
+  - kaniko-build
   - deploy
 
-deploy_grafana:
-  stage: deploy
-  script:
-    - helm repo add grafana https://grafana.github.io/helm-charts  # Добавляем репозиторий Grafana
-    - helm repo update  # Обновляем репозитории
-    - helm upgrade --install grafana grafana/grafana --namespace $KUBERNETES_NAMESPACE --set adminPassword=admin --set serviceAccount.name=cnrprod1737640949-team-83206 --set metadata.labels.app=k8s-grafana --set metadata.labels.release=grafana --set metadata.labels.environment=production  # Устанавливаем Grafana с метками
+variables:
+  DOCKER_REGISTRY: "git.codenrock.com:5050"
+  IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
+  IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
+
+build-telegram-bot-service1:
+  stage: build
+  image: maven:3.9.4-eclipse-temurin-21
   tags:
-    - build
     - runner
+    - build
     - k8s
+  only:
+    - develop
+  script:
+    - cd develop/backend/data-storage
+    - mvn clean package
+    - ls -la target
+  artifacts:
+    paths:
+      - develop/backend/data-storage/target/*.jar
+    expire_in: 1 week
+
+build-telegram-bot-service:
+  stage: kaniko-build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.19.0-debug
+    entrypoint: [""]
+  tags:
+    - runner
+    - build
+    - k8s
+  script:
+  - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
+  artifacts:
+    paths:
+      - develop/backend/data-storage/target/*.jar
+    expire_in: 1 week
+
+deploy-telegram-bot-service:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  tags:
+    - runner
+    - build
+    - k8s
+  only:
+    - develop
+  script:
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig
+    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
+    - cat kubeconfig
+    - export KUBECONFIG=$(pwd)/kubeconfig
+    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206
