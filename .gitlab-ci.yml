@@ -1,49 +1,24 @@
-image: docker:27.0.3  # Базовый образ для выполнения CI/CD
-
-services:
-  - docker:27.0.3-dind  # Docker-in-Docker для сборки образов
+image: gcr.io/kaniko-project/executor:latest  # Kaniko image
 
 variables:
-  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-  IMAGE_NAME: "registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:latest"  # Имя Docker-образа
+  DOCKER_CONFIG: /kaniko/.docker/  # Директория для конфигурации Docker
+  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG  # Имя и тег образа, создаваемого Kaniko
 
 stages:
   - build
-  - deploy
 
-build_app:
+build_with_kaniko:
   stage: build
   script:
-    - echo "Переход в директорию с Dockerfile..."
-    - cd develop/backend/data-storage
-    - echo "Сборка Docker-образа..."
-    - docker build -t $IMAGE_NAME .
-    - echo "Авторизация в контейнерном реестре..."
-    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - echo "Пуш Docker-образа в реестр..."
-    - docker push $IMAGE_NAME
+    - echo "Настройка Docker аутентификации..."
+      # Создаем конфиг для аутентификации в реестре Docker
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - echo "Сборка Docker-образа с помощью Kaniko..."
+      # Kaniko выполняет сборку образа из указанного контекста и Dockerfile
+    - /kaniko/executor --context $CI_PROJECT_DIR/develop/backend/data-storage \
+                       --dockerfile $CI_PROJECT_DIR/develop/backend/data-storage/Dockerfile \
+                       --destination $IMAGE_NAME
+    - echo "Docker-образ успешно создан и загружен: $IMAGE_NAME"
   tags:
-    - build
-    - runner
-    - k8s
-
-deploy_app:
-  stage: deploy
-  image: alpine:3.18  # Используем легковесный образ для работы с Helm и kubectl
-  before_script:
-    - apk add --no-cache bash curl
-    - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
-    - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl  # Установка kubectl
-    - chmod +x ./kubectl
-    - mv ./kubectl /usr/local/bin/kubectl
-    - kubectl config use-context $KUBECONFIG_CONTEXT
-    - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE
-  script:
-    - echo "Обновляем Helm-чарт..."
-    - helm upgrade --install app ./helm-chart --set image.repository=$CI_REGISTRY_IMAGE --set image.tag=latest --namespace=$KUBERNETES_NAMESPACE
-  tags:
-    - build
-    - runner
-    - k8s
+    - build  # Указываем подходящий тег для GitLab Runner
+    - k8s    # Тег для Kubernetes Runner
