@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.neostudy.apiservice.model.StatementFullDto;
 import ru.neostudy.apiservice.model.UpdateStatementDto;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -38,5 +37,12 @@ public class AdminController {
             description = "Просмотр детальной информации о заявке с данными пользователя и направлением")
     public StatementFullDto getCompleteStatementById(@PathVariable("id") Integer id) throws Exception {
         return adminService.getCompleteStatementById(id);
+    }
+
+    @GetMapping("/statements")
+    @Tag(name = "Просмотр списка заявок",
+            description = "Просмотр списка заявок с фильтрацией и сортировкой")
+    public List<StatementFullDto> getCompleteStatements() throws Exception {
+        return adminService.getCompleteStatements();
     }
 }

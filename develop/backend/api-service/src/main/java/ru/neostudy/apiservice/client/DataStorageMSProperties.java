@@ -18,4 +18,6 @@ public class DataStorageMSProperties {
     public String getUsersWithoutCourseUri;
     private String updateStatementUri;
     private String getStatementFullInfoUri;
+    private String getCompleteStatements;
+
 }

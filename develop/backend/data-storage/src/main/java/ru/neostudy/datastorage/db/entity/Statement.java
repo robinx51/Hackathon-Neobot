@@ -23,11 +23,11 @@ public class Statement implements Serializable {
     @Column(name = "statement_id", columnDefinition = "int", updatable = false, nullable = false)
     private int statementId;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 

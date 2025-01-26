@@ -64,6 +64,12 @@ public class BotController {
         return apiService.getStatements();
     }
 
+    @GetMapping("/data-storage/all_getStatements")
+    @Tag(name = "Получение всех заявок")
+    public List<StatementFullDto> getCompleteStatements() {
+        return apiService.getCompleteStatements();
+    }
+
     @PutMapping("/data-storage/updateStatementStatus")
     @Tag(name = "Обновление статуса заявки",
             description = "Обновление статуса заявки по statement_id" +

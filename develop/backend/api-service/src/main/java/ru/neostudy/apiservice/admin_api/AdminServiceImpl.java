@@ -8,6 +8,7 @@ import ru.neostudy.apiservice.model.StatementFullDto;
 import ru.neostudy.apiservice.model.UpdateStatementDto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -33,6 +34,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public StatementFullDto getCompleteStatementById(Integer id) throws Exception {
         return dataStorageClient.getCompleteStatementById(id);
+    }
+
+    @Override
+    public List<StatementFullDto> getCompleteStatements() {
+        return dataStorageClient.getCompleteStatements();
     }
 
     @Override

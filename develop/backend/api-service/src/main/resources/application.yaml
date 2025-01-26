@@ -21,5 +21,6 @@ storage:
   get-users-without-course-uri: /data-storage/users/without_course
   update-statement-uri: /data-storage/updateStatementStatus
   get-statement-full-info-uri: /statement/{id}
+  get-complete-statements: /data-storage/all_getStatements
 
 
