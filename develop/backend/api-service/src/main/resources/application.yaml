@@ -13,7 +13,7 @@ logging:
     path: logs
 
 storage:
-  serverUrl: http://localhost:8080
+  serverUrl: http://localhost:8081
   save-user-uri: /data-storage/user
   get-user-by-email-uri: /data-storage/user_email/{email}
   get-user-by-telegram-uri: /data-storage/user/{telegramId}

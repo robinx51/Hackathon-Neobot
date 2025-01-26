@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.neostudy.apiservice.admin_api.service.AdminService;
 import ru.neostudy.apiservice.bot.enums.ServiceCommand;
 import ru.neostudy.apiservice.bot.enums.UserAction;
 import ru.neostudy.apiservice.bot.enums.UserState;
 import ru.neostudy.apiservice.bot.utils.MessageUtils;
 import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
+import ru.neostudy.apiservice.model.ActivePeriod;
 import ru.neostudy.apiservice.model.BotUser;
 import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
@@ -20,6 +20,7 @@ import ru.neostudy.apiservice.model.enums.Role;
 import ru.neostudy.apiservice.model.mapper.UserDtoMapper;
 import ru.neostudy.apiservice.model.validation.AppUserValidator;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,44 +38,38 @@ public class UpdateService {
     private final UserDtoMapper userDtoMapper;
     private final DataStorageClient dataStorageClient;
     private final Map<String, Course> courses = new HashMap<>();
-    private final AdminService adminService;
     private static boolean isActivePeriod = false;
     private static boolean wasNotified = false;
     private final ConcurrentMap<Long, BotUser> users = new ConcurrentHashMap<>();
+    private volatile ActivePeriod activePeriod;
 
     public void registerBot(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
         setCourses();
     }
 
-    @Scheduled(fixedRate = 40000, initialDelay = 40000) //todo
-    private void test() {
-        log.debug("test - набор открыт");
-        isActivePeriod = true;
-        wasNotified = false;
+    public synchronized void setActivePeriod(ActivePeriod activePeriod) {
+        this.activePeriod = activePeriod;
     }
 
-    @Scheduled(fixedRate = 40000, initialDelay = 80000) //todo
-    private void testMethod() {
-        log.debug("testMethod - набор закрыт");
-        isActivePeriod = false;
-        wasNotified = false;
-    }
-
-    @Scheduled(fixedRate = 41000) //Проверяем каждую минуту в целях наглядности
-    private void checkPeriod() {
-        //boolean checkIfActivePeriod = adminService.checkIfActivePeriod(LocalDate.now());
-        //if (checkIfActivePeriod && !wasNotified) {
-        if (isActivePeriod && !wasNotified) {
+    @Scheduled(fixedRate = 259200000)
+    public void checkPeriod() {
+        if (activePeriod == null) {
+            return;
+        }
+        LocalDate now = LocalDate.now();
+        boolean checkIfActivePeriod = now.isEqual(activePeriod.getStartDate()) || now.isEqual(activePeriod.getEndDate())
+                || (now.isAfter(activePeriod.getStartDate()) && now.isBefore(activePeriod.getEndDate()));
+        if (checkIfActivePeriod && !wasNotified) {
             sendNotifications();
             wasNotified = true;
             log.info("Период сбора заявок открыт");
         }
-/*        if (!checkIfActivePeriod && isActivePeriod) {
+        if (!checkIfActivePeriod && isActivePeriod) {
             wasNotified = false;
             log.info("Период сбора заявок завершен");
         }
-        isActivePeriod = checkIfActivePeriod;*/
+        isActivePeriod = checkIfActivePeriod;
     }
 
     private void sendNotifications() {
@@ -207,21 +202,9 @@ public class UpdateService {
                     return "Пожалуйста, укажите город проживания, используя только буквы русского алфавита";
                 } else {
                     botUser.setCity(text);
-                    botUser.setState(UserState.WAIT_FOR_EMAIL);
-                    users.put(telegramId, botUser);
-                    output = "Введите ваш адрес электронной почты";
-                }
-                break;
-            case WAIT_FOR_EMAIL:
-                boolean emailValid = appUserValidator.isEmailValid(text);
-                if (!emailValid) {
-                    log.error("Некорректно указана электронная почта пользователя: {}", text);
-                    return "Пожалуйста, укажите существующую электронную почту";
-                } else {
-                    botUser.setEmail(text);
                     botUser.setState(UserState.WAIT_FOR_PHONE);
                     users.put(telegramId, botUser);
-                    output = "Введите ваш номер телефона в формате +7xxxxxxxxxx";
+                    output = "Пожалуйста, укажите номер телефона в формате +7xxxxxxxxxx";
                 }
                 break;
             case WAIT_FOR_PHONE:
@@ -231,7 +214,32 @@ public class UpdateService {
                     log.error("Некорректно указан номер телефона пользователя: {}", formattedPhone);
                     return "Пожалуйста, укажите номер телефона в формате +7xxxxxxxxxx";
                 } else {
-                    output = processWaitForPhoneStatus(formattedPhone, botUser);
+                    botUser.setPhone(text);
+                    botUser.setState(UserState.WAIT_FOR_EMAIL);
+                    users.put(telegramId, botUser);
+                    output = "Введите ваш адрес электронной почты";
+                }
+                break;
+            case WAIT_FOR_EMAIL:
+/*                String formattedPhone = appUserValidator.formatPhone(text);
+                boolean phoneValid = appUserValidator.isPhoneValid(formattedPhone);
+                if (!phoneValid) {
+                    log.error("Некорректно указан номер телефона пользователя: {}", formattedPhone);
+                    return "Пожалуйста, укажите номер телефона в формате +7xxxxxxxxxx";
+                } else {
+                    output = processWaitForPhoneStatus(formattedPhone, botUser); //todo
+                }
+                break;*/
+
+                boolean emailValid = appUserValidator.isEmailValid(text);
+                if (!emailValid) {
+                    log.error("Некорректно указана электронная почта пользователя: {}", text);
+                    return "Пожалуйста, укажите существующую электронную почту";
+                } else {
+                    botUser.setEmail(text);
+                    botUser.setState(UserState.WAIT_FOR_PHONE);
+                    users.put(telegramId, botUser);
+                    output = processWaitForEmailStatus(botUser);
                 }
                 break;
             case WAIT_FOR_COURSE_REQUEST:
@@ -263,8 +271,7 @@ public class UpdateService {
         return getCourse();
     }
 
-    private String processWaitForPhoneStatus(String phone, BotUser botUser) {
-        botUser.setPhone(phone);
+    private String processWaitForEmailStatus(BotUser botUser) {
         botUser.setState(UserState.COMPLETE);
         botUser.setRole(Role.CANDIDATE);
         users.put(botUser.getTelegramUserId(), botUser);
@@ -309,7 +316,8 @@ public class UpdateService {
         return output;
     }
 
-    private String completeSubmitRequestProcess(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
+    private String completeSubmitRequestProcess(BotUser
+                                                        botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
         String output = "";
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             UserDto userDto;
@@ -382,7 +390,8 @@ public class UpdateService {
         return output;
     }
 
-    private String findOrSaveUser(BotUser botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
+    private String findOrSaveUser(BotUser
+                                          botUser, Optional<User> registeredUserByEmail, Optional<User> registeredUserByTgId) {
         String output = "";
         if (registeredUserByEmail.isEmpty() && registeredUserByTgId.isEmpty()) {
             try {

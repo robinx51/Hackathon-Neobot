@@ -11,8 +11,6 @@ import java.util.List;
 public interface AdminService {
     void setActivePeriod(@Valid ActivePeriod activePeriod);
 
-    boolean checkIfActivePeriod(LocalDate localDate);
-
     void updateStatementStatus(UpdateStatementDto statementDto) throws Exception;
 
     StatementFullDto getCompleteStatementById(Integer id) throws Exception;

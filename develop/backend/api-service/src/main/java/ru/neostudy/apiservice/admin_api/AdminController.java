@@ -42,8 +42,8 @@ public class AdminController {
     }
 
     @GetMapping("/statements")
-    @Tag(name = "Просмотр списка заявок",
-            description = "Просмотр списка заявок с фильтрацией и сортировкой")
+    @Tag(name = "Просмотр списка всех заявок",
+            description = "Просмотр списка всех заявок с детальной информацией о заявке с данными пользователя и направлением")
     public List<StatementFullDto> getCompleteStatements() throws Exception {
         return adminService.getCompleteStatements();
     }
