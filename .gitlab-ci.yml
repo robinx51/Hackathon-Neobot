@@ -7,6 +7,8 @@ variables:
   DOCKER_REGISTRY: "git.codenrock.com:5050"
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640815-team-83210/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
   IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
+  KUBECONFIG: "/builds/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/.kube/config"
+  KUBECONFIG_CONTEXT: "cnrprod1737640815-team-83210"
 
 build-telegram-bot-service1:
   stage: build
@@ -18,12 +20,12 @@ build-telegram-bot-service1:
   only:
     - develop
   script:
-    - cd develop/backend/data-storage  # Перехожу в нужную директорию
+    - cd develop/backend/data-storage
     - mvn clean package
     - ls -la target
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar  # Указываю правильный путь для артефактов
+      - develop/backend/data-storage/target/*.jar
     expire_in: 1 week
 
 build-telegram-bot-service:
@@ -52,8 +54,9 @@ deploy-telegram-bot-service:
   only:
     - develop
   script:
-    - echo "$KUBECONFIG_CONTENT" > kubeconfig
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig  # Сохранение kubeconfig
     - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
     - cat kubeconfig
-    - export KUBECONFIG=$(pwd)/kubeconfig
+    - export KUBECONFIG=$(pwd)/kubeconfig  # Используем kubeconfig для kubectl
+    - kubectl config use-context $KUBECONFIG_CONTEXT  # Используем ваш контекст
     - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640815-team-83210
