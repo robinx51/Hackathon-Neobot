@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.neostudy.datastorage.db.entity.Course;
 import ru.neostudy.datastorage.db.entity.Statement;
 import ru.neostudy.datastorage.db.entity.User;
+import ru.neostudy.datastorage.dto.StatementFullDto;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.service.ApiService;
@@ -27,7 +28,7 @@ public class BotController {
 
     @PostMapping("/data-storage/user")
     @Tag(name = "Сохранение пользователя")
-    public UserDto saveUser(@RequestBody UserDto request) {
+    public UserDto saveUser(@RequestBody UserDto request) throws IOException {
         log.debug("Вызов метода user для пользователя с id - {}, email - {}, " +
                 "telegramId - {}", request.getId(), request.getEmail(), request.getTelegramUserId());
         return apiService.saveUser(request);
@@ -60,7 +61,7 @@ public class BotController {
     @GetMapping("/data-storage/getStatements")
     @Tag(name = "Получение всех заявок пользователя")
     public List<Statement> getStatementsForUser() {
-        return neoCodeBotService.getStatements();
+        return apiService.getStatements();
     }
 
     @PutMapping("/data-storage/updateStatementStatus")
@@ -78,6 +79,13 @@ public class BotController {
     public List<Course> getCourses() {
         log.debug("Вызов метода getCourses");
         return apiService.getCourses();
+    }
+
+    @GetMapping("/statement/{id}")
+    @Tag(name = "Просмотр детальной информации о заявке",
+            description = "Просмотр детальной информации о заявке с данными пользователя и направлением")
+    public StatementFullDto getCompleteStatementById(@PathVariable("id") Integer id) {
+        return apiService.getStatementById(id);
     }
 
     @PostMapping("/data-storage/insertCourse/{courseName}")

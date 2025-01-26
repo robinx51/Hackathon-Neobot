@@ -2504,3 +2504,1063 @@ org.postgresql.util.PSQLException: ОШИБКА: неоднозначная сс
 2025-01-26T01:50:27.764+01:00  INFO 15376 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-26T01:50:27.768+01:00  INFO 15376 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-01-26T01:50:27.777+01:00  INFO 15376 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T03:34:51.358+01:00  INFO 8036 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 8036 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T03:34:51.360+01:00  INFO 8036 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T03:34:51.395+01:00  INFO 8036 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T03:34:51.395+01:00  INFO 8036 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T03:34:51.806+01:00  INFO 8036 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T03:34:51.844+01:00  INFO 8036 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2025-01-26T03:34:52.802+01:00  INFO 8036 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T03:34:52.813+01:00  INFO 8036 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T03:34:52.813+01:00  INFO 8036 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T03:34:52.849+01:00  INFO 8036 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T03:34:52.850+01:00  INFO 8036 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1455 ms
+2025-01-26T03:34:52.875+01:00  INFO 8036 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T03:35:04.407+01:00  WARN 8036 --- [Hackathon] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+2025-01-26T03:35:04.414+01:00  INFO 8036 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-01-26T03:35:04.434+01:00  INFO 8036 --- [Hackathon] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-26T03:35:04.474+01:00 ERROR 8036 --- [Hackathon] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at ru.neostudy.datastorage.DataStorageApplication.main(DataStorageApplication.java:13) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.5.jar:3.3.5]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 13 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.boot.autoconfigure.liquibase.DataSourceClosingSpringLiquibase.afterPropertiesSet(DataSourceClosingSpringLiquibase.java:46) ~[spring-boot-autoconfigure-3.3.5.jar:3.3.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 20 common frames omitted
+Caused by: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:251) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 23 common frames omitted
+Caused by: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:358) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.Driver.makeConnection(Driver.java:446) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.springframework.jdbc.datasource.SimpleDriverDataSource.getConnectionFromDriver(SimpleDriverDataSource.java:144) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnectionFromDriver(AbstractDriverBasedDataSource.java:205) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnection(AbstractDriverBasedDataSource.java:169) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:246) ~[liquibase-core-4.27.0.jar:na]
+	... 29 common frames omitted
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:278) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099) ~[na:na]
+	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:162) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:129) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:114) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:74) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:467) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableSSL(ConnectionFactoryImpl.java:594) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:195) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262) ~[postgresql-42.7.2.jar:42.7.2]
+	... 37 common frames omitted
+
+2025-01-26T03:36:44.279+01:00  INFO 12320 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 12320 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T03:36:44.281+01:00  INFO 12320 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T03:36:44.316+01:00  INFO 12320 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T03:36:44.316+01:00  INFO 12320 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T03:36:44.737+01:00  INFO 12320 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T03:36:44.776+01:00  INFO 12320 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2025-01-26T03:36:45.358+01:00  INFO 12320 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T03:36:45.368+01:00  INFO 12320 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T03:36:45.368+01:00  INFO 12320 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T03:36:45.408+01:00  INFO 12320 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T03:36:45.408+01:00  INFO 12320 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1092 ms
+2025-01-26T03:36:45.435+01:00  INFO 12320 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T03:36:56.766+01:00  WARN 12320 --- [Hackathon] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+2025-01-26T03:36:56.771+01:00  INFO 12320 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-01-26T03:36:56.788+01:00  INFO 12320 --- [Hackathon] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-26T03:36:56.839+01:00 ERROR 12320 --- [Hackathon] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Failed to initialize dependency 'liquibase' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:326) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.14.jar:6.1.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.5.jar:3.3.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.5.jar:3.3.5]
+	at ru.neostudy.datastorage.DataStorageApplication.main(DataStorageApplication.java:13) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.3.5.jar:3.3.5]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 13 common frames omitted
+Caused by: liquibase.exception.UnexpectedLiquibaseException: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:259) ~[liquibase-core-4.27.0.jar:na]
+	at org.springframework.boot.autoconfigure.liquibase.DataSourceClosingSpringLiquibase.afterPropertiesSet(DataSourceClosingSpringLiquibase.java:46) ~[spring-boot-autoconfigure-3.3.5.jar:3.3.5]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.14.jar:6.1.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.14.jar:6.1.14]
+	... 20 common frames omitted
+Caused by: liquibase.exception.DatabaseException: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:251) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.lambda$child$0(Scope.java:190) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:199) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:189) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:168) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.Scope.child(Scope.java:256) ~[liquibase-core-4.27.0.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:242) ~[liquibase-core-4.27.0.jar:na]
+	... 23 common frames omitted
+Caused by: org.postgresql.util.PSQLException: Ошибка при попытке подсоединения.
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:358) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.Driver.makeConnection(Driver.java:446) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.springframework.jdbc.datasource.SimpleDriverDataSource.getConnectionFromDriver(SimpleDriverDataSource.java:144) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnectionFromDriver(AbstractDriverBasedDataSource.java:205) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at org.springframework.jdbc.datasource.AbstractDriverBasedDataSource.getConnection(AbstractDriverBasedDataSource.java:169) ~[spring-jdbc-6.1.14.jar:6.1.14]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:246) ~[liquibase-core-4.27.0.jar:na]
+	... 29 common frames omitted
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:278) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:304) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796) ~[na:na]
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1099) ~[na:na]
+	at org.postgresql.core.VisibleBufferedInputStream.readMore(VisibleBufferedInputStream.java:162) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:129) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.ensureBytes(VisibleBufferedInputStream.java:114) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.VisibleBufferedInputStream.read(VisibleBufferedInputStream.java:74) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.PGStream.receiveChar(PGStream.java:467) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.enableSSL(ConnectionFactoryImpl.java:594) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:195) ~[postgresql-42.7.2.jar:42.7.2]
+	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262) ~[postgresql-42.7.2.jar:42.7.2]
+	... 37 common frames omitted
+
+2025-01-26T03:39:10.930+01:00  INFO 24264 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 24264 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T03:39:10.931+01:00  INFO 24264 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T03:39:10.967+01:00  INFO 24264 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T03:39:10.968+01:00  INFO 24264 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T03:39:11.362+01:00  INFO 24264 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T03:39:11.410+01:00  INFO 24264 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
+2025-01-26T03:39:11.946+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T03:39:11.956+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T03:39:11.957+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T03:39:11.993+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T03:39:11.994+01:00  INFO 24264 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1026 ms
+2025-01-26T03:39:12.020+01:00  INFO 24264 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T03:39:12.211+01:00  INFO 24264 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@453d0bc8
+2025-01-26T03:39:12.213+01:00  INFO 24264 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T03:39:12.220+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T03:39:12.502+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T03:39:12.883+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T03:39:12.917+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T03:39:12.969+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T03:39:12.970+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7859152970
+2025-01-26T03:39:12.972+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T03:39:12.993+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T03:39:12.997+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T03:39:13.014+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T03:39:13.015+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 20ms
+2025-01-26T03:39:13.018+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T03:39:13.019+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T03:39:13.025+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T03:39:13.026+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 8ms
+2025-01-26T03:39:13.027+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T03:39:13.030+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T03:39:13.037+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T03:39:13.038+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 11ms
+2025-01-26T03:39:13.041+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T03:39:13.043+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.043+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.044+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.044+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.045+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.046+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.046+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T03:39:13.047+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 6ms
+2025-01-26T03:39:13.051+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T03:39:13.051+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T03:39:13.051+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T03:39:13.051+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T03:39:13.052+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T03:39:13.052+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T03:39:13.052+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T03:39:13.054+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T03:39:13.054+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T03:39:13.055+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T03:39:13.056+01:00  INFO 24264 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T03:39:13.114+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T03:39:13.212+01:00  INFO 24264 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T03:39:13.244+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T03:39:13.341+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T03:39:13.525+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T03:39:13.579+01:00  WARN 24264 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T03:39:14.345+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T03:39:14.387+01:00  INFO 24264 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T03:39:14.673+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T03:39:14.825+01:00  WARN 24264 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T03:39:15.199+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T03:39:15.226+01:00  INFO 24264 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T03:39:15.233+01:00  INFO 24264 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 4.636 seconds (process running for 5.128)
+2025-01-26T03:39:59.276+01:00  INFO 24264 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T03:39:59.276+01:00  INFO 24264 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T03:39:59.277+01:00  INFO 24264 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T03:40:26.350+01:00  INFO 24264 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T03:40:26.352+01:00  INFO 24264 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T03:40:26.362+01:00  INFO 24264 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:43:21.229+01:00  INFO 8136 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 8136 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:43:21.231+01:00  INFO 8136 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:43:21.268+01:00  INFO 8136 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:43:21.268+01:00  INFO 8136 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:43:21.613+01:00  INFO 8136 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:43:21.649+01:00  INFO 8136 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 3 JPA repository interfaces.
+2025-01-26T04:43:22.221+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T04:43:22.231+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T04:43:22.232+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T04:43:22.270+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T04:43:22.270+01:00  INFO 8136 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1001 ms
+2025-01-26T04:43:22.292+01:00  INFO 8136 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T04:43:22.408+01:00  INFO 8136 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1c544ea
+2025-01-26T04:43:22.409+01:00  INFO 8136 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T04:43:22.416+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T04:43:22.623+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T04:43:22.904+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T04:43:22.929+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:43:22.970+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T04:43:22.971+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7863002971
+2025-01-26T04:43:22.972+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:43:22.991+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T04:43:22.995+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:43:23.009+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T04:43:23.010+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 17ms
+2025-01-26T04:43:23.014+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T04:43:23.014+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:43:23.020+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T04:43:23.020+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 6ms
+2025-01-26T04:43:23.022+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T04:43:23.024+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:43:23.030+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T04:43:23.031+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 9ms
+2025-01-26T04:43:23.033+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T04:43:23.034+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.034+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.035+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.035+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.036+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.036+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.037+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:43:23.037+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 4ms
+2025-01-26T04:43:23.041+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T04:43:23.041+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T04:43:23.041+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T04:43:23.041+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T04:43:23.041+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T04:43:23.042+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T04:43:23.042+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T04:43:23.043+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T04:43:23.044+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T04:43:23.045+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T04:43:23.046+01:00  INFO 8136 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T04:43:23.092+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T04:43:23.132+01:00  INFO 8136 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T04:43:23.161+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T04:43:23.219+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T04:43:23.354+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T04:43:23.390+01:00  WARN 8136 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T04:43:24.009+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T04:43:24.036+01:00  INFO 8136 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:43:24.177+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T04:43:24.350+01:00  WARN 8136 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T04:43:24.617+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T04:43:24.642+01:00  INFO 8136 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T04:43:24.648+01:00  INFO 8136 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.75 seconds (process running for 4.211)
+2025-01-26T04:44:27.784+01:00  INFO 8136 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T04:44:27.784+01:00  INFO 8136 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T04:44:27.785+01:00  INFO 8136 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T04:45:02.604+01:00  INFO 8136 --- [Hackathon] [http-nio-8080-exec-4] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:45:34.787+01:00  INFO 8136 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:45:34.789+01:00  INFO 8136 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T04:45:34.791+01:00  INFO 8136 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:46:06.098+01:00  INFO 22780 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 22780 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:46:06.100+01:00  INFO 22780 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:46:06.141+01:00  INFO 22780 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:46:06.141+01:00  INFO 22780 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:46:06.479+01:00  INFO 22780 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:46:06.513+01:00  INFO 22780 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+2025-01-26T04:46:07.028+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T04:46:07.039+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T04:46:07.039+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T04:46:07.076+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T04:46:07.076+01:00  INFO 22780 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 934 ms
+2025-01-26T04:46:07.096+01:00  INFO 22780 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T04:46:07.216+01:00  INFO 22780 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11d7fd3f
+2025-01-26T04:46:07.220+01:00  INFO 22780 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T04:46:07.228+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T04:46:07.422+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T04:46:07.687+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T04:46:07.709+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:46:07.755+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T04:46:07.756+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7863167756
+2025-01-26T04:46:07.757+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:46:07.774+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T04:46:07.778+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:46:07.792+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T04:46:07.793+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 17ms
+2025-01-26T04:46:07.796+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T04:46:07.798+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:46:07.804+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T04:46:07.804+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 7ms
+2025-01-26T04:46:07.806+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T04:46:07.807+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:46:07.816+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T04:46:07.817+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 11ms
+2025-01-26T04:46:07.820+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T04:46:07.822+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.822+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.822+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.823+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.823+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.824+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.824+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:46:07.824+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 4ms
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T04:46:07.835+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T04:46:07.836+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T04:46:07.837+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T04:46:07.838+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T04:46:07.839+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T04:46:07.840+01:00  INFO 22780 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T04:46:07.884+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T04:46:07.931+01:00  INFO 22780 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T04:46:07.954+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T04:46:08.008+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T04:46:08.151+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T04:46:08.186+01:00  WARN 22780 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T04:46:08.803+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T04:46:08.829+01:00  INFO 22780 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:46:09.013+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T04:46:09.137+01:00  WARN 22780 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T04:46:09.412+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T04:46:09.436+01:00  INFO 22780 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T04:46:09.444+01:00  INFO 22780 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.701 seconds (process running for 4.212)
+2025-01-26T04:46:14.356+01:00  INFO 22780 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T04:46:14.357+01:00  INFO 22780 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T04:46:14.358+01:00  INFO 22780 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-26T04:46:38.842+01:00  INFO 22780 --- [Hackathon] [http-nio-8080-exec-5] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:47:15.011+01:00 ERROR 22780 --- [Hackathon] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.io.IOException: Обнаружен дубликат
+	at ru.neostudy.datastorage.db.service.UserService.saveUser(UserService.java:24) ~[classes/:na]
+	at ru.neostudy.datastorage.service.ApiService.saveUser(ApiService.java:45) ~[classes/:na]
+	at ru.neostudy.datastorage.controller.BotController.saveUser(BotController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2025-01-26T04:47:43.960+01:00  INFO 22780 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:47:43.962+01:00  INFO 22780 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T04:47:43.963+01:00  INFO 22780 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:48:27.536+01:00  INFO 7364 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 7364 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:48:27.538+01:00  INFO 7364 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:48:27.578+01:00  INFO 7364 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:48:27.578+01:00  INFO 7364 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:48:27.938+01:00  INFO 7364 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:48:27.968+01:00  INFO 7364 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
+2025-01-26T04:48:28.464+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T04:48:28.476+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T04:48:28.476+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T04:48:28.511+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T04:48:28.512+01:00  INFO 7364 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 933 ms
+2025-01-26T04:48:28.532+01:00  INFO 7364 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T04:48:28.658+01:00  INFO 7364 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@59e8a233
+2025-01-26T04:48:28.659+01:00  INFO 7364 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T04:48:28.666+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T04:48:28.853+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T04:48:29.130+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T04:48:29.162+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:48:29.203+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T04:48:29.204+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7863309204
+2025-01-26T04:48:29.205+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:48:29.220+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T04:48:29.223+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:48:29.238+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T04:48:29.238+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 16ms
+2025-01-26T04:48:29.242+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T04:48:29.243+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:48:29.249+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T04:48:29.249+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 7ms
+2025-01-26T04:48:29.251+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T04:48:29.252+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:48:29.258+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T04:48:29.259+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 8ms
+2025-01-26T04:48:29.261+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T04:48:29.262+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.263+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.263+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.264+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.264+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.265+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.265+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:48:29.265+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 4ms
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T04:48:29.271+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T04:48:29.272+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T04:48:29.273+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T04:48:29.273+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T04:48:29.275+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T04:48:29.275+01:00  INFO 7364 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T04:48:29.320+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T04:48:29.364+01:00  INFO 7364 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T04:48:29.386+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T04:48:29.441+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T04:48:29.581+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T04:48:29.616+01:00  WARN 7364 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T04:48:30.242+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T04:48:30.272+01:00  INFO 7364 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:48:30.413+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T04:48:30.569+01:00  WARN 7364 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T04:48:30.824+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T04:48:30.847+01:00  INFO 7364 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T04:48:30.854+01:00  INFO 7364 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.684 seconds (process running for 4.268)
+2025-01-26T04:48:37.637+01:00  INFO 7364 --- [Hackathon] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T04:48:37.638+01:00  INFO 7364 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T04:48:37.638+01:00  INFO 7364 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-26T04:49:01.841+01:00  INFO 7364 --- [Hackathon] [http-nio-8080-exec-4] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:49:24.613+01:00 ERROR 7364 --- [Hackathon] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+java.io.IOException: Обнаружен дубликат
+	at ru.neostudy.datastorage.db.service.UserService.saveUser(UserService.java:24) ~[classes/:na]
+	at ru.neostudy.datastorage.service.ApiService.saveUser(ApiService.java:45) ~[classes/:na]
+	at ru.neostudy.datastorage.controller.BotController.saveUser(BotController.java:34) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.14.jar:6.1.14]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.31.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.14.jar:6.1.14]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.31.jar:10.1.31]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2025-01-26T04:56:19.830+01:00  INFO 7364 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:56:19.832+01:00  INFO 7364 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T04:56:19.835+01:00  INFO 7364 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:56:56.445+01:00  INFO 8004 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 8004 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:56:56.446+01:00  INFO 8004 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:56:56.484+01:00  INFO 8004 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:56:56.484+01:00  INFO 8004 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:56:56.806+01:00  INFO 8004 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:56:56.842+01:00  INFO 8004 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2025-01-26T04:56:57.385+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T04:56:57.398+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T04:56:57.398+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T04:56:57.432+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T04:56:57.433+01:00  INFO 8004 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 948 ms
+2025-01-26T04:56:57.455+01:00  INFO 8004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T04:56:57.577+01:00  INFO 8004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6c809481
+2025-01-26T04:56:57.578+01:00  INFO 8004 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T04:56:57.585+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T04:56:57.786+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T04:56:58.080+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:56:58.112+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-26T04:56:58.113+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T04:56:58.119+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T04:56:58.120+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T04:56:58.133+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T04:56:58.134+01:00  INFO 8004 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T04:56:58.175+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T04:56:58.222+01:00  INFO 8004 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T04:56:58.243+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T04:56:58.299+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T04:56:58.435+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T04:56:58.471+01:00  WARN 8004 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T04:56:59.080+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T04:56:59.108+01:00  INFO 8004 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:56:59.299+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T04:56:59.400+01:00  WARN 8004 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T04:56:59.661+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T04:56:59.684+01:00  INFO 8004 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T04:56:59.691+01:00  INFO 8004 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.577 seconds (process running for 4.027)
+2025-01-26T04:57:05.614+01:00  INFO 8004 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T04:57:05.615+01:00  INFO 8004 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T04:57:05.615+01:00  INFO 8004 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-26T04:57:12.757+01:00  INFO 8004 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:57:12.759+01:00  INFO 8004 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T04:57:12.761+01:00  INFO 8004 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:57:20.147+01:00  INFO 23032 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 23032 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:57:20.149+01:00  INFO 23032 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:57:20.194+01:00  INFO 23032 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:57:20.194+01:00  INFO 23032 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:57:20.531+01:00  INFO 23032 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:57:20.560+01:00  INFO 23032 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
+2025-01-26T04:57:21.084+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T04:57:21.093+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T04:57:21.094+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T04:57:21.128+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T04:57:21.129+01:00  INFO 23032 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 934 ms
+2025-01-26T04:57:21.148+01:00  INFO 23032 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T04:57:21.273+01:00  INFO 23032 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@22e5f343
+2025-01-26T04:57:21.274+01:00  INFO 23032 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T04:57:21.281+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T04:57:21.475+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T04:57:21.744+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T04:57:21.769+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:57:21.810+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T04:57:21.811+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7863841811
+2025-01-26T04:57:21.812+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T04:57:21.830+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T04:57:21.834+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:57:21.848+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T04:57:21.849+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 17ms
+2025-01-26T04:57:21.852+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T04:57:21.854+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:57:21.859+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T04:57:21.860+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 7ms
+2025-01-26T04:57:21.862+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T04:57:21.863+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T04:57:21.870+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T04:57:21.870+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 8ms
+2025-01-26T04:57:21.872+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T04:57:21.874+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.874+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.875+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.875+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.876+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.876+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.877+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T04:57:21.877+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 4ms
+2025-01-26T04:57:21.881+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T04:57:21.882+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T04:57:21.882+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T04:57:21.882+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T04:57:21.882+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T04:57:21.882+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T04:57:21.883+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T04:57:21.884+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T04:57:21.884+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T04:57:21.885+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T04:57:21.886+01:00  INFO 23032 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T04:57:21.930+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T04:57:21.973+01:00  INFO 23032 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T04:57:21.995+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T04:57:22.052+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T04:57:22.189+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T04:57:22.227+01:00  WARN 23032 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T04:57:22.831+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T04:57:22.861+01:00  INFO 23032 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:57:23.051+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T04:57:23.169+01:00  WARN 23032 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T04:57:23.438+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T04:57:23.464+01:00  INFO 23032 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T04:57:23.470+01:00  INFO 23032 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.688 seconds (process running for 4.161)
+2025-01-26T04:57:26.958+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T04:57:26.958+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T04:57:26.959+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T04:57:52.010+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-5] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:58:13.031+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-7] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:59:15.094+01:00  INFO 23032 --- [Hackathon] [http-nio-8080-exec-1] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T04:59:49.084+01:00  INFO 23032 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T04:59:49.086+01:00  INFO 23032 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T04:59:49.089+01:00  INFO 23032 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T04:59:59.412+01:00  INFO 20132 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 20132 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T04:59:59.414+01:00  INFO 20132 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T04:59:59.458+01:00  INFO 20132 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T04:59:59.458+01:00  INFO 20132 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T04:59:59.814+01:00  INFO 20132 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T04:59:59.849+01:00  INFO 20132 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:00:00.396+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:00:00.407+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:00:00.408+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:00:00.446+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:00:00.447+01:00  INFO 20132 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 988 ms
+2025-01-26T05:00:00.470+01:00  INFO 20132 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:00:00.585+01:00  INFO 20132 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2280752a
+2025-01-26T05:00:00.587+01:00  INFO 20132 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:00:00.594+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:00:00.785+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:00:01.081+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:00:01.109+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-26T05:00:01.110+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:00:01.116+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:00:01.117+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:00:01.130+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:00:01.132+01:00  INFO 20132 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:00:01.177+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:00:01.220+01:00  INFO 20132 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:00:01.242+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:00:01.301+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:00:01.453+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:00:01.487+01:00  WARN 20132 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:00:02.158+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:00:02.186+01:00  INFO 20132 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:00:02.356+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:00:02.514+01:00  WARN 20132 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:00:02.789+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:00:02.813+01:00  INFO 20132 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:00:02.820+01:00  INFO 20132 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.784 seconds (process running for 4.26)
+2025-01-26T05:00:07.427+01:00  INFO 20132 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:00:07.428+01:00  INFO 20132 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:00:07.429+01:00  INFO 20132 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T05:01:19.206+01:00  INFO 20132 --- [Hackathon] [http-nio-8080-exec-10] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:01:26.821+01:00  INFO 20132 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:01:26.823+01:00  INFO 20132 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:01:26.825+01:00  INFO 20132 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:01:39.021+01:00  INFO 15512 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 15512 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:01:39.022+01:00  INFO 15512 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:01:39.070+01:00  INFO 15512 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:01:39.070+01:00  INFO 15512 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:01:39.393+01:00  INFO 15512 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:01:39.422+01:00  INFO 15512 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:01:39.935+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:01:39.945+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:01:39.946+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:01:39.985+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:01:39.985+01:00  INFO 15512 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 915 ms
+2025-01-26T05:01:40.005+01:00  INFO 15512 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:01:40.110+01:00  INFO 15512 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@52a64487
+2025-01-26T05:01:40.111+01:00  INFO 15512 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:01:40.117+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:01:40.415+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:01:40.684+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T05:01:40.716+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:01:40.755+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T05:01:40.755+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7864100755
+2025-01-26T05:01:40.756+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:01:40.770+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T05:01:40.772+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:01:40.786+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T05:01:40.788+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 16ms
+2025-01-26T05:01:40.791+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T05:01:40.792+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:01:40.797+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T05:01:40.797+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 6ms
+2025-01-26T05:01:40.799+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T05:01:40.800+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:01:40.807+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T05:01:40.807+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 8ms
+2025-01-26T05:01:40.810+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T05:01:40.811+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.811+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.812+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.812+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.812+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.813+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.813+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:01:40.814+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 4ms
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:01:40.823+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:01:40.824+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:01:40.825+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T05:01:40.825+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T05:01:40.827+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:01:40.834+01:00  INFO 15512 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:01:40.880+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:01:40.919+01:00  INFO 15512 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:01:40.941+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:01:41.002+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:01:41.135+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:01:41.169+01:00  WARN 15512 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:01:41.925+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:01:41.951+01:00  INFO 15512 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:01:42.139+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:01:42.246+01:00  WARN 15512 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:01:42.529+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:01:42.553+01:00  INFO 15512 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:01:42.560+01:00  INFO 15512 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.868 seconds (process running for 4.312)
+2025-01-26T05:01:45.270+01:00  INFO 15512 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:01:45.271+01:00  INFO 15512 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:01:45.272+01:00  INFO 15512 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T05:02:52.664+01:00  INFO 15512 --- [Hackathon] [http-nio-8080-exec-5] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:02:52.728+01:00  INFO 15512 --- [Hackathon] [http-nio-8080-exec-9] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:05:55.563+01:00  INFO 15512 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:05:55.566+01:00  INFO 15512 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:05:55.567+01:00  INFO 15512 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:06:05.633+01:00  INFO 11540 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 11540 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:06:05.636+01:00  INFO 11540 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:06:05.682+01:00  INFO 11540 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:06:05.682+01:00  INFO 11540 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:06:06.006+01:00  INFO 11540 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:06:06.037+01:00  INFO 11540 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:06:06.525+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:06:06.534+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:06:06.535+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:06:06.574+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:06:06.575+01:00  INFO 11540 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 893 ms
+2025-01-26T05:06:06.594+01:00  INFO 11540 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:06:06.721+01:00  INFO 11540 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@705f68d4
+2025-01-26T05:06:06.722+01:00  INFO 11540 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:06:06.729+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:06:06.926+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:06:07.197+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T05:06:07.220+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:06:07.260+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T05:06:07.261+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7864367261
+2025-01-26T05:06:07.262+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:06:07.276+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T05:06:07.279+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:06:07.293+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T05:06:07.294+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 16ms
+2025-01-26T05:06:07.297+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T05:06:07.299+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:06:07.303+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T05:06:07.304+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 5ms
+2025-01-26T05:06:07.305+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T05:06:07.307+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:06:07.313+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T05:06:07.314+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 9ms
+2025-01-26T05:06:07.316+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T05:06:07.317+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.317+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.318+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.318+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.319+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.319+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.326+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:06:07.326+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 10ms
+2025-01-26T05:06:07.331+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:06:07.331+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T05:06:07.332+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T05:06:07.332+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:06:07.332+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:06:07.332+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:06:07.332+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:06:07.334+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T05:06:07.334+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T05:06:07.335+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:06:07.336+01:00  INFO 11540 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:06:07.381+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:06:07.420+01:00  INFO 11540 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:06:07.446+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:06:07.500+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:06:07.637+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:06:07.674+01:00  WARN 11540 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:06:08.277+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:06:08.303+01:00  INFO 11540 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:06:08.457+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:06:08.625+01:00  WARN 11540 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:06:08.904+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:06:08.928+01:00  INFO 11540 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:06:08.934+01:00  INFO 11540 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.67 seconds (process running for 4.153)
+2025-01-26T05:06:18.520+01:00  INFO 11540 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:06:18.520+01:00  INFO 11540 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:06:18.521+01:00  INFO 11540 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T05:07:23.448+01:00  INFO 11540 --- [Hackathon] [http-nio-8080-exec-7] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:07:23.491+01:00  INFO 11540 --- [Hackathon] [http-nio-8080-exec-6] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:09:32.045+01:00  INFO 11540 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:09:32.048+01:00  INFO 11540 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:09:32.049+01:00  INFO 11540 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:09:45.630+01:00  INFO 2172 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 2172 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:09:45.633+01:00  INFO 2172 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:09:45.678+01:00  INFO 2172 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:09:45.678+01:00  INFO 2172 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:09:46.038+01:00  INFO 2172 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:09:46.072+01:00  INFO 2172 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:09:46.580+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:09:46.590+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:09:46.590+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:09:46.627+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:09:46.628+01:00  INFO 2172 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 949 ms
+2025-01-26T05:09:46.647+01:00  INFO 2172 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:09:46.759+01:00  INFO 2172 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@591e665f
+2025-01-26T05:09:46.760+01:00  INFO 2172 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:09:46.766+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:09:46.968+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:09:47.263+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Creating database history table with name: public.databasechangelog
+2025-01-26T05:09:47.288+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:09:47.330+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully acquired change log lock
+2025-01-26T05:09:47.331+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.command                        : Using deploymentId: 7864587331
+2025-01-26T05:09:47.332+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:09:47.349+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_users::robinx51
+2025-01-26T05:09:47.353+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:09:47.368+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table users created
+2025-01-26T05:09:47.369+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_users::robinx51 ran successfully in 18ms
+2025-01-26T05:09:47.372+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_courses::robinx51
+2025-01-26T05:09:47.373+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:09:47.378+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table courses created
+2025-01-26T05:09:47.379+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_courses::robinx51 ran successfully in 7ms
+2025-01-26T05:09:47.384+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-init-database.xml::create_table_statements::robinx51
+2025-01-26T05:09:47.386+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.snapshot                       : Creating snapshot
+2025-01-26T05:09:47.393+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : Table statements created
+2025-01-26T05:09:47.394+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-init-database.xml::create_table_statements::robinx51 ran successfully in 10ms
+2025-01-26T05:09:47.396+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.ui                             : Running Changeset: db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51
+2025-01-26T05:09:47.397+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.398+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.398+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.399+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.399+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.399+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.400+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : New row inserted into courses
+2025-01-26T05:09:47.401+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.changelog                      : ChangeSet db/changelog/changeset-insert-courses.xml::insert_defaults_into_courses::robinx51 ran successfully in 5ms
+2025-01-26T05:09:47.404+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          4
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               0
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:09:47.405+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:09:47.407+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.command                        : Update command completed successfully.
+2025-01-26T05:09:47.407+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.ui                             : Liquibase: Update has been successful. Rows affected: 11
+2025-01-26T05:09:47.408+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:09:47.409+01:00  INFO 2172 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:09:47.457+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:09:47.496+01:00  INFO 2172 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:09:47.523+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:09:47.580+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:09:47.727+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:09:47.764+01:00  WARN 2172 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:09:48.422+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:09:48.449+01:00  INFO 2172 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:09:48.655+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:09:48.768+01:00  WARN 2172 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:09:49.039+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:09:49.063+01:00  INFO 2172 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:09:49.069+01:00  INFO 2172 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.8 seconds (process running for 4.283)
+2025-01-26T05:09:53.843+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:09:53.843+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:09:53.845+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-01-26T05:10:51.484+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-9] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:10:51.526+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-6] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:11:30.579+01:00  INFO 2172 --- [Hackathon] [http-nio-8080-exec-7] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:12:43.052+01:00  INFO 2172 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:12:43.054+01:00  INFO 2172 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:12:43.056+01:00  INFO 2172 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:26:07.772+01:00  INFO 23996 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 23996 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:26:07.774+01:00  INFO 23996 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:26:07.814+01:00  INFO 23996 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:26:07.814+01:00  INFO 23996 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:26:08.147+01:00  INFO 23996 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:26:08.185+01:00  INFO 23996 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:26:08.713+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:26:08.723+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:26:08.724+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:26:08.761+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:26:08.761+01:00  INFO 23996 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 947 ms
+2025-01-26T05:26:08.785+01:00  INFO 23996 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:26:08.906+01:00  INFO 23996 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1e5d895f
+2025-01-26T05:26:08.907+01:00  INFO 23996 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:26:08.914+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:26:09.118+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:26:09.438+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:26:09.469+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-26T05:26:09.471+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:26:09.477+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:26:09.477+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-26T05:26:09.477+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-26T05:26:09.477+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:26:09.477+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:26:09.478+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:26:09.478+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:26:09.491+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:26:09.492+01:00  INFO 23996 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:26:09.537+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:26:09.587+01:00  INFO 23996 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:26:09.616+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:26:09.687+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:26:09.844+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:26:09.880+01:00  WARN 23996 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:26:10.505+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:26:10.531+01:00  INFO 23996 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:26:10.671+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:26:10.832+01:00  WARN 23996 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:26:11.090+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:26:11.114+01:00  INFO 23996 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:26:11.119+01:00  INFO 23996 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.779 seconds (process running for 4.279)
+2025-01-26T05:26:17.118+01:00  INFO 23996 --- [Hackathon] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:26:17.119+01:00  INFO 23996 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:26:17.119+01:00  INFO 23996 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-01-26T05:31:07.023+01:00  INFO 23996 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:31:07.027+01:00  INFO 23996 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:31:07.029+01:00  INFO 23996 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:31:23.842+01:00  INFO 2860 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 2860 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:31:23.844+01:00  INFO 2860 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:31:23.884+01:00  INFO 2860 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:31:23.884+01:00  INFO 2860 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:31:24.355+01:00  INFO 2860 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:31:24.387+01:00  INFO 2860 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:31:24.900+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:31:24.910+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:31:24.910+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:31:24.942+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:31:24.942+01:00  INFO 2860 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1058 ms
+2025-01-26T05:31:24.961+01:00  INFO 2860 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:31:25.071+01:00  INFO 2860 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1c544ea
+2025-01-26T05:31:25.073+01:00  INFO 2860 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:31:25.079+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:31:25.281+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:31:25.580+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:31:25.608+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-26T05:31:25.609+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:31:25.615+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:31:25.616+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:31:25.630+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:31:25.631+01:00  INFO 2860 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:31:25.678+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:31:25.724+01:00  INFO 2860 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:31:25.752+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:31:25.808+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:31:25.951+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:31:25.988+01:00  WARN 2860 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:31:26.638+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:31:26.668+01:00  INFO 2860 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:31:26.813+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:31:26.974+01:00  WARN 2860 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:31:27.239+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:31:27.264+01:00  INFO 2860 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:31:27.270+01:00  INFO 2860 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.779 seconds (process running for 4.239)
+2025-01-26T05:31:32.675+01:00  INFO 2860 --- [Hackathon] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:31:32.675+01:00  INFO 2860 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:31:32.676+01:00  INFO 2860 --- [Hackathon] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T05:31:51.990+01:00  INFO 2860 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:31:51.993+01:00  INFO 2860 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:31:51.995+01:00  INFO 2860 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

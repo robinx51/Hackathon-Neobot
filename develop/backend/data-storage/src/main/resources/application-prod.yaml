@@ -1,4 +1,4 @@
 spring.datasource:
-  url: jdbc:postgresql://rc1b-gk21kywyncnoym7q.mdb.yandexcloud.net:6432/cnrprod1737640949-team-83206?ssl=true&sslmode=verify-full&sslrootcert=./develop/backend/data-storage/src/main/resources/db/root.crt
-  username: cnrprod1737640949-team-83206
-  password: bi0shuasaeph9Xaeshichaime4kealei
+  url: jdbc:postgresql://localhost:5432/postgres
+  username: postgres
+  password: Eravur

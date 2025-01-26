@@ -1,6 +1,8 @@
 package ru.neostudy.apiservice.client.interfaces;
 
 import ru.neostudy.apiservice.bot.Course;
+import ru.neostudy.apiservice.model.StatementFullDto;
+import ru.neostudy.apiservice.model.UpdateStatementDto;
 import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
 
@@ -15,5 +17,10 @@ public interface DataStorageClient {
     UserDto saveUser(UserDto userDto) throws Exception;
 
     List<Course> getCourses() throws Exception;
+
     List<User> getUsersWithoutCourse() throws Exception;
+
+    void updateStatementStatus(UpdateStatementDto statementDto) throws Exception;
+
+    StatementFullDto getCompleteStatementById(Integer id) throws Exception;
 }

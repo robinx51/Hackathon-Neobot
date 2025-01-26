@@ -17,7 +17,9 @@ storage:
   save-user-uri: /data-storage/user
   get-user-by-email-uri: /data-storage/user_email/{email}
   get-user-by-telegram-uri: /data-storage/user/{telegramId}
-  getCoursesUri: /data-storage/courses
-  getUsersWithoutCourseUri: /data-storage/users/without_course
+  get-courses-uri: /data-storage/courses
+  get-users-without-course-uri: /data-storage/users/without_course
+  update-statement-uri: /data-storage/updateStatementStatus
+  get-statement-full-info-uri: /statement/{id}
 
 

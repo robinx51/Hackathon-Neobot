@@ -9,10 +9,12 @@ import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.service.CourseService;
 import ru.neostudy.datastorage.db.service.StatementService;
 import ru.neostudy.datastorage.db.service.UserService;
+import ru.neostudy.datastorage.dto.StatementFullDto;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.enums.StatementStatus;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,7 +28,7 @@ public class ApiService {
     private final StatementService statementService;
     private final CourseService courseService;
 
-    public UserDto saveUser(UserDto request) {
+    public UserDto saveUser(UserDto request) throws IOException {
         User user = User.builder()
                 .telegramId(request.getTelegramUserId())
                 .firstName(request.getFirstName())
@@ -53,8 +55,7 @@ public class ApiService {
         StatementStatus statementStatus;
         if (request.getCourse() != null) {
             statementStatus = StatementStatus.PENDING;
-        }
-        else
+        } else
             statementStatus = StatementStatus.PRE_APPLICATION;
 
         statement.setCourse(request.getCourse());
@@ -78,6 +79,7 @@ public class ApiService {
     public List<Statement> getStatements() {
         return statementService.getStatements();
     }
+
     public void updateStatement(UpdateStatementDto request) {
         Statement statement = statementService.getStatementById(request.getStatementId());
         statementService.updateStatement(addStatementStatus(statement, request.getStatementStatus()));
@@ -105,5 +107,31 @@ public class ApiService {
 
     public List<User> getUsersWithoutCourse() {
         return userService.getUsersWithoutCourse();
+    }
+
+    public StatementFullDto getStatementById(int id) {
+        Statement statementById = statementService.getStatementById(id);
+        Optional<User> user = userService.getUserById(statementById.getUser().getUserId());
+        Course courseById = courseService.getCourseById(statementById.getCourse().getCourseId());
+
+        if (user.isEmpty()) {
+            return null;
+        }
+        return StatementFullDto.builder()
+                .statementId(statementById.getStatementId())
+                .course(courseById)
+                .statementStatus(statementById.getStatementStatus())
+                .changedDate(statementById.getChangedDate())
+                .creationDate(statementById.getCreationDate())
+                .userId(statementById.getUser().getUserId())
+                .telegramId(user.get().getTelegramId())
+                .user(user.get())
+                .firstName(user.get().getFirstName())
+                .lastName(user.get().getLastName())
+                .city(user.get().getCity())
+                .email(user.get().getEmail())
+                .phoneNumber(user.get().getPhoneNumber())
+                .role(user.get().getRole())
+                .build();
     }
 }

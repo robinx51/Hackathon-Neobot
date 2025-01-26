@@ -9,6 +9,8 @@ import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.neostudy.apiservice.bot.Course;
 import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
+import ru.neostudy.apiservice.model.StatementFullDto;
+import ru.neostudy.apiservice.model.UpdateStatementDto;
 import ru.neostudy.apiservice.model.User;
 import ru.neostudy.apiservice.model.UserDto;
 
@@ -87,18 +89,30 @@ public class DataStorageClientImpl implements DataStorageClient {
                 })
                 .block();
     }
-/*
+
     @Override
-    public UserDto updateUser(UserDto userDto) throws Exception {
-        log.debug("Вызов метода updateUser с email {} и telegramId {}", userDto.getEmail(), userDto.getTelegramUserId());
-        return webClient.post()
-                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getSaveUserUri()))
-                .bodyValue(userDto)
+    public void updateStatementStatus(UpdateStatementDto statementDto) {
+        log.debug("Вызов метода updateStatementStatus с statementDto {}", statementDto);
+        webClient.put()
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getUpdateStatementUri()))
+                .bodyValue(statementDto)
                 .retrieve()
                 .onStatus(HttpStatusCode::isError,
                         ClientResponse::createException)
-                .bodyToMono(UserDto.class)
+                .bodyToMono(Void.class)
                 .block();
-    }*/
+    }
+
+    @Override
+    public StatementFullDto getCompleteStatementById(Integer id) throws Exception {
+        log.debug("Вызов метода getCompleteStatementById");
+        return webClient.get()
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetStatementFullInfoUri()), id)
+                .retrieve()
+                .onStatus(HttpStatusCode::isError,
+                        ClientResponse::createException)
+                .bodyToMono(StatementFullDto.class)
+                .block();
+    }
 }
 
