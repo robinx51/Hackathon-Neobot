@@ -14,7 +14,6 @@ import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.service.ApiService;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
