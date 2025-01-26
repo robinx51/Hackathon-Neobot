@@ -1,49 +1,85 @@
-image: docker:27.0.3  # Базовый образ для выполнения CI/CD
-
-services:
-  - docker:27.0.3-dind  # Docker-in-Docker для сборки образов
-
-variables:
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"  # Контекст для kubectl
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"  # Namespace для деплоя в Kubernetes
-  IMAGE_NAME: "registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:latest"  # Имя Docker-образа
-  DOCKER_TLS_CERTDIR: ""  # Отключение использования TLS для Docker-in-Docker
-
 stages:
   - build
+  - kaniko-build
   - deploy
 
-build_app:
-  stage: build
-  script:
-    - echo "Переход в директорию с Dockerfile..."
-    - cd develop/backend/data-storage  # Переход в директорию с Dockerfile
-    - echo "Сборка Docker-образа..."
-    - docker build -t $IMAGE_NAME .  # Сборка Docker-образа
-    - echo "Авторизация в контейнерном реестре..."
-    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin  # Логин в реестр
-    - echo "Пуш Docker-образа в реестр..."
-    - docker push $IMAGE_NAME  # Пуш в реестр
-  tags:
-    - build
-    - runner
-    - k8s
+variables:
+  DOCKER_REGISTRY: "git.codenrock.com:5050"
+  IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
+  IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
+  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"  # Указание пути к kubeconfig
+  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
+  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
 
-deploy_app:
-  stage: deploy
-  image: alpine:3.18  # Используем легковесный образ для работы с Helm и kubectl
-  before_script:
-    - apk add --no-cache bash curl  # Устанавливаем bash и curl
-    - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
-    - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl  # Устанавливаем kubectl
-    - chmod +x ./kubectl
-    - mv ./kubectl /usr/local/bin/kubectl  # Перемещаем kubectl в системный путь
-    - kubectl config use-context $KUBECONFIG_CONTEXT  # Используем правильный контекст
-    - kubectl config set-context --current --namespace=$KUBERNETES_NAMESPACE  # Устанавливаем namespace для kubectl
-  script:
-    - echo "Обновляем Helm-чарт..."
-    - helm upgrade --install app ./helm-chart --set image.repository=$CI_REGISTRY_IMAGE --set image.tag=latest --namespace=$KUBERNETES_NAMESPACE  # Деплой с использованием Helm
+build-telegram-bot-service1:
+  stage: build
+  image: maven:3.9.4-eclipse-temurin-21
   tags:
-    - build
     - runner
+    - build
     - k8s
+  only:
+    - develop
+  script:
+    - cd develop/telegram-bot-service
+    - mvn clean package
+    - ls -la target
+  artifacts:
+    paths:
+      - develop/telegram-bot-service/target/*.jar
+    expire_in: 1 week
+
+build-telegram-bot-service:
+  stage: kaniko-build
+  image:
+    name: gcr.io/kaniko-project/executor:v1.19.0-debug
+    entrypoint: [""]  # Убираем стандартный entrypoint
+  tags:
+    - runner
+    - build
+    - k8s
+  script:
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/devops/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
+  artifacts:
+    paths:
+      - develop/telegram-bot-service/target/*.jar
+    expire_in: 1 week
+
+deploy-telegram-bot-service:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  tags:
+    - runner
+    - build
+    - k8s
+  only:
+    - develop
+  script:
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig  # Восстанавливаем kubeconfig из CI/CD переменной
+    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
+    - cat kubeconfig
+    - export KUBECONFIG=$(pwd)/kubeconfig  # Устанавливаем kubeconfig для kubectl
+    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=$KUBERNETES_NAMESPACE
+
+deploy-log:
+  stage: deploy
+  image: alpine:latest
+  tags:
+    - k8s
+  script:
+    - apk add --no-cache curl
+    - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"  # Установка kubectl
+    - chmod +x kubectl
+    - mv kubectl /usr/local/bin/
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig
+    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
+    - echo "Contents of kubeconfig:"
+    - cat kubeconfig
+    - export KUBECONFIG=$(pwd)/kubeconfig
+    - apk add --no-cache curl bash openssl
+    - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Установка Helm
+    - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    - helm repo update
+    - helm uninstall prometheus --namespace=$KUBERNETES_NAMESPACE || true
+    - helm upgrade --install prometheus prometheus-community/prometheus --namespace $KUBERNETES_NAMESPACE --set prometheus.server.persistentVolume.enabled=false --set rbac.create=false --set kube-state-metrics.enabled=false -f devops/prometheus/values.yaml
+    - helm upgrade --install fluent-bit fluent/fluent-bit --namespace $KUBERNETES_NAMESPACE --set rbac.create=false
