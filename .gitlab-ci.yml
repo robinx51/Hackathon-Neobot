@@ -4,7 +4,6 @@ services:
   - docker:27.0.3-dind  # Docker-in-Docker для сборки образов
 
 variables:
-  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"  # Путь к конфигу Kubernetes
   KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"  # Контекст для kubectl
   KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"  # Namespace для деплоя в Kubernetes
   IMAGE_NAME: "registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:latest"  # Имя Docker-образа
