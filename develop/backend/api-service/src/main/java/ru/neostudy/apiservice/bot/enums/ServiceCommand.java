@@ -5,8 +5,6 @@ import java.util.Optional;
 public enum ServiceCommand {
     START("/start"),
     HELP("/help"),
-    /*    SUBMIT_REQUEST("/подать заявку"),
-        SUBMIT_PREREQUEST("/оставить предзаявку"),*/
     SUBMIT_REQUEST("/submit"),
     SUBMIT_PREREQUEST("/submit_now"),
     CHOOSE_COURSE("/make_life_choice");

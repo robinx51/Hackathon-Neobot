@@ -503,10 +503,10 @@ public class UpdateService {
     private String help() {
         if (isActivePeriod) {
             return "Список доступных команд:\n" +
-                    "подать заявку(/submit)"; //todo
+                    "подать заявку(/submit)";
         } else {
             return "Список доступных команд:\n" +
-                    "оставить предзаявку(/submit_now)"; //todo
+                    "оставить предзаявку(/submit_now)";
         }
     }
 
