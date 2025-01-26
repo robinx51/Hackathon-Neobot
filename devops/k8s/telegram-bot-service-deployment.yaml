@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-bot-service
+  namespace: cnrprod1737640949-team-83206
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-bot-service
+  template:
+    metadata:
+      labels:
+        app: telegram-bot-service
+    spec:
+      containers:
+      - name: telegram-bot-service
+        image: your-docker-image:latest
+        ports:
+        - containerPort: 8080
