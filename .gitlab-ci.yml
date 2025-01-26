@@ -8,7 +8,7 @@ variables:
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
   IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
 
-build-telegram-bot-service1:
+build-telegram-bot-service:
   stage: build
   image: maven:3.9.4-eclipse-temurin-21
   tags:
@@ -26,7 +26,7 @@ build-telegram-bot-service1:
       - develop/telegram-bot-service/target/*.jar
     expire_in: 1 week
 
-build-telegram-bot-service:
+kaniko-build:
   stage: kaniko-build
   image:
     name: gcr.io/kaniko-project/executor:v1.19.0-debug
@@ -36,7 +36,9 @@ build-telegram-bot-service:
     - build
     - k8s
   script:
-    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/devops/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
+    - /kaniko/executor --context "${CI_PROJECT_DIR}/develop/telegram-bot-service" --dockerfile "${CI_PROJECT_DIR}/develop/telegram-bot-service/Dockerfile" --destination "${DOCKER_REGISTRY}/${IMAGE_PATH}:${CI_COMMIT_REF_NAME}"
+  dependencies:
+    - build-telegram-bot-service
   artifacts:
     paths:
       - develop/telegram-bot-service/target/*.jar
@@ -53,7 +55,5 @@ deploy-telegram-bot-service:
     - develop
   script:
     - echo "$KUBECONFIG_CONTENT" > kubeconfig
-    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
-    - cat kubeconfig
     - export KUBECONFIG=$(pwd)/kubeconfig
     - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206
