@@ -1,26 +1,33 @@
-image: gcr.io/kaniko-project/executor:latest  # Kaniko image
+image: docker:27.0.3-dind  # Используем Docker-in-Docker образ
+services:
+  - docker:27.0.3-dind
 
 variables:
-  DOCKER_CONFIG: /kaniko/.docker/  # Директория для конфигурации Docker
-  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG  # Имя и тег образа, создаваемого Kaniko
+  DOCKER_HOST: tcp://docker:2375  # Устанавливаем Docker хост для DinD
+  DOCKER_TLS_CERTDIR: ""          # Отключаем TLS для DinD
+  IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG  # Имя и тег образа
+  DOCKER_CONFIG: /kaniko/.docker/  # Конфигурация для Docker
 
 stages:
   - build
 
-build_with_kaniko:
+build_with_dind_and_kaniko:
   stage: build
   script:
-    - |
-      echo "Настройка Docker аутентификации..."
-      echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - |
-      echo "Сборка Docker-образа с помощью Kaniko..."
-      /kaniko/executor \
-        --context $CI_PROJECT_DIR/develop/backend/data-storage \
-        --dockerfile $CI_PROJECT_DIR/develop/backend/data-storage/Dockerfile \
+    # Аутентификация в Docker Registry
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    
+    # Сборка и загрузка Docker-образа с помощью Kaniko
+    - docker run --rm \
+        -v $CI_PROJECT_DIR:/workspace \
+        -v /kaniko/.docker:/kaniko/.docker \
+        gcr.io/kaniko-project/executor:latest \
+        --context /workspace/develop/backend/data-storage \
+        --dockerfile /workspace/develop/backend/data-storage/Dockerfile \
         --destination $IMAGE_NAME
-    - echo "Docker-образ успешно создан и загружен: $IMAGE_NAME"
+    
+    - echo "Docker-образ успешно собран и загружен: $IMAGE_NAME"
   tags:
-    - build
     - runner
+    - build
     - k8s
