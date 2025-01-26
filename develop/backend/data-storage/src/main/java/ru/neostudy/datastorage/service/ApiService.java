@@ -27,7 +27,7 @@ public class ApiService {
     private final StatementService statementService;
     private final CourseService courseService;
 
-    public UserDto saveUser(UserDto request) throws IOException {
+    public UserDto saveUser(UserDto request) {
         User user = User.builder()
                 .telegramId(request.getTelegramUserId())
                 .firstName(request.getFirstName())

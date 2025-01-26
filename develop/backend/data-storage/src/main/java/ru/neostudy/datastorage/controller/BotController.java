@@ -27,7 +27,7 @@ public class BotController {
 
     @PostMapping("/data-storage/user")
     @Tag(name = "Сохранение пользователя")
-    public UserDto saveUser(@RequestBody UserDto request) throws IOException {
+    public UserDto saveUser(@RequestBody UserDto request) {
         log.debug("Вызов метода user для пользователя с id - {}, email - {}, " +
                 "telegramId - {}", request.getId(), request.getEmail(), request.getTelegramUserId());
         return apiService.saveUser(request);
