@@ -9,7 +9,7 @@ ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
 
 # Копируем корневой сертификат для подключения к БД
-COPY src/main/resources/db/root.crt /app/db/root.crt
+COPY /develop/backend/data-storage/src/main/resources/db/root.crt /app/db/root.crt
 
 # Устанавливаем переменную окружения для подключения к БД
 ENV SPRING_DATASOURCE_URL=jdbc:postgresql://rc1b-gk21kywyncnoym7q.mdb.yandexcloud.net:6432/cnrprod1737640949-team-83206?ssl=true&sslmode=verify-full&sslrootcert=/app/db/root.crt
