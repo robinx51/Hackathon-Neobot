@@ -119,8 +119,8 @@ public class ApiService {
     public List<StatementFullDto> getCompleteStatements() {
         List<Statement> statements = getStatements();
         List<StatementFullDto> statementFullDtos = new ArrayList<>();
-        for (int i = 0; i < statements.size(); i++) {
-            constractStatementFullDto(statements.get(i));
+        for (Statement statement : statements) {
+            statementFullDtos.add(constractStatementFullDto(statement));
         }
         return statementFullDtos;
     }
