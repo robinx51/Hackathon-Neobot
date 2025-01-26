@@ -1,33 +1,49 @@
+image: docker:19.03.12
+
+services:
+  - name: docker:19.03.12-dind
+    alias: docker
+    command: ["--host=tcp://0.0.0.0:2376"]  # HTTPS порт
+
 stages:
-  - setup
+  - build
   - deploy
 
 variables:
-  KUBERNETES_SERVER: "https://158.160.74.6"
-  KUBERNETES_TOKEN: "eyJhbGciOiJSUzI1NiIsImtpZCI6Ik9lUHAwa1JpQVk4OFhGaHhiTUdZaVl2bzF1TDZFR1hEam5kQnFpSGhCVU0ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJjbnJwcm9kMTczNzY0MDk0OS10ZWFtLTgzMjA2Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImNucnByb2QxNzM3NjQwOTQ5LXRlYW0tODMyMDYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiY25ycHJvZDE3Mzc2NDA5NDktdGVhbS04MzIwNiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImQxZGJlN2NjLTE0ZjUtNDAyOS05NmYxLWU0MmVkZDNmNTI1MSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpjbnJwcm9kMTczNzY0MDk0OS10ZWFtLTgzMjA2OmNucnByb2QxNzM3NjQwOTQ5LXRlYW0tODMyMDYifQ.WjxJbA6IpSAk5SCx_Gx0bTIv9ouTLDpljDwnfHNhECsc_tXfTL6ptn0xTRt5aF4y3j-1wKIn7-amhPNMVaDW3-j7O_fGWv6sOGzqA1qIbrn1BcIVubIJyhssDrdaSJuNrKqS28p6vcZYP0krk2pfDESvN2l4KPwMuK6k-a0mOz0TrVnPhbz5DYK8nbzRDN62ICjtKzhhU9MtmdpOIQD6j7KhGrnp7MaOl7SQiV2DGFqeHt97vR7JQNe93uJ219o1EPB4RfhxU3QstpoVZyMZurH9KpQG7WfVI6TJuM8UaH746ERFrLlc7G0F3JI6U6iIKrfyZHZV9Lp0cBMHJrDlSA"
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-  KUBERNETES_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBECONFIG_PATH: "/root/.kube/config"
+  DOCKER_IMAGE: "your-docker-image-name"
+  DOCKER_TAG: "latest"
+  KUBECONFIG: "/etc/kubernetes/config"
+  KUBECONFIG_CONTEXT: "your-context-name"
+  KUBE_VERSION: "v1.23.3"
+  HELM_VERSION: "v3.8.2"
+  YQ_VERSION: "4.15.1"
+  TARGETOS: "linux"
+  TARGETARCH: "amd64"
+  DOCKER_HOST: "tcp://docker:2376"  # Используем HTTPS
 
 before_script:
-  - echo "$KUBERNETES_TOKEN" > /tmp/k8s_token.txt
-  - mkdir -p ~/.kube
-  - echo -e "apiVersion: v1\nclusters:\n- cluster:\n    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1EY3hNREE0TURVeE5Gb1hEVE16TURjd056QTRNRFV4TkZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTEo5Cm1kSnlZUmZ0RkFBMFhUbENZclFFbkNjYVUyM2QzTVM0NThVeE5ndmJZYSsxdVQyYWZSQzBnM21PU01FZmh6K08KOUFIblR0MStGWjFRWkpkUEQ5a2FYeGtuRWhtL0lLMjNYRXhKVHpwOXhjeWRjNzNqZU1TMnBhMTRxeitlbkFLawpvRjdkdVc2UTA3QU9IdmE0dVZhM0xLdGNteE5nODhibHNjay9MVDNTYzdNcDNNRUFlNFNCdEtQZEZMaWJRYWY2CkV0Ti9lSUxVYmxvMlFFQTFiTUJoQnNmblR1bHNyaDZBLzNpWXJ4Y29jNDZzaWE4cndRUjFOOGVqY1cySFNlME0KdmJtWjY1SkhRS3NRcEpQQkpBcXJYQzk2bCtjQ2JFUThEKzJLbXhGc1lmV0dMQ3VoWEdEd1I0eEJrNEZXc281bgpuL3M3aVZwa3ptMEVLa0R6Ry8wQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQFYyMih2c29Y9e3bCxjvU3s/ZXz59j4oWs8G32lk5LrP7x62fP7uXytGljTtjqwgsHOsYjpCoxEKSyAy6gM5jdfbksT0SH9g==\n  server: https://158.160.74.6\ncontexts:\n- context:\n    cluster: nh2025\n    namespace: $KUBERNETES_NAMESPACE\n    user: cnrprod1737640949-team-83206\n  name: cnrprod1737640949-team-83206\ncurrent-context: $KUBERNETES_CONTEXT\nkind: Config\npreferences: {}\nusers:\n- name: cnrprod1737640949-team-83206\n  user:\n    token: $KUBERNETES_TOKEN" > $KUBECONFIG_PATH
-  - export KUBECONFIG=$KUBECONFIG_PATH
+  - apk add --no-cache curl
+  - curl -sSL https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz | tar -xz -C /tmp
+  - mv /tmp/linux-amd64/helm /usr/local/bin/helm
+  - curl -sSL https://dl.k8s.io/release/v1.23.3/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl
+  - chmod +x /usr/local/bin/helm /usr/local/bin/kubectl
 
-setup_helm:
-  stage: setup
-  image: dtinth/helm-kubectl
+build:
+  stage: build
+  tags:
+    - build
+    - k8s
+    - runner
   script:
-    - helm repo add argo https://argoproj.github.io/argo-helm
-    - helm repo update
-    - helm install argo-cd argo/argo-cd --namespace $KUBERNETES_NAMESPACE --create-namespace
-    - kubectl wait --for=condition=available --timeout=600s deployment/argo-cd-argocd-server --namespace $KUBERNETES_NAMESPACE
+    - docker info  # Проверка информации о Docker
+    - docker build -t $DOCKER_IMAGE:$DOCKER_TAG .
+    - docker push $DOCKER_IMAGE:$DOCKER_TAG
 
-deploy_ergocd:
+deploy:
   stage: deploy
-  image: dtinth/helm-kubectl
+  tags:
+    - k8s
+    - runner
   script:
-    - kubectl apply -f your-app-deployment.yaml
-    - kubectl apply -f your-app-service.yaml
-    - kubectl apply -f your-app-ingress.yaml
+    - kubectl --kubeconfig=$KUBECONFIG config use-context $KUBECONFIG_CONTEXT
+    - helm upgrade --install your-release-name ./helm-chart --kubeconfig=$KUBECONFIG
