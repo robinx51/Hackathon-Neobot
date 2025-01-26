@@ -10,15 +10,17 @@ stages:
 build_with_kaniko:
   stage: build
   script:
-    - echo "Настройка Docker аутентификации..."
-      # Создаем конфиг для аутентификации в реестре Docker
-    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    - echo "Сборка Docker-образа с помощью Kaniko..."
-      # Kaniko выполняет сборку образа из указанного контекста и Dockerfile
-    - /kaniko/executor --context $CI_PROJECT_DIR/develop/backend/data-storage \
-                       --dockerfile $CI_PROJECT_DIR/develop/backend/data-storage/Dockerfile \
-                       --destination $IMAGE_NAME
+    - |
+      echo "Настройка Docker аутентификации..."
+      echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+    - |
+      echo "Сборка Docker-образа с помощью Kaniko..."
+      /kaniko/executor \
+        --context $CI_PROJECT_DIR/develop/backend/data-storage \
+        --dockerfile $CI_PROJECT_DIR/develop/backend/data-storage/Dockerfile \
+        --destination $IMAGE_NAME
     - echo "Docker-образ успешно создан и загружен: $IMAGE_NAME"
   tags:
-    - build  # Указываем подходящий тег для GitLab Runner
-    - k8s    # Тег для Kubernetes Runner
+    - build
+    - runner
+    - k8s
