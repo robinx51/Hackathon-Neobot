@@ -36,7 +36,7 @@ kaniko-build:
     - build
     - k8s
   script:
-    - /kaniko/executor --context "${CI_PROJECT_DIR}/develop/telegram-bot-service" --dockerfile "${CI_PROJECT_DIR}/develop/telegram-bot-service/Dockerfile" --destination "${DOCKER_REGISTRY}/${IMAGE_PATH}:${CI_COMMIT_REF_NAME}"
+    - /kaniko/executor --context "${CI_PROJECT_DIR}/develop/telegram-bot-service" --dockerfile "${CI_PROJECT_DIR}/develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${IMAGE_PATH}:latest"
   dependencies:
     - build-telegram-bot-service
   artifacts:
