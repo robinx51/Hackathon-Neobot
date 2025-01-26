@@ -1,0 +1,33 @@
+server.port: 8081
+
+logging:
+  level:
+    ru.neostudy.datastorage: DEBUG
+  file:
+    name: ./develop/backend/data-storage/logs/app.log
+    path: logs
+
+spring:
+  profiles:
+    active: prod
+  application:
+    name: Hackathon
+
+  spring.datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Eravur
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: validate
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  main.allow-bean-definition-overriding: true
+
+  liquibase:
+    change-log: db/changelog/changelog.xml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}

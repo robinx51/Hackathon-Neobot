@@ -1,0 +1,294 @@
+openapi: 3.0.0
+info:
+  title: Telegram Bot API
+  version: 1.0.0
+  description: API для подачи заявок пользователем и управления заявками
+tags:
+  - name: Telegram-bot
+    description: Взаимодействие пользователя с ботом
+  - name: Admin-panel
+    description: Управление заявками
+paths:
+  /courses:
+    get:
+      summary: Получение списка направлений
+      description: Получение списка всех направлений обучения.
+      tags:
+         - Telegram-bot
+      responses:
+        '200':
+          description: Список направлений
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Courses'
+  /apply:
+    post:
+      summary: Подача заявки на обучение
+      description: Подача заявки на обучение. Если email не найден, то регистрирует пользователя. Меняет роль пользователя на external_user. Возвращает ссылку на страницу с входными испытаниями.
+      tags:
+         - Telegram-bot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: Имя 
+                lastName:
+                  type: string
+                  description: Фамилия 
+                city:
+                  type: string
+                  description: Город проживания
+                phone_number:
+                  type: string
+                  description: Номер телефона
+                email:
+                  type: string
+                  format: email
+                  description: Email
+                course_id:
+                  type: integer
+                  description: ID направления
+                role:
+                  type: string
+                  enum: [visitor, candidate, external_user]
+            examples:
+              newStatement:
+                value:
+                  firstName: Иван
+                  lastName: Иванов
+                  city: Пенза
+                  phone_number: +79961112233
+                  email: ivan.ivanov@email.com
+                  course_id: 1
+      responses:
+        '200':
+          description: Заявка успешно отправлена
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  testLink:
+                     type: string
+                     description: Ссылка на страницу с входными испытаниями
+  /preapply:
+    post:
+      summary: Оставление предзаявки на обучение
+      description: Оставление предзаявки на обучение. Если email не найден, то регистрирует пользователя.  Как только кнопка «Подать заявку» станет активной, пользователю приходит уведомление. После выбора направления меняет роль пользователя на external_user. Возвращает ссылку на страницу с входными испытаниями
+      tags:
+        - Telegram-bot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                  description: Имя 
+                lastName:
+                  type: string
+                  description: Фамилия 
+                city:
+                  type: string
+                  description: Город проживания
+                phone_number:
+                  type: string
+                  description: Номер телефона
+                email:
+                  type: string
+                  format: email
+                  description: Email
+            examples:
+              newStatment:
+                value:
+                  firstName: Иван
+                  lastName: Иванов
+                  city: Пенза
+                  phone_number: +79961112233
+                  email: ivan.ivanov@email.com
+      responses:
+        '200':
+          description: Предзаявка успешно отправлена, пользователь зарегистрирован/авторизован
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  testLink:
+                     type: string
+                     description: Ссылка на страницу с входными испытаниями
+  /statements:
+    get:
+      summary: Получить список заявок
+      description: Получения списка отправленных заявок с возможностью фильтрации по статусу или направлению обучения
+      tags:
+        - Admin-panel
+      parameters:
+        - name: statement_status
+          in: query
+          schema:
+            type: string
+            enum: [pending, under_review, rejected, accepted]
+          description: Фильтрация по статусу
+        - name: course
+          in: query
+          schema:
+            type: string
+          description: Фильтрация по направлению обучения
+      responses:
+        '200':
+          description: Список заявок
+
+  /prestatements:
+    get:
+      summary: Получить список предзаявок
+      description: Получения списка отправленных предзаявок с возможностью фильтрации по статусу
+      tags:
+        - Admin-panel
+      parameters:
+        - name: statement_status
+          in: query
+          schema:
+            type: string
+            enum: [pending, under_review, rejected]
+          description: Фильтрация по статусу
+      responses:
+        '200':
+          description: Список предзаявок
+
+  /accepted-statements:
+    get:
+      summary: Получить список принятых заявок
+      description: Получения списка принятых заявок с возможностью фильтрации по направлению обучения
+      tags:
+        - Admin-panel
+      parameters:
+        - name: course
+          in: query
+          schema:
+            type: string
+          description: Фильтрация по направлению обучения
+      responses:
+        '200':
+          description: Список принятых заявок
+
+  /analytics:
+    get:
+      summary: Получить аналитику по заявкам
+      tags:
+        - Admin-panel
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Начальная дата периода аналитики
+        - name: end_date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Конечная дата периода аналитики
+      responses:
+        '200':
+          description: Данные аналитики, включая общее количество, принятые, отклоненные заявки и диаграмму по направлениям
+  
+  /analytics/report:
+    post:
+      summary: Выгрузить отчет по заявкам
+      tags:
+        - Admin-panel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                start_date:
+                  type: string
+                  format: date
+                end_date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Отчет успешно сформирован и отправлен
+
+  /settings_button:
+    put:
+      summary: Установить периоды активности кнопок "Подать заявку" и "Оставить предзаявку"
+      tags:
+        - Admin-panel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                statment_start_date:
+                  type: string
+                  format: date
+                statment_end_date:
+                  type: string
+                  format: date
+                prestatment_start_date:
+                  type: string
+                  format: date
+                prestatment_end_date:
+                  type: string
+                  format: date
+      responses:
+        '200':
+          description: Периоды активности кнопок успешно обновлены
+  /statement/{id}:
+    put:
+      summary: Обновление статуса заявки
+      description: Обновление статуса заявки на обучение.
+      tags:
+         - Admin-panel
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          description: ID заявки
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                statement_status:
+                  type: string
+                  enum: [pending, accepted, under_review, rejected]
+                  description: Новый статус заявки
+            examples:
+              update_statement_status:
+                value:
+                  status: accepted
+      responses:
+        '200':
+          description: Статус заявки успешно обновлен
+components:
+  schemas:
+      Courses:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Название направления
