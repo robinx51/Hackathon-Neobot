@@ -57,3 +57,4 @@ deploy-telegram-bot-service:
     - cat kubeconfig
     - export KUBECONFIG=$(pwd)/kubeconfig
     - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206
+
