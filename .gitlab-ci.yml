@@ -8,6 +8,7 @@ variables:
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
   IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
   NETWORK_NAME: "hackathon"
+  DOCKER_TLS_CERTDIR: "/certs"
 
 kaniko-build-telegram-bot-service:
   stage: kaniko-build
@@ -48,7 +49,7 @@ build-and-run-docker-containers:
   stage: run
   image: docker:20.10.7
   services:
-    - docker:20.10.7-dind
+    - docker:20.10.7-dind  # Используем сервис Docker-in-Docker
   tags:
     - runner
     - build
