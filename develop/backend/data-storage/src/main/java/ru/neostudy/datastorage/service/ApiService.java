@@ -13,6 +13,7 @@ import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.enums.StatementStatus;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ApiService {
     private final StatementService statementService;
     private final CourseService courseService;
 
-    public UserDto saveUser(UserDto request) {
+    public UserDto saveUser(UserDto request) throws IOException {
         User user = User.builder()
                 .telegramId(request.getTelegramUserId())
                 .firstName(request.getFirstName())

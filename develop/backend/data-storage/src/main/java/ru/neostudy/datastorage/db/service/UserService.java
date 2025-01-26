@@ -18,12 +18,12 @@ public class UserService {
     public UserRepository userRepository;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
-    public void saveUser(User user) throws IOException {
+    public User saveUser(User user) throws IOException {
         logger.debug("Сохранение user с id: {}", user.getUserId());
         if (getUser(user.getTelegramId()).isPresent() || getUser(user.getEmail()).isPresent())
             throw new IOException("Обнаружен дубликат");
         else
-            userRepository.save(user);
+            return userRepository.save(user);
     }
 
     public void updateUser(User user) {

@@ -27,7 +27,7 @@ public class BotController {
 
     @PostMapping("/data-storage/user")
     @Tag(name = "Сохранение пользователя")
-    public UserDto saveUser(@RequestBody UserDto request) {
+    public UserDto saveUser(@RequestBody UserDto request) throws IOException {
         log.debug("Вызов метода user для пользователя с id - {}, email - {}, " +
                 "telegramId - {}", request.getId(), request.getEmail(), request.getTelegramUserId());
         return apiService.saveUser(request);
@@ -60,7 +60,7 @@ public class BotController {
     @GetMapping("/data-storage/getStatements")
     @Tag(name = "Получение всех заявок пользователя")
     public List<Statement> getStatementsForUser() {
-        return neoCodeBotService.getStatements();
+        return apiService.getStatements();
     }
 
     @PutMapping("/data-storage/updateStatementStatus")

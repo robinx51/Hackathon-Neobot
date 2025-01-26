@@ -1,6 +1,8 @@
 server.port: 8080
 
 logging:
+  level:
+    ru.neostudy.datastorage: DEBUG
   file:
     name: ./develop/backend/data-storage/logs/app.log
     path: logs
