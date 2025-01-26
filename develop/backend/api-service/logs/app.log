@@ -1371,3 +1371,35 @@ java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.ap
 2025-01-26T09:53:48.517+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
 2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
 2025-01-26T09:54:28.512+03:00 DEBUG 18348 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : testMethod - набор закрыт
+2025-01-26T11:34:44.884+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 22692 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T11:34:44.886+03:00 DEBUG 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T11:34:44.886+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T11:34:44.929+03:00  INFO 22692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T11:34:44.929+03:00  INFO 22692 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T11:34:45.987+03:00  INFO 22692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T11:34:46.001+03:00  INFO 22692 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T11:34:46.001+03:00  INFO 22692 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T11:34:46.057+03:00  INFO 22692 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T11:34:46.058+03:00  INFO 22692 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1128 ms
+2025-01-26T11:34:46.475+03:00 DEBUG 22692 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T11:34:46.475+03:00 DEBUG 22692 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T11:34:46.823+03:00 ERROR 22692 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : Connection refused: getsockopt: localhost/127.0.0.1:8080
+2025-01-26T11:34:47.585+03:00  WARN 22692 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T11:34:47.606+03:00  INFO 22692 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T11:34:47.614+03:00  INFO 22692 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.143 seconds (process running for 3.801)
+2025-01-26T11:35:02.052+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 7616 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T11:35:02.053+03:00 DEBUG 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T11:35:02.054+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T11:35:02.101+03:00  INFO 7616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T11:35:02.102+03:00  INFO 7616 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T11:35:03.343+03:00  INFO 7616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9093 (http)
+2025-01-26T11:35:03.360+03:00  INFO 7616 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T11:35:03.360+03:00  INFO 7616 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T11:35:03.433+03:00  INFO 7616 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T11:35:03.433+03:00  INFO 7616 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1331 ms
+2025-01-26T11:35:03.916+03:00 DEBUG 7616 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T11:35:03.917+03:00 DEBUG 7616 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T11:35:04.634+03:00 DEBUG 7616 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T11:35:05.316+03:00  WARN 7616 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T11:35:05.336+03:00  INFO 7616 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9093 (http) with context path '/'
+2025-01-26T11:35:05.344+03:00  INFO 7616 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.737 seconds (process running for 4.509)
