@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.neostudy.apiservice.admin_api.AdminService;
+import ru.neostudy.apiservice.admin_api.service.AdminService;
 import ru.neostudy.apiservice.bot.enums.ServiceCommand;
 import ru.neostudy.apiservice.bot.enums.UserAction;
 import ru.neostudy.apiservice.bot.enums.UserState;

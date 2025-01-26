@@ -1,4 +1,4 @@
-package ru.neostudy.apiservice.admin_api;
+package ru.neostudy.apiservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotNull;

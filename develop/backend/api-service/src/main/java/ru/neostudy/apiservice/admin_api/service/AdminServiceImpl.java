@@ -1,9 +1,10 @@
-package ru.neostudy.apiservice.admin_api;
+package ru.neostudy.apiservice.admin_api.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.neostudy.apiservice.client.interfaces.DataStorageClient;
+import ru.neostudy.apiservice.model.ActivePeriod;
 import ru.neostudy.apiservice.model.StatementFullDto;
 import ru.neostudy.apiservice.model.UpdateStatementDto;
 
