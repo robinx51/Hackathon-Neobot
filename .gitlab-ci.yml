@@ -4,13 +4,13 @@ services:
   - docker:27.0.3-dind
 
 variables:
-  DOCKER_HOST: tcp://docker:2375
-  DOCKER_TLS_CERTDIR: ""
+  DOCKER_HOST: tcp://docker:2375  # Используем HTTP-соединение
+  DOCKER_TLS_CERTDIR: ""          # Отключаем сертификаты TLS
   KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
   KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
   KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-  IMAGE_NAME: "your-image-name"  # Укажите имя образа
-  REGISTRY: "docker.io"  # Укажите ваш Docker registry (например, Docker Hub)
+  IMAGE_NAME: "your-image-name"   # Укажите имя образа
+  REGISTRY: "docker.io"           # Укажите ваш Docker registry (например, Docker Hub)
 
 stages:
   - build
@@ -24,7 +24,7 @@ build_with_dind_and_kaniko:
     - /kaniko/executor --context=dir://$(pwd) --dockerfile=Dockerfile --destination=$REGISTRY/$CI_PROJECT_NAMESPACE/$IMAGE_NAME:latest
     - echo "Образ собран и загружен в реестр!"
   only:
-    - main  # или ваша нужная ветка
+    - master  # или ваша нужная ветка
   tags:
     - build
     - runner
