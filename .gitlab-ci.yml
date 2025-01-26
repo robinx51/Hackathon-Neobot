@@ -1,16 +1,15 @@
-image: docker:27.0.3-dind
+image: docker:19.03.12-dind
 
 services:
-  - docker:27.0.3-dind
+  - docker:19.03.12-dind
 
 variables:
-  DOCKER_HOST: tcp://docker:2375  # Используем HTTP-соединение
-  DOCKER_TLS_CERTDIR: ""          # Отключаем сертификаты TLS
+  DOCKER_HOST: tcp://docker:2375  # Подключение через HTTP
+  DOCKER_TLS_CERTDIR: ""          # Отключение использования TLS сертификатов
   KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
   KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"
-  IMAGE_NAME: "your-image-name"   # Укажите имя образа
-  REGISTRY: "docker.io"           # Укажите ваш Docker registry (например, Docker Hub)
+  IMAGE_NAME: "your-image-name"
+  REGISTRY: "docker.io"
 
 stages:
   - build
