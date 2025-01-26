@@ -18,10 +18,11 @@
     </properties>
 
     <dependencies>
-        <!-- Lombok -->
+        <!-- Spring boot test -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- Hibernate -->
@@ -56,13 +57,6 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
-        <!-- Spring boot test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Validation -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,20 +89,6 @@
             <version>2.6.0</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
-            </plugin>
-        </plugins>
-    </build>
 
     <profiles>
         <profile>

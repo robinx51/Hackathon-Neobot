@@ -7,11 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.neostudy.datastorage.db.entity.Course;
+import ru.neostudy.datastorage.db.entity.Statement;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
 import ru.neostudy.datastorage.service.ApiService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,11 +57,11 @@ public class BotController {
         return apiService.getUser(telegramId);
     }
 
-//    @GetMapping("/data-storage/getStatementsFor/{userId}")
-//    @Tag(name = "Получение всех заявок пользователя")
-//    public StatementsForUserDto getStatementsForUser(@PathVariable int userId) {
-//        return neoCodeBotService.getStatementsForUser(userId);
-//    }
+    @GetMapping("/data-storage/getStatements")
+    @Tag(name = "Получение всех заявок пользователя")
+    public List<Statement> getStatementsForUser() {
+        return neoCodeBotService.getStatements();
+    }
 
     @PutMapping("/data-storage/updateStatementStatus")
     @Tag(name = "Обновление статуса заявки",

@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 @Slf4j
 public class AppUserValidator {
     Pattern namePattern = Pattern.compile("^[а-яёА-ЯЁ]{2,30}$");
-    Pattern emailPattern = Pattern.compile("^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$");
+    Pattern emailPattern = Pattern.compile("^[a-z0-9A-Z_!#$%&'*+/=?`{|}~^.-]+@[a-z0-9A-Z.-]+$");
     Pattern phonePattern = Pattern.compile("^\\+7\\d{10}$");
-    Pattern cityPattern = Pattern.compile("^[а-яёА-ЯЁ]{2,35}$");
+    Pattern cityPattern = Pattern.compile("^[а-яА-ЯёЁ\\-\\s]{2,35}$");
 
     public boolean isNameValid(String name) {
         return namePattern.matcher(name).find();

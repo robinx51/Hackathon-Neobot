@@ -8,6 +8,9 @@ bot:
 logging:
   level:
     ru.neostudy.apiservice: DEBUG
+  file:
+    name: ./develop/backend/api-service/logs/app.log
+    path: logs
 
 storage:
   serverUrl: http://localhost:8080

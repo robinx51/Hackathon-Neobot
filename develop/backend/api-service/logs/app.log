@@ -1,0 +1,402 @@
+2025-01-26T00:32:15.802+03:00  INFO 27824 --- [main] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 27824 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T00:32:15.804+03:00 DEBUG 27824 --- [main] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T00:32:15.805+03:00  INFO 27824 --- [main] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T00:32:16.939+03:00  INFO 27824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T00:32:16.952+03:00  INFO 27824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T00:32:16.952+03:00  INFO 27824 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T00:32:17.023+03:00  INFO 27824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T00:32:17.024+03:00  INFO 27824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1171 ms
+2025-01-26T00:32:18.455+03:00  INFO 27824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T00:32:18.461+03:00  INFO 27824 --- [main] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.141 seconds (process running for 3.777)
+2025-01-26T00:33:29.316+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 956473092
+2025-01-26T00:33:37.644+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:33:37.644+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T00:33:37.645+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T00:33:37.646+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T00:33:47.870+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:33:47.870+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 956473092
+2025-01-26T00:34:04.063+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: Анна-Мария
+2025-01-26T00:37:53.415+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:37:53.415+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:37:53.415+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:37:53.416+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:41:11.835+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:41:11.836+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T00:41:11.836+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T00:41:11.836+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T00:41:16.635+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/оставить предзаявку]
+2025-01-26T00:41:16.635+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /оставить предзаявку, telegramId = 422401357
+2025-01-26T00:41:35.436+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:41:35.436+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:41:43.216+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: ivan
+2025-01-26T00:41:43.399+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79876543210
+2025-01-26T00:41:43.399+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email mail@mai.ru
+2025-01-26T00:41:43.904+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 422401357
+2025-01-26T00:41:43.933+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mail@mai.ru и telegramId 422401357
+2025-01-26T00:41:44.229+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email mail@mai.ru и telegramId 422401357 сохранен
+2025-01-26T00:41:50.954+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:41:50.954+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:41:50.958+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:41:56.629+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:41:56.629+03:00 DEBUG 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:41:56.629+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:42:03.639+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: iv12123
+2025-01-26T00:42:14.836+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: iv!"№;
+2025-01-26T00:42:40.626+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: Янннннннннннннннннннннннннннннн
+2025-01-26T00:42:51.167+03:00 ERROR 27824 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: Я
+2025-01-26T00:42:57.786+03:00  INFO 29044 --- [main] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 29044 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T00:42:57.790+03:00 DEBUG 29044 --- [main] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T00:42:57.792+03:00  INFO 29044 --- [main] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T00:42:58.828+03:00  INFO 29044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T00:42:58.840+03:00  INFO 29044 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T00:42:58.840+03:00  INFO 29044 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T00:42:58.910+03:00  INFO 29044 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T00:42:58.910+03:00  INFO 29044 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1062 ms
+2025-01-26T00:42:59.994+03:00 ERROR 29044 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 782744708
+2025-01-26T00:43:00.281+03:00  INFO 29044 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T00:43:00.287+03:00  INFO 29044 --- [main] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.053 seconds (process running for 3.85)
+2025-01-26T00:43:31.758+03:00 DEBUG 29044 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:43:31.758+03:00 DEBUG 29044 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:43:31.760+03:00 ERROR 29044 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:43:44.332+03:00  INFO 25776 --- [main] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 25776 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T00:43:44.334+03:00 DEBUG 25776 --- [main] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T00:43:44.334+03:00  INFO 25776 --- [main] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T00:43:45.317+03:00  INFO 25776 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T00:43:45.331+03:00  INFO 25776 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T00:43:45.331+03:00  INFO 25776 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T00:43:45.398+03:00  INFO 25776 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T00:43:45.398+03:00  INFO 25776 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1017 ms
+2025-01-26T00:43:46.705+03:00  INFO 25776 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T00:43:46.710+03:00  INFO 25776 --- [main] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.81 seconds (process running for 3.428)
+2025-01-26T00:43:54.540+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:43:54.541+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:43:54.543+03:00 ERROR 25776 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:44:19.155+03:00 ERROR 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 782744708
+2025-01-26T00:44:20.738+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:44:20.739+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:44:20.739+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:44:20.740+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:44:24.632+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:44:24.633+03:00 DEBUG 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:44:34.162+03:00 ERROR 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: ivanov
+2025-01-26T00:44:40.562+03:00 ERROR 25776 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: 1234
+2025-01-26T00:44:46.082+03:00  INFO 14864 --- [main] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.2 with PID 14864 (D:\Проекты\NeoFlex\Hackathon\develop\develop\backend\api-service\target\classes started by Admin in D:\Проекты\NeoFlex\Hackathon\develop)
+2025-01-26T00:44:46.084+03:00 DEBUG 14864 --- [main] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T00:44:46.084+03:00  INFO 14864 --- [main] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T00:44:47.185+03:00  INFO 14864 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T00:44:47.197+03:00  INFO 14864 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T00:44:47.198+03:00  INFO 14864 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T00:44:47.272+03:00  INFO 14864 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T00:44:47.272+03:00  INFO 14864 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1125 ms
+2025-01-26T00:44:48.786+03:00  INFO 14864 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T00:44:48.792+03:00  INFO 14864 --- [main] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 3.161 seconds (process running for 3.919)
+2025-01-26T00:44:56.312+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 782744708
+2025-01-26T00:45:04.533+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:45:04.533+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:45:04.535+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:45:25.739+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:45:25.740+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:45:25.740+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:45:25.741+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:45:40.455+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:45:40.455+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:45:46.695+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: i!@#
+2025-01-26T00:46:22.639+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:46:22.640+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T00:46:22.640+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T00:46:22.640+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T00:46:26.132+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:46:26.132+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:47:15.146+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: 1234
+2025-01-26T00:47:16.619+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: 1234
+2025-01-26T00:47:18.130+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: 1234
+2025-01-26T00:47:37.202+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@#
+2025-01-26T00:47:40.170+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@#
+2025-01-26T00:47:42.595+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@#
+2025-01-26T00:47:45.037+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@#
+2025-01-26T00:47:56.578+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Янннннннннннннннннннннннннннннн
+2025-01-26T00:48:04.380+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Я
+2025-01-26T00:48:20.480+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Penza
+2025-01-26T00:48:26.670+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Penza123
+2025-01-26T00:48:32.178+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Pe*;%:
+2025-01-26T00:48:37.071+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Д
+2025-01-26T00:48:42.673+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Дааааааааааааааааааааааааааааааааааа
+2025-01-26T00:49:14.119+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79876543210
+2025-01-26T00:49:18.626+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=5, courseName=Java Development)
+2025-01-26T00:49:18.627+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T00:49:18.627+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email mail@mail.ru
+2025-01-26T00:49:19.127+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 422401357
+2025-01-26T00:49:19.166+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mail@mail.ru и telegramId 422401357
+2025-01-26T00:49:19.520+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email mail@mail.ru и telegramId 422401357 сохранен
+2025-01-26T00:49:19.520+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение с id = 5
+2025-01-26T00:49:19.520+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mail@mail.ru и telegramId 422401357
+2025-01-26T00:49:19.596+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : 500 Internal Server Error from POST http://localhost:8080/data-storage/saveUser
+2025-01-26T00:49:53.027+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:49:53.027+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:49:53.027+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:49:53.028+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:50:01.476+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:50:01.476+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:50:13.677+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: proverkatestamail.ru
+2025-01-26T00:50:28.612+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:50:28.612+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T00:50:28.612+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T00:50:28.612+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T00:50:33.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:50:33.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:50:46.798+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: тесттест@mail.ru
+2025-01-26T00:50:54.156+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: a!"№;*asd@mail.ru
+2025-01-26T00:52:03.858+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:52:03.859+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:52:03.859+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:52:03.859+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:52:09.700+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79876543210
+2025-01-26T00:52:13.224+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=7, courseName=Testing)
+2025-01-26T00:52:13.224+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T00:52:13.224+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email mail@mail.ru
+2025-01-26T00:52:13.578+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 422401357
+2025-01-26T00:52:13.623+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mail@mail.ru и telegramId 422401357
+2025-01-26T00:52:22.368+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email mail@mail.ru и telegramId 422401357 сохранен
+2025-01-26T00:52:22.368+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение с id = 6
+2025-01-26T00:52:22.368+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mail@mail.ru и telegramId 422401357
+2025-01-26T00:52:58.313+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : 500 Internal Server Error from POST http://localhost:8080/data-storage/saveUser
+2025-01-26T00:52:58.526+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:52:58.526+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:52:58.605+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователя не найдено, telegramId = 956473092
+2025-01-26T00:52:58.744+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:52:58.744+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:52:58.744+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:52:58.744+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:52:58.815+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:52:58.815+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T00:52:58.815+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T00:52:58.815+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T00:53:08.453+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:53:08.453+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 956473092
+2025-01-26T00:53:20.030+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:53:20.030+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:53:24.042+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Петрова-Водкина
+2025-01-26T00:53:48.132+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: фывф
+2025-01-26T00:53:48.132+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: фывф
+2025-01-26T00:53:56.462+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7asdcz
+2025-01-26T00:53:56.462+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7asdcz
+2025-01-26T00:54:05.350+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7!;%*:
+2025-01-26T00:54:05.351+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7!;%*:
+2025-01-26T00:54:12.001+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7905123
+2025-01-26T00:54:12.001+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7905123
+2025-01-26T00:54:19.287+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +70512323231
+2025-01-26T00:55:20.100+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:55:20.100+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:55:20.100+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:55:20.100+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:55:24.101+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:55:24.101+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T00:55:55.396+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79021233454
+2025-01-26T00:56:03.503+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:56:03.504+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T00:56:03.504+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T00:56:03.504+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T00:56:05.816+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=5, courseName=Java Development)
+2025-01-26T00:56:05.816+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T00:56:05.816+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email proverkatesta@mail.ru
+2025-01-26T00:56:06.109+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 782744708
+2025-01-26T00:56:06.145+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email proverkatesta@mail.ru и telegramId 782744708
+2025-01-26T00:56:06.418+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email proverkatesta@mail.ru и telegramId 782744708 сохранен
+2025-01-26T00:56:06.419+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение с id = 7
+2025-01-26T00:56:06.419+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email proverkatesta@mail.ru и telegramId 782744708
+2025-01-26T00:56:08.343+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/оставить предзаявку]
+2025-01-26T00:56:08.344+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /оставить предзаявку, telegramId = 422401357
+2025-01-26T00:56:21.415+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:56:21.415+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T00:56:21.415+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T00:56:21.415+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T00:56:26.160+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/оставить предзаявку]
+2025-01-26T00:56:26.160+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /оставить предзаявку, telegramId = 782744708
+2025-01-26T00:56:31.527+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79876543210
+2025-01-26T00:56:31.527+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email mailll@mail.ru
+2025-01-26T00:56:31.591+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 422401357
+2025-01-26T00:56:31.625+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mailll@mail.ru и telegramId 422401357
+2025-01-26T00:56:31.785+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email mailll@mail.ru и telegramId 422401357 сохранен
+2025-01-26T00:56:31.950+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: ivan
+2025-01-26T00:56:40.811+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: iv12123
+2025-01-26T00:56:48.531+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: iv!"№;
+2025-01-26T00:56:55.273+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: Янннннннннннннннннннннннннннннн
+2025-01-26T00:57:01.572+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указано имя пользователя: Я
+2025-01-26T00:57:03.371+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:57:03.371+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:57:03.372+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] o.t.t.u.DefaultBotSession                : Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+
+java.lang.NullPointerException: Cannot invoke "ru.neostudy.apiservice.model.BotUser.setAction(ru.neostudy.apiservice.bot.enums.UserAction)" because "botUser" is null
+	at ru.neostudy.apiservice.bot.UpdateService.processSubmitRequest(UpdateService.java:415) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processServiceCommand(UpdateService.java:81) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.UpdateService.processUpdate(UpdateService.java:66) ~[classes/:na]
+	at ru.neostudy.apiservice.bot.TelegramBot.onUpdateReceived(TelegramBot.java:38) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596) ~[na:na]
+	at org.telegram.telegrambots.meta.generics.LongPollingBot.onUpdatesReceived(LongPollingBot.java:27) ~[telegrambots-meta-6.9.7.1.jar:na]
+	at org.telegram.telegrambots.updatesreceivers.DefaultBotSession$HandlerThread.run(DefaultBotSession.java:312) ~[telegrambots-6.9.7.1.jar:na]
+
+2025-01-26T00:57:08.688+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T00:57:08.688+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 422401357
+2025-01-26T00:57:08.688+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 422401357
+2025-01-26T00:57:08.688+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 422401357 сохранен
+2025-01-26T00:57:11.431+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T00:57:11.432+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 422401357
+2025-01-26T00:57:36.387+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79876543321
+2025-01-26T00:57:44.782+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=2, courseName=Data Engineering)
+2025-01-26T00:57:44.782+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T00:57:44.782+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email mail@mail.ru
+2025-01-26T00:57:44.849+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 422401357
+2025-01-26T00:57:44.885+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с telegramId 422401357 уже существует
+2025-01-26T00:57:44.885+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : phone changed
+2025-01-26T00:57:44.885+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода сохранения пользователя после обновления полей,id = 8
+2025-01-26T00:57:44.885+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email mailll@mail.ru и telegramId 422401357
+2025-01-26T00:57:58.342+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: ivanov
+2025-01-26T00:58:07.908+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: 1234
+2025-01-26T00:58:13.196+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@#
+2025-01-26T00:58:18.890+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: i!@ #
+2025-01-26T00:58:26.404+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Янннннннннннннннннннннннннннннн
+2025-01-26T00:58:28.180+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79021233454
+2025-01-26T00:58:34.532+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Я
+2025-01-26T00:58:51.957+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Penza
+2025-01-26T00:58:52.107+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=5, courseName=Java Development)
+2025-01-26T00:58:52.107+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T00:58:52.107+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email proverkatesta@mail.ru
+2025-01-26T00:58:52.174+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 956473092
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email proverkatesta@mail.ru уже существует
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : name changed
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : last name changed
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : city changed
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода сохранения пользователя после обновления полей,id = 7
+2025-01-26T00:58:52.209+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email proverkatesta@mail.ru и telegramId 782744708
+2025-01-26T00:58:59.086+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Penza123
+2025-01-26T00:59:06.162+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Pe*;%:
+2025-01-26T00:59:12.631+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Д
+2025-01-26T00:59:17.871+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан город проживания пользователя: Дааааааааааааааааааааааааааааааааааа
+2025-01-26T01:02:24.461+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:02:24.461+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T01:02:24.461+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T01:02:24.461+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T01:02:33.465+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T01:02:33.465+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 782744708
+2025-01-26T01:03:11.122+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:03:11.123+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T01:03:11.123+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T01:03:11.123+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T01:03:27.618+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79042636666
+2025-01-26T01:03:33.480+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=7, courseName=Testing)
+2025-01-26T01:03:33.480+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T01:03:33.480+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email proverkatesta@mail.ru
+2025-01-26T01:03:33.545+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 782744708
+2025-01-26T01:03:33.579+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email proverkatesta@mail.ru уже существует
+2025-01-26T01:03:33.579+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : name changed
+2025-01-26T01:03:33.579+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : last name changed
+2025-01-26T01:03:33.580+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : city changed
+2025-01-26T01:03:33.580+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : phone changed
+2025-01-26T01:03:33.580+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода сохранения пользователя после обновления полей,id = 7
+2025-01-26T01:03:33.580+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email proverkatesta@mail.ru и telegramId 782744708
+2025-01-26T01:03:45.351+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:03:45.351+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T01:03:45.351+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T01:03:45.351+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T01:03:56.507+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:03:56.507+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T01:03:56.507+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T01:03:56.507+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T01:09:29.774+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:09:29.776+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T01:09:29.776+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T01:09:29.776+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T01:11:56.073+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T01:11:56.073+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 956473092
+2025-01-26T01:12:20.856+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана фамилия пользователя: Петрова-Водкина
+2025-01-26T01:12:33.229+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:12:33.230+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T01:12:33.230+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T01:12:33.230+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T01:12:38.731+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/оставить предзаявку]
+2025-01-26T01:12:38.731+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /оставить предзаявку, telegramId = 782744708
+2025-01-26T01:13:08.585+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:13:08.585+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 782744708
+2025-01-26T01:13:08.585+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 782744708
+2025-01-26T01:13:08.585+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 782744708 сохранен
+2025-01-26T01:13:14.562+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/оставить предзаявку]
+2025-01-26T01:13:14.562+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /оставить предзаявку, telegramId = 782744708
+2025-01-26T01:13:22.633+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79021233454
+2025-01-26T01:13:22.948+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: proverkatestamail.ru
+2025-01-26T01:13:31.006+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course = Course(courseId=2, courseName=Data Engineering)
+2025-01-26T01:13:31.006+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T01:13:31.006+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email proverkatesta@mail.ru
+2025-01-26T01:13:31.081+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 956473092
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с email proverkatesta@mail.ru уже существует
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : name changed
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : last name changed
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : city changed
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : phone changed
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода сохранения пользователя после обновления полей,id = 7
+2025-01-26T01:13:31.115+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email proverkatesta@mail.ru и telegramId 782744708
+2025-01-26T01:13:34.049+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: тесттест@mail.ru
+2025-01-26T01:13:40.439+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указана электронная почта пользователя: a!"№;*asd@mail.ru
+2025-01-26T01:13:54.529+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/start]
+2025-01-26T01:13:54.529+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /start, telegramId = 956473092
+2025-01-26T01:13:54.529+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода processStartCommand, telegramId = 956473092
+2025-01-26T01:13:54.529+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с телеграм id = 956473092 сохранен
+2025-01-26T01:14:02.826+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/подать заявку]
+2025-01-26T01:14:02.826+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /подать заявку, telegramId = 956473092
+2025-01-26T01:14:46.764+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: фывф
+2025-01-26T01:14:46.765+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: фывф
+2025-01-26T01:14:51.901+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7asdcz
+2025-01-26T01:14:51.901+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7asdcz
+2025-01-26T01:14:58.666+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7!;%*:
+2025-01-26T01:14:58.666+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7!;%*:
+2025-01-26T01:15:03.775+03:00 DEBUG 14864 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +7905123
+2025-01-26T01:15:03.775+03:00 ERROR 14864 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Некорректно указан номер телефона пользователя: +7905123

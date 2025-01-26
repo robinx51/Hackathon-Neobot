@@ -51,8 +51,9 @@ public class ApiService {
                     .build();
         }
         StatementStatus statementStatus;
-        if (request.getCourse() != null)
+        if (request.getCourse() != null) {
             statementStatus = StatementStatus.PENDING;
+        }
         else
             statementStatus = StatementStatus.PRE_APPLICATION;
 
@@ -66,10 +67,6 @@ public class ApiService {
         return userService.getAllUsers();
     }
 
-    public Optional<User> getUser(int userId) {
-        return userService.getUser(userId);
-    }
-
     public Optional<User> getUser(Long telegramId) {
         return userService.getUser(telegramId);
     }
@@ -78,23 +75,13 @@ public class ApiService {
         return userService.getUser(email);
     }
 
+    public List<Statement> getStatements() {
+        return statementService.getStatements();
+    }
     public void updateStatement(UpdateStatementDto request) {
         Statement statement = statementService.getStatementById(request.getStatementId());
         statementService.updateStatement(addStatementStatus(statement, request.getStatementStatus()));
     }
-
-//    public StatementsForUserDto getStatementsForUser(int userId) {
-//        Optional<User> user = userService.getUser(userId);
-//        if (user.isPresent()) {
-//            User userEntity = user.get();
-//            List<Statement> statementList = statementService.getStatementsForUser(userEntity);
-//            return StatementsForUserDto.builder()
-//                    .user(userEntity)
-//                    .statementList(statementList)
-//                    .build();
-//        } else
-//            throw new UnknownEntityException("User with id " + userId + " not found");
-//    }
 
     public void insertCourse(String courseName) {
         Course course = Course.builder()
