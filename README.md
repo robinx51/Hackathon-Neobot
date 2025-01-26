@@ -43,3 +43,18 @@ psql "host=rc1b-gk21kywyncnoym7q.mdb.yandexcloud.net \
 
 В гитлабе, в вашей группе, где находится репозиторий проекта, находится репозиторий credentials. В нем находятся учетные
 данные для доступа к базе данных и к кластеру Kubernetes
+
+
+**Чтобы запустить backend-часть в докере, необходимо создать внутреннюю сеть для них, собрать с параметром -t и запустить во внутренней сети.** 
+
+Пример:
+
+```
+docker network create hackathon
+
+docker build -t data-storage_image .
+docker build -t api-service_image .
+
+docker run -d --name data --network hackathon data-storage_image
+docker run -d --name api --network hackathon -p 8081:8081 api-service_image
+```
