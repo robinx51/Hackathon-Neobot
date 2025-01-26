@@ -1,0 +1,26 @@
+server.port: 8080
+
+logging:
+  file:
+    name: ./develop/backend/data-storage/logs/app.log
+    path: logs
+
+spring:
+  profiles:
+    active: prod
+  application:
+    name: Hackathon
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: validate
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  main.allow-bean-definition-overriding: true
+
+  liquibase:
+    change-log: db/changelog/changelog.xml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
