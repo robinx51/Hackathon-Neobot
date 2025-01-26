@@ -14,10 +14,8 @@ stages:
 build_with_dind_and_kaniko:
   stage: build
   script:
-    # Аутентификация в Docker Registry
+    - mkdir -p /kaniko/.docker
     - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
-    
-    # Сборка и загрузка Docker-образа с помощью Kaniko
     - docker run --rm \
         -v $CI_PROJECT_DIR:/workspace \
         -v /kaniko/.docker:/kaniko/.docker \
@@ -25,7 +23,6 @@ build_with_dind_and_kaniko:
         --context /workspace/develop/backend/data-storage \
         --dockerfile /workspace/develop/backend/data-storage/Dockerfile \
         --destination $IMAGE_NAME
-    
     - echo "Docker-образ успешно собран и загружен: $IMAGE_NAME"
   tags:
     - runner
