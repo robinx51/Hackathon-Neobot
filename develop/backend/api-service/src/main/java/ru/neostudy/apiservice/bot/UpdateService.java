@@ -41,14 +41,14 @@ public class UpdateService {
     private static boolean isActivePeriod = false;
     private static boolean wasNotified = false;
     private final ConcurrentMap<Long, BotUser> users = new ConcurrentHashMap<>();
-    private volatile ActivePeriod activePeriod;
+    private ActivePeriod activePeriod;
 
     public void registerBot(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
         setCourses();
     }
 
-    public synchronized void setActivePeriod(ActivePeriod activePeriod) {
+    public void setActivePeriod(ActivePeriod activePeriod) {
         this.activePeriod = activePeriod;
     }
 
