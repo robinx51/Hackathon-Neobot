@@ -19,7 +19,48 @@ kaniko-build-telegram-bot-service:
     - build
     - k8s
   script:
+    - echo "Listing files in the project directory:"
+    - ls -alh ${CI_PROJECT_DIR}  # Проверяем, какие файлы доступны
+    - echo "Running Kaniko build"
     - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
   artifacts:
     paths:
-      - develop/backend/da
+      - develop/backend/data-storage/target/*.jar  # Убедитесь, что путь правильный
+    expire_in: 1 week
+
+deploy-telegram-bot-service:
+  stage: deploy
+  image: bitnami/kubectl:latest
+  tags:
+    - runner
+    - build
+    - k8s
+  only:
+    - devops
+  script:
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig
+    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
+    - cat kubeconfig  # Выводим содержимое kubeconfig для отладки
+    - export KUBECONFIG=$(pwd)/kubeconfig
+    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206  # Деплой через kubectl
+
+build-and-run-docker-containers:
+  stage: run
+  image: docker:20.10.7
+  services:
+    - docker:20.10.7-dind
+  tags:
+    - runner
+    - build
+    - k8s
+  script:
+    - echo "Creating Docker network"
+    - docker network create $NETWORK_NAME  # Создаём сеть для контейнеров
+    # Собираем Docker образы, используя уже существующие JAR файлы
+    - echo "Building Docker images"
+    - docker build -t data-storage_image ./develop/backend/data-storage --build-arg JAR_FILE=target/data-storage-1.0-SNAPSHOT-exec.jar
+    - docker build -t api-service_image ./develop/backend/api-service
+    # Запускаем контейнеры
+    - echo "Running Docker containers"
+    - docker run -d --name data --network $NETWORK_NAME data-storage_image
+    - docker run -d --name api --network $NETWORK_NAME -p 8081:8081 api-service_image
