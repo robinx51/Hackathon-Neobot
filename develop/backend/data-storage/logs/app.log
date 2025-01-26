@@ -3851,3 +3851,67 @@ java.io.IOException: Обнаружен дубликат
 2025-01-26T05:44:34.843+01:00  INFO 11016 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-26T05:44:34.845+01:00  INFO 11016 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-01-26T05:44:34.848+01:00  INFO 11016 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-01-26T05:49:01.148+01:00  INFO 12052 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Starting DataStorageApplication using Java 21.0.6 with PID 12052 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\data-storage\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:49:01.150+01:00 DEBUG 12052 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T05:49:01.151+01:00  INFO 12052 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : The following 1 profile is active: "prod"
+2025-01-26T05:49:01.185+01:00  INFO 12052 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:49:01.185+01:00  INFO 12052 --- [Hackathon] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:49:01.519+01:00  INFO 12052 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-26T05:49:01.551+01:00  INFO 12052 --- [Hackathon] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
+2025-01-26T05:49:02.051+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-26T05:49:02.061+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:49:02.061+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:49:02.095+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:49:02.096+01:00  INFO 12052 --- [Hackathon] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 909 ms
+2025-01-26T05:49:02.118+01:00  INFO 12052 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-26T05:49:02.231+01:00  INFO 12052 --- [Hackathon] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@524dbea7
+2025-01-26T05:49:02.232+01:00  INFO 12052 --- [Hackathon] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-26T05:49:02.241+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/postgres'
+2025-01-26T05:49:02.440+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.database                       : Set default schema name to public
+2025-01-26T05:49:02.725+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:49:02.755+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-01-26T05:49:02.756+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.changelog                      : Reading from public.databasechangelog
+2025-01-26T05:49:02.761+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : UPDATE SUMMARY
+2025-01-26T05:49:02.762+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : Run:                          0
+2025-01-26T05:49:02.762+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : Previously run:               4
+2025-01-26T05:49:02.762+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : Filtered out:                 0
+2025-01-26T05:49:02.762+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : -------------------------------
+2025-01-26T05:49:02.762+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : Total change sets:            4
+2025-01-26T05:49:02.763+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.util                           : Update summary generated
+2025-01-26T05:49:02.776+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.lockservice                    : Successfully released change log lock
+2025-01-26T05:49:02.778+01:00  INFO 12052 --- [Hackathon] [restartedMain] liquibase.command                        : Command execution complete
+2025-01-26T05:49:02.825+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-26T05:49:02.869+01:00  INFO 12052 --- [Hackathon] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-26T05:49:02.893+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-26T05:49:02.953+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2025-01-26T05:49:03.094+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-26T05:49:03.139+01:00  WARN 12052 --- [Hackathon] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-26T05:49:03.772+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-26T05:49:03.800+01:00  INFO 12052 --- [Hackathon] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:49:03.994+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-26T05:49:04.109+01:00  WARN 12052 --- [Hackathon] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-26T05:49:04.377+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-01-26T05:49:04.401+01:00  INFO 12052 --- [Hackathon] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-26T05:49:04.406+01:00  INFO 12052 --- [Hackathon] [restartedMain] r.n.datastorage.DataStorageApplication   : Started DataStorageApplication in 3.599 seconds (process running for 4.057)
+2025-01-26T05:49:12.457+01:00  INFO 12052 --- [Hackathon] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-26T05:49:12.457+01:00  INFO 12052 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-01-26T05:49:12.458+01:00  INFO 12052 --- [Hackathon] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-01-26T05:49:12.480+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-1] r.n.d.controller.BotController           : Вызов метода getCourses
+2025-01-26T05:49:35.196+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-2] r.n.datastorage.db.service.UserService   : Поиск user с email: kir@gmail.com
+2025-01-26T05:49:35.257+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-3] r.n.datastorage.db.service.UserService   : Поиск user с telegramId: 1492839348
+2025-01-26T05:49:35.348+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-5] r.n.d.controller.BotController           : Вызов метода user для пользователя с id - 1, email - kir@gmail.com, telegramId - 1492839348
+2025-01-26T05:49:35.349+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-5] r.n.datastorage.db.service.UserService   : Сохранение user с id: 1
+2025-01-26T05:49:35.399+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-5] r.n.datastorage.service.ApiService       : statement = Statement(statementId=1, user=User(userId=1, telegramId=1492839348, firstName=йц, lastName=йц, city=йц, email=kir@gmail.com, phoneNumber=+79315896410, role=EXTERNAL_USER), course=Course(courseId=7, courseName=Testing), statementStatus=PENDING, creationDate=2025-01-26 05:10:51.483062, changedDate=2025-01-26 05:44:18.144198)
+2025-01-26T05:49:35.405+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-5] r.n.datastorage.service.ApiService       : statement = Statement(statementId=1, user=User(userId=1, telegramId=1492839348, firstName=йц, lastName=йц, city=йц, email=kir@gmail.com, phoneNumber=+79315896410, role=EXTERNAL_USER), course=null, statementStatus=PENDING, creationDate=2025-01-26 05:10:51.483062, changedDate=2025-01-26 05:44:18.144198)
+2025-01-26T05:49:35.405+01:00  INFO 12052 --- [Hackathon] [http-nio-8080-exec-5] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:49:54.248+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-4] r.n.datastorage.db.service.UserService   : Получение пользователей без выбранного курса
+2025-01-26T05:49:54.274+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-4] r.n.datastorage.db.service.UserService   : usersWithoutCourse size = 1
+2025-01-26T05:49:58.772+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-6] r.n.datastorage.db.service.UserService   : Поиск user с telegramId: 1492839348
+2025-01-26T05:49:58.779+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-7] r.n.d.controller.BotController           : Вызов метода user для пользователя с id - 1, email - kir@gmail.com, telegramId - 1492839348
+2025-01-26T05:49:58.779+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-7] r.n.datastorage.db.service.UserService   : Сохранение user с id: 1
+2025-01-26T05:49:58.782+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-7] r.n.datastorage.service.ApiService       : statement = Statement(statementId=1, user=User(userId=1, telegramId=1492839348, firstName=йц, lastName=йц, city=йц, email=kir@gmail.com, phoneNumber=+79315896410, role=EXTERNAL_USER), course=null, statementStatus=PRE_APPLICATION, creationDate=2025-01-26 05:10:51.483062, changedDate=2025-01-26 05:49:35.405488)
+2025-01-26T05:49:58.782+01:00 DEBUG 12052 --- [Hackathon] [http-nio-8080-exec-7] r.n.datastorage.service.ApiService       : statement = Statement(statementId=1, user=User(userId=1, telegramId=1492839348, firstName=йц, lastName=йц, city=йц, email=kir@gmail.com, phoneNumber=+79315896410, role=EXTERNAL_USER), course=Course(courseId=5, courseName=Java Development), statementStatus=PRE_APPLICATION, creationDate=2025-01-26 05:10:51.483062, changedDate=2025-01-26 05:49:35.405488)
+2025-01-26T05:49:58.782+01:00  INFO 12052 --- [Hackathon] [http-nio-8080-exec-7] r.n.d.db.service.StatementService        : Добавление statement в БД
+2025-01-26T05:50:10.657+01:00  INFO 12052 --- [Hackathon] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-26T05:50:10.660+01:00  INFO 12052 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-26T05:50:10.662+01:00  INFO 12052 --- [Hackathon] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

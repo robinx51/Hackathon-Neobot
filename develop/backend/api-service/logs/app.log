@@ -1306,3 +1306,40 @@ java.lang.NullPointerException: Cannot invoke "org.telegram.telegrambots.meta.ap
 2025-01-26T05:44:18.135+01:00 DEBUG 2272 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : city changed
 2025-01-26T05:44:18.135+01:00 DEBUG 2272 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : вызов метода сохранения пользователя после обновления полей,id = 1
 2025-01-26T05:44:18.135+01:00 DEBUG 2272 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kir@gmail.com и telegramId 1492839348
+2025-01-26T05:49:11.011+01:00  INFO 2988 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Starting ApiServiceApplication using Java 21.0.6 with PID 2988 (C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462\develop\backend\api-service\target\classes started by Kirill in C:\Users\Kirill\Projects\razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462)
+2025-01-26T05:49:11.012+01:00 DEBUG 2988 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-26T05:49:11.013+01:00  INFO 2988 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-01-26T05:49:11.047+01:00  INFO 2988 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-26T05:49:11.047+01:00  INFO 2988 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-26T05:49:11.802+01:00  INFO 2988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-01-26T05:49:11.813+01:00  INFO 2988 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-26T05:49:11.813+01:00  INFO 2988 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-26T05:49:11.849+01:00  INFO 2988 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-26T05:49:11.850+01:00  INFO 2988 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 802 ms
+2025-01-26T05:49:12.164+01:00 DEBUG 2988 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : вызывается метод setCourses
+2025-01-26T05:49:12.164+01:00 DEBUG 2988 --- [restartedMain] r.n.a.client.DataStorageClientImpl       : Вызов метода getCourses
+2025-01-26T05:49:12.654+01:00 DEBUG 2988 --- [restartedMain] r.neostudy.apiservice.bot.UpdateService  : course size = 7
+2025-01-26T05:49:13.204+01:00  WARN 2988 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-01-26T05:49:13.223+01:00  INFO 2988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-01-26T05:49:13.232+01:00  INFO 2988 --- [restartedMain] r.n.apiservice.ApiServiceApplication     : Started ApiServiceApplication in 2.544 seconds (process running for 3.055)
+2025-01-26T05:49:22.367+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/help]
+2025-01-26T05:49:22.367+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /help, telegramId = 1492839348
+2025-01-26T05:49:23.887+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/submit_now]
+2025-01-26T05:49:23.888+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /submit_now, telegramId = 1492839348
+2025-01-26T05:49:35.169+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.model.validation.AppUserValidator  : formattedPhone: +79315896410
+2025-01-26T05:49:35.169+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByEmail с email kir@gmail.com
+2025-01-26T05:49:35.251+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 1492839348
+2025-01-26T05:49:35.266+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Пользователь с таким адресом электронной почты уже найден
+2025-01-26T05:49:35.268+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : name changed
+2025-01-26T05:49:35.269+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : last name changed
+2025-01-26T05:49:35.269+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : city changed
+2025-01-26T05:49:35.269+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kir@gmail.com и telegramId 1492839348
+2025-01-26T05:49:53.242+01:00 DEBUG 2988 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : test - набор открыт
+2025-01-26T05:49:54.243+01:00 DEBUG 2988 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : users = null
+2025-01-26T05:49:54.243+01:00 DEBUG 2988 --- [scheduling-1] r.n.a.client.DataStorageClientImpl       : Вызов метода getUsersWithoutCourse
+2025-01-26T05:49:54.351+01:00  INFO 2988 --- [scheduling-1] r.neostudy.apiservice.bot.UpdateService  : Период сбора заявок открыт
+2025-01-26T05:49:56.737+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Введена команда Optional[/make_life_choice]
+2025-01-26T05:49:56.738+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : Вызов метода processServiceCommand с командой /make_life_choice, telegramId = 1492839348
+2025-01-26T05:49:58.769+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода getUserByTelegramId с telegramId 1492839348
+2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.neostudy.apiservice.bot.UpdateService  : сохранение пользователя с id 1
+2025-01-26T05:49:58.776+01:00 DEBUG 2988 --- [hakatonTG_bot Telegram Executor] r.n.a.client.DataStorageClientImpl       : Вызов метода saveUser с email kir@gmail.com и telegramId 1492839348
