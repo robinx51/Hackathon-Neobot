@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="insert_defaults_into_courses" author="robinx51">
+        <insert tableName="courses">
+            <column name="course_name">Analytics</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">Data Engineering</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">DevOps Engineer</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">Frontend Development</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">Java Development</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">System engineering</column>
+        </insert>
+        <insert tableName="courses">
+            <column name="course_name">Testing</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
