@@ -5,7 +5,7 @@ services:
 
 variables:
   DOCKER_HOST: tcp://docker:2375  # Подключение через HTTP
-  DOCKER_TLS_CERTDIR: ""          # Отключение использования TLS сертификатов
+  DOCKER_TLS_CERTDIR: ""          # Отключение TLS для подключения
   KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
   KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
   IMAGE_NAME: "your-image-name"
