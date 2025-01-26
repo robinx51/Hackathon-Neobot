@@ -74,7 +74,6 @@ public class UpdateService {
 
     private void sendNotifications() {
         List<User> usersList = null;
-        log.debug("users = {}", usersList);//todo
         try {
             usersList = dataStorageClient.getUsersWithoutCourse();
         } catch (Exception e) {

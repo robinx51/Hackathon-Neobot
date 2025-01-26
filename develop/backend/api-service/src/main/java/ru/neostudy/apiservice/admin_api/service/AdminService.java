@@ -5,7 +5,6 @@ import ru.neostudy.apiservice.model.ActivePeriod;
 import ru.neostudy.apiservice.model.StatementFullDto;
 import ru.neostudy.apiservice.model.UpdateStatementDto;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface AdminService {
