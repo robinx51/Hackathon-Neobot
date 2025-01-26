@@ -13,13 +13,12 @@ kaniko-build-telegram-bot-service:
   stage: kaniko-build
   image:
     name: gcr.io/kaniko-project/executor:v1.19.0-debug
-    entrypoint: [""]
+    entrypoint: [""]  # Используем стандартный entrypoint для Kaniko
   tags:
     - runner
     - build
     - k8s
   script:
-    # Используем уже существующий JAR файл из target/
     - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
   artifacts:
     paths:
@@ -38,9 +37,9 @@ deploy-telegram-bot-service:
   script:
     - echo "$KUBECONFIG_CONTENT" > kubeconfig
     - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
-    - cat kubeconfig
+    - cat kubeconfig  # Выводим содержимое kubeconfig для отладки
     - export KUBECONFIG=$(pwd)/kubeconfig
-    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206
+    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640949-team-83206  # Деплой через kubectl
 
 build-and-run-docker-containers:
   stage: run
@@ -52,8 +51,8 @@ build-and-run-docker-containers:
     - build
     - k8s
   script:
-    - docker network create $NETWORK_NAME  # Создаем сеть
-    # Собираем Docker образы, используя уже существующий JAR файл
+    - docker network create $NETWORK_NAME  # Создаём сеть для контейнеров
+    # Собираем Docker образы, используя уже существующие JAR файлы
     - docker build -t data-storage_image ./develop/backend/data-storage --build-arg JAR_FILE=target/data-storage-1.0-SNAPSHOT-exec.jar
     - docker build -t api-service_image ./develop/backend/api-service
     # Запускаем контейнеры
