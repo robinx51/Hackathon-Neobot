@@ -7,7 +7,7 @@ public enum ServiceCommand {
     HELP("/help"),
     SUBMIT_REQUEST("/подать заявку"),
     SUBMIT_PREREQUEST("/оставить предзаявку"),
-    CANCEL("/cancel");
+    CHOOSE_COURSE("/make_life_choice");
 
     private final String value;
 

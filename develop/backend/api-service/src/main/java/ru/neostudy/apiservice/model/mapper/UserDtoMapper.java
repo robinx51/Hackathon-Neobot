@@ -34,4 +34,17 @@ public class UserDtoMapper {
                 .course(course)
                 .build();
     }
+
+    public BotUser toBotUserDto(User user) {
+        return BotUser.builder()
+                .telegramUserId(user.getTelegramId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .city(user.getCity())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .build();
+    }
 }
+
+

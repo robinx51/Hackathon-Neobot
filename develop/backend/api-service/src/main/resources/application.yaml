@@ -11,9 +11,10 @@ logging:
 
 storage:
   serverUrl: http://localhost:8080
-  get-user-by-email-uri: /data-storage/getUserByEmail/{email}
-  get-user-by-telegram-uri: /data-storage/getUserByTelegramId/{telegramId}
-  save-user-uri: /data-storage/saveUser
-  getCoursesUri: /data-storage/getCourses
+  save-user-uri: /data-storage/user
+  get-user-by-email-uri: /data-storage/user_email/{email}
+  get-user-by-telegram-uri: /data-storage/user/{telegramId}
+  getCoursesUri: /data-storage/courses
+  getUsersWithoutCourseUri: /data-storage/users/without_course
 
 

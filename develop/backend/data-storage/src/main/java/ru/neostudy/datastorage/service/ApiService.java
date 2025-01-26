@@ -21,7 +21,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class NeoCodeBotService {
+public class ApiService {
     private final UserService userService;
     private final StatementService statementService;
     private final CourseService courseService;
@@ -114,5 +114,9 @@ public class NeoCodeBotService {
         statement.setStatementStatus(status);
         statement.setChangedDate(Timestamp.valueOf(LocalDateTime.now()));
         return statement;
+    }
+
+    public List<User> getUsersWithoutCourse() {
+        return userService.getUsersWithoutCourse();
     }
 }

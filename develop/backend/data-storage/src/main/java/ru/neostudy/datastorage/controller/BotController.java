@@ -10,7 +10,7 @@ import ru.neostudy.datastorage.db.entity.Course;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.dto.UpdateStatementDto;
 import ru.neostudy.datastorage.dto.UserDto;
-import ru.neostudy.datastorage.service.NeoCodeBotService;
+import ru.neostudy.datastorage.service.ApiService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,32 +21,38 @@ import java.util.Optional;
 @AllArgsConstructor
 public class BotController {
     @Autowired
-    private NeoCodeBotService neoCodeBotService;
+    private ApiService apiService;
 
-    @PostMapping("/data-storage/saveUser")
+    @PostMapping("/data-storage/user")
     @Tag(name = "Сохранение пользователя")
     public UserDto saveUser(@RequestBody UserDto request) {
-        log.debug("Вызов метода saveUser для пользователя с id - {}, email - {}, " +
+        log.debug("Вызов метода user для пользователя с id - {}, email - {}, " +
                 "telegramId - {}", request.getId(), request.getEmail(), request.getTelegramUserId());
-        return neoCodeBotService.saveUser(request);
+        return apiService.saveUser(request);
     }
 
-    @GetMapping("/data-storage/getAllUsers")
+    @GetMapping("/data-storage/users")
     @Tag(name = "Получение списка всех пользователей")
     public List<User> getAllUsers() {
-        return neoCodeBotService.getUsers();
+        return apiService.getUsers();
     }
 
-    @GetMapping("/data-storage/getUserByEmail/{email}")
+    @GetMapping("/data-storage/users/without_course")
+    @Tag(name = "Получение списка всех пользователей")
+    public List<User> getAllUsersWithoutCourse() {
+        return apiService.getUsersWithoutCourse();
+    }
+
+    @GetMapping("/data-storage/user_email/{email}")
     @Tag(name = "Проверка существования почты")
     public Optional<User> getUserByEmail(@PathVariable String email) {
-        return neoCodeBotService.getUser(email);
+        return apiService.getUser(email);
     }
 
-    @GetMapping("/data-storage/getUserByTelegramId/{telegramId}")
+    @GetMapping("/data-storage/user/{telegramId}")
     @Tag(name = "Проверка существования почты")
     public Optional<User> getUserByTelegramId(@PathVariable Long telegramId) {
-        return neoCodeBotService.getUser(telegramId);
+        return apiService.getUser(telegramId);
     }
 
 //    @GetMapping("/data-storage/getStatementsFor/{userId}")
@@ -60,20 +66,21 @@ public class BotController {
             description = "Обновление статуса заявки по statement_id" +
                     " и добавление его в историю через админ панель")
     public void updateStatementStatus(@RequestBody UpdateStatementDto request) {
-        neoCodeBotService.updateStatement(request);
+        apiService.updateStatement(request);
     }
 
-    @GetMapping("/data-storage/getCourses")
+    @GetMapping("/data-storage/courses")
     @Tag(name = "Обновление статуса заявки",
             description = "Обновление статуса заявки по statement_id" +
                     " и добавление его в историю через админ панель")
     public List<Course> getCourses() {
-        return neoCodeBotService.getCourses();
+        log.debug("Вызов метода getCourses");
+        return apiService.getCourses();
     }
 
     @PostMapping("/data-storage/insertCourse/{courseName}")
     @Tag(name = "Добавление нового направления обучения")
     public void insertCourse(@PathVariable String courseName) {
-        neoCodeBotService.insertCourse(courseName);
+        apiService.insertCourse(courseName);
     }
 }

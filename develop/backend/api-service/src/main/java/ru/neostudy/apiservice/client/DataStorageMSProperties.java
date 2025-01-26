@@ -16,4 +16,5 @@ public class DataStorageMSProperties {
     private String getUserByTelegramUri; //todo
     //private String updateUserUri;  //todo
     private String getCoursesUri;
+    public String getUsersWithoutCourseUri;
 }

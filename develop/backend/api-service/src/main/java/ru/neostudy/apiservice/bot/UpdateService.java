@@ -2,10 +2,12 @@ package ru.neostudy.apiservice.bot;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import ru.neostudy.apiservice.admin_api.AdminService;
 import ru.neostudy.apiservice.bot.enums.ServiceCommand;
 import ru.neostudy.apiservice.bot.enums.UserAction;
 import ru.neostudy.apiservice.bot.enums.UserState;
@@ -34,21 +36,70 @@ public class UpdateService {
     private final AppUserValidator appUserValidator;
     private final UserDtoMapper userDtoMapper;
     private final DataStorageClient dataStorageClient;
-    private final Map<String, Course> courses = new HashMap<>(); //ConcurrentMap?
+    private final Map<String, Course> courses = new HashMap<>();
+    private final AdminService adminService;
+    private static boolean isActivePeriod = false;
+    private static boolean wasNotified = false;
 
     private final ConcurrentMap<Long, BotUser> users = new ConcurrentHashMap<>();
     //todo добавить логику по очистке юзера при длительном молчании
 
     public void registerBot(TelegramBot telegramBot) {
         this.telegramBot = telegramBot;
-        courses.put("Analytics", new Course(1, "Analytics"));
-        courses.put("Data Engineering", new Course(2, "Data Engineering"));
-        courses.put("DevOps Engineer", new Course(5, "DevOps Engineer"));
-        courses.put("Frontend Development", new Course(5, "Frontend Development"));
-        courses.put("Java Development", new Course(5, "Java Development"));
-        courses.put("System engineering", new Course(6, "System engineering"));
-        courses.put("Testing", new Course(7, "Testing"));
+        setCourses();
     }
+
+    @Scheduled(fixedRate = 30000, initialDelay = 30000) //todo
+    private void test() {
+        log.debug("test - набор открыт");
+        isActivePeriod = true;
+        wasNotified = false;
+    }
+
+    @Scheduled(fixedRate = 30000, initialDelay = 60000) //todo
+    private void testMethod() {
+        log.debug("testMethod - набор закрыт");
+        isActivePeriod = false;
+        wasNotified = false;
+    }
+
+    @Scheduled(fixedRate = 31000) //Проверяем каждую минуту в целях наглядности
+    private void checkPeriod() {
+        //boolean checkIfActivePeriod = adminService.checkIfActivePeriod(LocalDate.now());
+        //if (checkIfActivePeriod && !wasNotified) {
+        if (isActivePeriod && !wasNotified) {
+            sendNotifications();
+            wasNotified = true;
+            log.info("Период сбора заявок открыт");
+        }
+/*        if (!checkIfActivePeriod && isActivePeriod) {
+            wasNotified = false;
+            log.info("Период сбора заявок завершен");
+        }
+        isActivePeriod = checkIfActivePeriod;*/
+    }
+
+    private void sendNotifications() {
+        List<User> usersList = null;
+        log.debug("users = {}", usersList);//todo
+        try {
+            usersList = dataStorageClient.getUsersWithoutCourse();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return;
+        }
+        for (User user : usersList) {
+            users.put(user.getTelegramId(), userDtoMapper.toBotUserDto(user));
+            sendMessage(new SendMessage(user.getTelegramId().toString(), generateRequest()));
+        }
+    }
+
+    private String generateRequest() {
+        return "Уважаемый пользователь! Мы рады сообщить, что сегодня открывается набор на стажировку Neoflex. " +
+                "Поскольку ранее вы оставляли предзаявку, вам необходимо указать интересующее вас направление обучения\n" +
+                "/make_life_choice";
+    }
+
 
     public void processUpdate(Update update) {
         var output = "";
@@ -79,8 +130,49 @@ public class UpdateService {
             case HELP -> processHelpCommand(update);
             case SUBMIT_PREREQUEST -> processSubmitPrerequest(update);
             case SUBMIT_REQUEST -> processSubmitRequest(update);
-            case CANCEL -> processCancelCommand(update); //todo удалить если не надо
+            case CHOOSE_COURSE -> processChoosingCourse(update);
         };
+    }
+
+    private String processChoosingCourse(Update update) {
+        BotUser botUser = users.get(update.getMessage().getFrom().getId());
+        botUser.setState(UserState.WAIT_FOR_COURSE_NOTIFICATION);
+        users.put(botUser.getTelegramUserId(), botUser);
+        return getCourse();
+    }
+
+    private String processSavingCourse(Update update) {
+        String output = "";
+        String text = update.getMessage().getText();
+        Course course = courses.get(text);
+        if (course == null) {
+            log.error("Указано несуществующее направление: {}", text);
+            return "Пожалуйста, укажите направление обучения из списка";
+        }
+        Optional<User> user;
+        Message message = update.getMessage();
+        try {
+            user = dataStorageClient.getUserByTelegramId(message.getFrom().getId());
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+        }
+        if (user.isPresent()) {
+            UserDto userDto = userDtoMapper.fromUsertoUserDto(user.get(), course);
+            userDto.setRole(Role.EXTERNAL_USER);
+            try {
+                log.debug("сохранение пользователя с id {}", userDto.getId());
+                dataStorageClient.saveUser(userDto);
+                output = String.format("Ваша заявка успешно принята. Для прохождения отборочных испытаний перейдите по ссылке. Используйте почту, " +
+                        "указанную в заявке: %s. \n%s", userDto.getEmail(), returnLinkToLogin());
+            } catch (Exception e) {
+                log.error(e.getMessage());
+                return "Произошла ошибка, пожалуйста, попробуйте выполнить действие позднее";
+            }
+        } else {
+            return "Пожалуйста, нажмите /start и пройдите регистрацию заново";
+        }
+        return output;
     }
 
     private String processCancelCommand(Update update) {
@@ -167,7 +259,7 @@ public class UpdateService {
                     output = processWaitForPhoneStatus(formattedPhone, botUser);
                 }
                 break;
-            case WAIT_FOR_COURSE:
+            case WAIT_FOR_COURSE_REQUEST:
                 if (courses.get(text) == null) {
                     log.error("Указано несуществующее направление: {}", text);
                     return "Пожалуйста, укажите направление обучения из списка";
@@ -180,6 +272,9 @@ public class UpdateService {
                 users.put(botUser.getTelegramUserId(), botUser);
                 output = processWhenSubmitRequest(botUser);
                 break;
+            case WAIT_FOR_COURSE_NOTIFICATION:
+                output = processSavingCourse(update);
+                break;
             default:
                 output = "Неизвестная команда! Чтобы посмотреть список доступных команд введите /help";
         }
@@ -189,26 +284,30 @@ public class UpdateService {
     private String processWaitForPhoneStatus(String phone, BotUser botUser) {
         botUser.setPhone(phone);
         botUser.setState(UserState.COMPLETE);
-        botUser.setRole(Role.CANDIDATE); //меняется роль после ввода всех данных
+        botUser.setRole(Role.CANDIDATE);
         users.put(botUser.getTelegramUserId(), botUser);
         String output = "";
         if (botUser.getAction() == UserAction.SUBMIT_PREREQUEST) {
             output = processWhenSubmitPrerequest(botUser);
         } else {
-            output = suggestCourses(botUser);
+            output = processGettingCourse(botUser);
         }
         return output;
     }
 
-    private String suggestCourses(BotUser botUser) {
-        botUser.setState(UserState.WAIT_FOR_COURSE);
+    private String processGettingCourse(BotUser botUser) {
+        botUser.setState(UserState.WAIT_FOR_COURSE_REQUEST);
+        users.put(botUser.getTelegramUserId(), botUser);
+        return getCourse();
+    }
+
+    private String getCourse() {
         StringBuilder builder = new StringBuilder();
         for (String s : courses.keySet()) {
             builder.append(s).append("\n");
         }
         return "Пожалуйста, выберите интересующее вас направление\n" +
-                "Java Development" +
-                builder; //todo дополнить направления
+                builder;
     }
 
     private String processWhenSubmitRequest(BotUser botUser) {
@@ -279,13 +378,13 @@ public class UpdateService {
             }
             output = String.format("Вы уже регистрировались в системе c данного аккаунта телеграм. " +
                     "Для прохождения отборочных испытаний перейдите по ссылке. Используйте почту, " +
-                    "указанную в заявке: %s. \nВаша ссылка: %s", userDto.getEmail(), returnLinkToLogin());
+                    "указанную в заявке: %s. \n%s", userDto.getEmail(), returnLinkToLogin());
         }
         return output;
     }
 
     private String returnLinkToLogin() {
-        return "Спасибо за регистрацию! Ваша ссылка /url"; //todo
+        return "Спасибо за регистрацию! Ваша ссылка /https://edu.neoflex.ru/";
     }
 
     private String processWhenSubmitPrerequest(BotUser botUser) {
@@ -383,17 +482,31 @@ public class UpdateService {
         users.put(telegramId, user);
         log.debug("Пользователь с телеграм id = {} сохранен", telegramId);
         //todo вернуть приветствие, извещение о персональных данных и 1 кнопку (заявка либо предзаявка)
-        return "Здравствуйте! \n" +
-                "/оставить предзаявку\n" +
-                "/подать заявку\n";
+
+        return getStartMessage();
+    }
+
+    private String getStartMessage() {
+        if (isActivePeriod) {
+            return "Привет! Добро пожаловать в чат к лучшей версии ассистента Учебного Центра Neoflex (*по версии ее создателей).\n" +
+                    "Для участия в учебном центре, пожалуйста, выбери следующую команду\n" +
+                    "/подать заявку";
+        } else {
+            return "Привет! Добро пожаловать в чат к лучшей версии ассистента Учебного Центра Neoflex (*по версии ее создателей).\n" +
+                    "На данный момент набор в учебный центр закрыт. Но вы можете оставить предзаявку. Вы получите извещение " +
+                    "в этом чате, как только набор снова откроется.\n" +
+                    "/оставить предзаявку";
+        }
     }
 
     private String help() {
-        return "Список доступных команд:\n"
-                //+ "/cancel - отмена выполнения текущей команды;\n"
-                + "/оставить предзаявку\n"
-                + "/подать заявку\n";
-        //todo команда какая-то одна в зависимости от логики с датой
+        if (isActivePeriod) {
+            return "Список доступных команд:\n" +
+                    "/подать заявку";
+        } else {
+            return "Список доступных команд:\n" +
+                    "/оставить предзаявку";
+        }
     }
 
     private String processHelpCommand(Update update) {
@@ -418,10 +531,19 @@ public class UpdateService {
         return "Введите свое имя";
     }
 
-    private void setCourses() throws Exception {
-        List<Course> currentCourses = dataStorageClient.getCourses();
+
+    public void setCourses() {
+        log.debug("вызывается метод setCourses");
+        List<Course> currentCourses;
+        try {
+            currentCourses = dataStorageClient.getCourses();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return;
+        }
+        log.debug("course size = {}", currentCourses.size());
         for (Course course : currentCourses) {
             courses.put(course.getCourseName(), course);
         }
-    } //todo вызов, когда запускается обучение только
+    }
 }

@@ -74,6 +74,19 @@ public class DataStorageClientImpl implements DataStorageClient {
                 })
                 .block();
     }
+
+    @Override
+    public List<User> getUsersWithoutCourse() throws Exception {
+        log.debug("Вызов метода getUsersWithoutCourse");
+        return webClient.get()
+                .uri(dataStorageMSProperties.getServerUrl().concat(dataStorageMSProperties.getGetUsersWithoutCourseUri()))
+                .retrieve()
+                .onStatus(HttpStatusCode::isError,
+                        ClientResponse::createException)
+                .bodyToMono(new ParameterizedTypeReference<List<User>>() {
+                })
+                .block();
+    }
 /*
     @Override
     public UserDto updateUser(UserDto userDto) throws Exception {

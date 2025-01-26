@@ -15,4 +15,5 @@ public interface DataStorageClient {
     UserDto saveUser(UserDto userDto) throws Exception;
 
     List<Course> getCourses() throws Exception;
+    List<User> getUsersWithoutCourse() throws Exception;
 }

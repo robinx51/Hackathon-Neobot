@@ -42,6 +42,13 @@ public class UserService {
         return userRepository.findById(userId);
     }
 
+    public List<User> getUsersWithoutCourse() {
+        logger.debug("Получение пользователей без выбранного курса");
+        List<User> allWithoutCourse = userRepository.findAllWithoutCourse();
+        logger.debug("usersWithoutCourse size = {}", allWithoutCourse.size());
+        return allWithoutCourse;
+    }
+
     public Optional<User> getUser(String email) {
         logger.debug("Поиск user с email: {}", email);
         return userRepository.findByEmail(email);
