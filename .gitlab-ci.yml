@@ -1,30 +1,42 @@
-image: docker:19.03.12-dind
+image: docker:27.0.3  # Базовый образ для выполнения CI/CD
 
 services:
-  - docker:19.03.12-dind
+  - docker:27.0.3-dind  # Docker-in-Docker для сборки образов
 
 variables:
-  DOCKER_HOST: tcp://docker:2375  # Подключение через HTTP
-  DOCKER_TLS_CERTDIR: ""          # Отключение TLS для подключения
-  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"
-  IMAGE_NAME: "your-image-name"
-  REGISTRY: "docker.io"
+  KUBECONFIG: "/builds/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/.kube/config"  # Путь к конфигу Kubernetes
+  KUBECONFIG_CONTEXT: "cnrprod1737640949-team-83206"  # Контекст для kubectl
+  KUBERNETES_NAMESPACE: "cnrprod1737640949-team-83206"  # Namespace для деплоя в Kubernetes
+  IMAGE_NAME: "registry.gitlab.com/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/app:latest"  # Имя Docker-образа
 
 stages:
   - build
+  - deploy
 
-build_with_dind_and_kaniko:
+build_app:
   stage: build
   script:
     - echo "Переход в директорию с Dockerfile..."
-    - cd develop/backend/data-storage
-    - echo "Сборка Docker-образа с помощью Kaniko..."
-    - /kaniko/executor --context=dir://$(pwd) --dockerfile=Dockerfile --destination=$REGISTRY/$CI_PROJECT_NAMESPACE/$IMAGE_NAME:latest
-    - echo "Образ собран и загружен в реестр!"
-  only:
-    - master  # или ваша нужная ветка
+    - cd develop/backend/data-storage  # Переход в директорию с Dockerfile
+    - echo "Сборка Docker-образа..."
+    - docker build -t $IMAGE_NAME .  # Сборка Docker-образа
+    - echo "Авторизация в контейнерном реестре..."
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin  # Логин в реестр
+    - echo "Пуш Docker-образа в реестр..."
+    - docker push $IMAGE_NAME  # Пуш в реестр
   tags:
     - build
     - runner
     - k8s
+
+deploy_app:
+  stage: deploy
+  image: alpine:3.18  # Используем легковесный образ для работы с Helm и kubectl
+  before_script:
+    - apk add --no-cache bash curl  # Устанавливаем bash и curl
+    - curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash  # Устанавливаем Helm
+    - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.24.0/bin/linux/amd64/kubectl  # Устанавливаем kubectl
+    - chmod +x ./kubectl
+    - mv ./kubectl /usr/local/bin/kubectl  # Перемещаем kubectl в системный путь
+    - kubectl config use-context $KUBECONFIG_CONTEXT  # Используем правильный контекст
+    - kubectl config set-context --current --name
