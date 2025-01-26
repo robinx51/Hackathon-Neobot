@@ -6,11 +6,10 @@ stages:
 variables:
   DOCKER_REGISTRY: "git.codenrock.com:5050"
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640815-team-83210/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
-  IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
-  KUBECONFIG: "/builds/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}/.kube/config"
-  KUBECONFIG_CONTEXT: "cnrprod1737640815-team-83210"
+  IMAGE_TAG: "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
 
-build-telegram-bot-service1:
+# Этап сборки JAR-файла
+build-telegram-bot-service:
   stage: build
   image: maven:3.9.4-eclipse-temurin-21
   tags:
@@ -25,25 +24,27 @@ build-telegram-bot-service1:
     - ls -la target
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar
+      - develop/backend/data-storage/target/data-storage-1.0-SNAPSHOT-exec.jar
     expire_in: 1 week
 
-build-telegram-bot-service:
+# Этап сборки Docker-образа с использованием Kaniko
+build-telegram-bot-service-docker:
   stage: kaniko-build
   image:
     name: gcr.io/kaniko-project/executor:v1.19.0-debug
-    entrypoint: [""]  # Чтобы можно было использовать канико
+    entrypoint: [""]  # Это нужно для корректного запуска Kaniko
   tags:
     - runner
     - build
     - k8s
   script:
-    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/develop/backend/data-storage/Dockerfile" --destination "${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}:latest"
+    - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/develop/backend/data-storage/Dockerfile" --destination "${IMAGE_TAG}"
   artifacts:
     paths:
-      - develop/backend/data-storage/target/*.jar 
+      - develop/backend/data-storage/target/data-storage-1.0-SNAPSHOT-exec.jar
     expire_in: 1 week
 
+# Этап деплоя в Kubernetes
 deploy-telegram-bot-service:
   stage: deploy
   image: bitnami/kubectl:latest
@@ -54,9 +55,5 @@ deploy-telegram-bot-service:
   only:
     - develop
   script:
-    - echo "$KUBECONFIG_CONTENT" > kubeconfig  # Сохранение kubeconfig
-    - echo "KUBECONFIG file saved at:"; pwd; echo "/kubeconfig"
-    - cat kubeconfig
-    - export KUBECONFIG=$(pwd)/kubeconfig  # Используем kubeconfig для kubectl
-    - kubectl config use-context $KUBECONFIG_CONTEXT  # Используем ваш контекст
-    - kubectl apply -f devops/k8s/telegram-bot-service-deployment.yaml --namespace=cnrprod1737640815-team-83210
+    - echo "$KUBECONFIG_CONTENT" > kubeconfig
+    - echo "KUBECONFIG file saved at:"; pwd; echo "/kube
