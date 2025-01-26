@@ -8,6 +8,7 @@ variables:
   IMAGE_PATH: "neo-hack-2025-1364/cnrprod1737640949-team-83206/razrabotka-telegram-bota-dlya-avtomatizacii-processa-sbora-zayavok-na-obuchenie-6462"
   IMAGE_TAG: "${CI_REGISTRY_IMAGE}:latest"
   NETWORK_NAME: "hackathon"
+  DOCKER_TLS_CERTDIR: "/certs"  # Для использования Docker-in-Docker
 
 kaniko-build-telegram-bot-service:
   stage: kaniko-build
@@ -45,16 +46,19 @@ build-and-run-docker-containers:
   stage: run
   image: docker:20.10.7
   services:
-    - docker:20.10.7-dind
+    - docker:20.10.7-dind  # Используем Docker-in-Docker сервис
   tags:
     - runner
     - build
     - k8s
   script:
+    - echo "Creating Docker network"
     - docker network create $NETWORK_NAME  # Создаём сеть для контейнеров
     # Собираем Docker образы, используя уже существующие JAR файлы
+    - echo "Building Docker images"
     - docker build -t data-storage_image ./develop/backend/data-storage --build-arg JAR_FILE=target/data-storage-1.0-SNAPSHOT-exec.jar
     - docker build -t api-service_image ./develop/backend/api-service
     # Запускаем контейнеры
+    - echo "Running Docker containers"
     - docker run -d --name data --network $NETWORK_NAME data-storage_image
     - docker run -d --name api --network $NETWORK_NAME -p 8081:8081 api-service_image
