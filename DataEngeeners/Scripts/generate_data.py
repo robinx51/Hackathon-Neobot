@@ -90,7 +90,7 @@ def main():
     statements = []
     for _ in range(300):
         stmt = generate_statement(user_ids)
-        if stmt['statement_status'] != 'На рассмотрении':
+        if stmt['statement_status'] != 'PENDING':
             stmt['changed_date'] = stmt['creation_date'] + timedelta(days=random.randint(1, 30))
         else:
             stmt['changed_date'] = stmt['creation_date']
@@ -103,11 +103,15 @@ def main():
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
 
-        conn.commit()
+        cursor.execute("SELECT nextval('users_user_id_seq');")
+        current_user_id = cursor.fetchone()[0]
+
+        cursor.execute("SELECT nextval('statements_statement_id_seq');")
+        current_statement_id = cursor.fetchone()[0]
 
         user_records = [
             (
-                i+1,
+                current_user_id + i + 1,
                 u['telegram_id'],
                 u['role'],
                 u['first_name'],
@@ -120,15 +124,15 @@ def main():
         ]
         
         execute_batch(cursor,
-            """INSERT INTO dev.users 
-               (user_id, telegram_id, role, first_name, last_name, email, city, phone_number)
-               VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+            """INSERT INTO users 
+            (user_id, telegram_id, role, first_name, last_name, email, city, phone_number)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
             user_records
         )
 
         statement_records = [
             (
-                i+1,
+                current_statement_id + i + 1,
                 stmt['user_id'],
                 stmt['course_id'],
                 stmt['statement_status'],
@@ -139,11 +143,14 @@ def main():
         ]
         
         execute_batch(cursor,
-            """INSERT INTO dev.statements 
-               (statement_id, user_id, course_id, statement_status, creation_date, changed_date)
-               VALUES (%s, %s, %s, %s, %s, %s)""",
+            """INSERT INTO statements 
+            (statement_id, user_id, course_id, statement_status, creation_date, changed_date)
+            VALUES (%s, %s, %s, %s, %s, %s)""",
             statement_records
         )
+
+        cursor.execute("SELECT setval('users_user_id_seq', (SELECT MAX(user_id) FROM dev.users));")
+        cursor.execute("SELECT setval('statements_statement_id_seq', (SELECT MAX(statement_id) FROM dev.statements));")
 
         conn.commit()
 
