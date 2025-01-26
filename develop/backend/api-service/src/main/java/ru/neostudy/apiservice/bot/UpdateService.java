@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
-import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import ru.neostudy.apiservice.admin_api.AdminService;
 import ru.neostudy.apiservice.bot.enums.ServiceCommand;
 import ru.neostudy.apiservice.bot.enums.UserAction;
@@ -22,7 +20,10 @@ import ru.neostudy.apiservice.model.enums.Role;
 import ru.neostudy.apiservice.model.mapper.UserDtoMapper;
 import ru.neostudy.apiservice.model.validation.AppUserValidator;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -96,16 +97,11 @@ public class UpdateService {
         if (update == null) {
             log.error("переданный Update равен null");
             return;
-        } else if (!update.getMessage().hasText() && !update.hasCallbackQuery()) { //todo
+        } else if (!update.getMessage().hasText()) {
             log.error("Передано не текстовое сообщение, telegramId = {}", update.getMessage().getFrom().getId());
             output = "Пожалуйста, введите текстовое сообщение согласно инструкции или выберите /help";
         } else {
-            String text;
-            if (update.hasCallbackQuery()) {
-                text = update.getCallbackQuery().getData();
-            } else {
-                text = update.getMessage().getText();
-            }
+            String text = update.getMessage().getText();
             Optional<ServiceCommand> serviceCommand = ServiceCommand.fromValue(text);
             if (serviceCommand.isPresent()) { //если пользователь вводит команды
                 log.debug("Введена команда {}", serviceCommand);
@@ -466,22 +462,6 @@ public class UpdateService {
     }
 
     private String processHelpCommand(Update update) {
-        SendMessage message = new SendMessage();
-        message.setChatId(update.getMessage().getFrom().getId());
-        message.setText("Список доступных команд:\n");
-        InlineKeyboardButton button1 = new InlineKeyboardButton();
-        button1.setText("Подать заявку");
-        button1.setCallbackData("/подать заявку");
-        List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(button1);
-        // Добавляем строки в клавиатуру
-        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
-        keyboard.add(row1);
-        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        markup.setKeyboard(keyboard);
-        message.setReplyMarkup(markup);
-        telegramBot.sendAnswerMessage(message);
-
         return help();
     }
 
@@ -523,23 +503,23 @@ public class UpdateService {
     private String help() {
         if (isActivePeriod) {
             return "Список доступных команд:\n" +
-                    "/подать заявку";
+                    "подать заявку(/submit)"; //todo
         } else {
             return "Список доступных команд:\n" +
-                    "/оставить предзаявку";
+                    "оставить предзаявку(/submit_now)"; //todo
         }
     }
 
     private String getStartMessage() {
         if (isActivePeriod) {
             return "Привет! Добро пожаловать в чат к лучшей версии ассистента Учебного Центра Neoflex (*по версии ее создателей).\n" +
-                    "Для участия в учебном центре, пожалуйста, выбери следующую команду\n" +
-                    "/подать заявку";
+                    "\nДля участия в учебном центре, пожалуйста, выбери следующую команду\n" +
+                    "подать заявку(/submit)";
         } else {
             return "Привет! Добро пожаловать в чат к лучшей версии ассистента Учебного Центра Neoflex (*по версии ее создателей).\n" +
-                    "На данный момент набор в учебный центр закрыт. Но вы можете оставить предзаявку. Вы получите извещение " +
+                    "\nНа данный момент набор в учебный центр закрыт. Но вы можете оставить предзаявку. Вы получите извещение " +
                     "в этом чате, как только набор снова откроется.\n" +
-                    "/оставить предзаявку";
+                    "оставить предзаявку(/submit_now)";
         }
     }
 

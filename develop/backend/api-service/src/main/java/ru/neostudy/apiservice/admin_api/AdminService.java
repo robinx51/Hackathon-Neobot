@@ -15,3 +15,4 @@ public interface AdminService {
 
     StatementFullDto getCompleteStatementById(Integer id) throws Exception;
 }
+

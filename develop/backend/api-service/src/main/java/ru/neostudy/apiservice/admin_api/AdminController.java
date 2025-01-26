@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.neostudy.apiservice.model.StatementFullDto;
 import ru.neostudy.apiservice.model.UpdateStatementDto;
 
+import java.sql.SQLException;
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("/admin")
