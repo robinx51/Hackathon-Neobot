@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import ru.neostudy.datastorage.db.entity.User;
 import ru.neostudy.datastorage.db.repository.UserRepository;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,24 +22,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void updateUser(User user) {
-        logger.debug("Обновление user с id: {}", user.getUserId());
-        if (userRepository.existsById(user.getUserId())) {
-            userRepository.save(user);
-        } else {
-            logger.warn("User с id: {} не найден", user.getUserId());
-            throw new EntityNotFoundException("User с id: " + user.getUserId() + " не найден");
-        }
-    }
-
     public List<User> getAllUsers() {
         logger.debug("Получение списка пользователей");
         return userRepository.findAll();
-    }
-
-    public Optional<User> getUser(int userId) {
-        logger.debug("Получение user с id: {}", userId);
-        return userRepository.findById(userId);
     }
 
     public List<User> getUsersWithoutCourse() {
