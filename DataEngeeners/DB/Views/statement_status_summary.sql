@@ -1,3 +1,5 @@
+-- Витрина, отображающая количество заявок по статусу заявки
+
 CREATE OR REPLACE VIEW statement_status_summary AS
 SELECT 
     s.statement_status, 

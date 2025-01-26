@@ -58,7 +58,7 @@ def generate_statement(user_ids):
         'user_id': random.choice(user_ids),
         'course_id': random.randint(1, 7),
         'statement_status': random.choices(
-            ['Предзаявка', 'Принято', 'Отклонено', 'На рассмотрении'],
+            ['PRE_APPLICATION', 'ACCEPTED', 'REJECTED', 'PENDING'],
             weights=[0.1, 0.2, 0.2, 0.5]
         )[0],
         'creation_date': fake.date_time_between('-1y', 'now'),
