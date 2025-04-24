@@ -2,8 +2,8 @@ server:
   port: 9093
 
 bot:
-  name: ${TG_BOT_NAME:hakatonTG_bot}
-  token: ${TG_BOT_TOKEN:7083829801:AAGiKATQRCVmbz5g8XYdV7P5kk174qwVna8}
+  name: ${TG_BOT_NAME:}
+  token: ${TG_BOT_TOKEN:API-key-removed}
 
 logging:
   level:
